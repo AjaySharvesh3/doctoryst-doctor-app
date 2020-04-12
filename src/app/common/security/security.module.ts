@@ -14,6 +14,7 @@ import {ResetPasswordComponent} from './components/reset-password/reset-password
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {SecurityCheckComponent} from './components/security-check/security-check.component';
 import {VerifyEmailComponent} from './components/verify-email/verify-email.component';
+import {LayoutModule} from "../layout/layout.module";
 
 @NgModule({
   declarations: [
@@ -28,13 +29,14 @@ import {VerifyEmailComponent} from './components/verify-email/verify-email.compo
     SecurityCheckComponent,
     VerifyEmailComponent
   ],
-  imports: [
-    CommonModule,
-    SecurityRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FontAwesomeModule
-  ]
+    imports: [
+        CommonModule,
+        SecurityRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FontAwesomeModule,
+        LayoutModule
+    ]
 })
 export class SecurityModule {
 }

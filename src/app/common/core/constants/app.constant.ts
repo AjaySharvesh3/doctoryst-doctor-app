@@ -1,7 +1,7 @@
 export class AppConstant {
 
   static readonly NAVIGATE_TO = {
-    home: 'projects',
+    home: 'stores',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -21,10 +21,10 @@ export class AppConstant {
 
   static readonly TOP_MENU_LIST = [
     {
-      menuName: 'Project',
-      path: 'projects',
+      menuName: 'Stores',
+      path: 'stores',
       active: 'true',
-      helpText: 'Manage Projects'
+      helpText: 'Manage Stores'
     },
     {
       menuName: 'User',

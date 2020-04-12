@@ -1,28 +1,28 @@
-<button (click)="openAddEditProject()"
-        *ngIf="isAddProject"
+<button (click)="openAddEditStore()"
+        *ngIf="isAddStore"
         class="btn btn-primary">
   <fa-icon [icon]="faPlus"></fa-icon>
-  Add New Project
+  Add New Store
 </button>
 
-<button (click)="openAddEditProject()"
-        *ngIf="isEditProject"
+<button (click)="openAddEditStore()"
+        *ngIf="isEditStore"
         class="btn btn-outline-primary"
-        tooltip="Edit Project">
+        tooltip="Edit Store">
   <fa-icon [icon]="faPencilAlt"></fa-icon>
 </button>
 
-<ng-template #addEditProjectTemplate>
+<ng-template #addEditStoreTemplate>
   <div class="modal-header border-0 bg-light">
-    <h4 *ngIf="isAddProject" class="modal-title">Add New Project</h4>
-    <h4 *ngIf="isEditProject" class="modal-title">Edit Project</h4>
-    <button (click)="closeAddEditProject()" class="close" type="button"><span
+    <h4 *ngIf="isAddStore" class="modal-title">Add New Store</h4>
+    <h4 *ngIf="isEditStore" class="modal-title">Edit Store</h4>
+    <button (click)="closeAddEditStore()" class="close" type="button"><span
       aria-hidden="true">×</span></button>
   </div>
 
   <div class="modal-body flex-row pl-4 pr-4 mt-2">
 
-    <form [formGroup]="addEditProjectForm">
+    <form [formGroup]="addEditStoreForm">
 
       <div class="card mb-4 details-card">
         <div class="card-body">
@@ -98,22 +98,22 @@
   </div>
 
   <div class="modal-footer border-0">
-    <button (click)="closeAddEditProject()"
+    <button (click)="closeAddEditStore()"
             class="btn btn-light"
             type="button">
       Cancel
     </button>
-    <button (click)="confirmAddProject()"
-            *ngIf="isAddProject"
+    <button (click)="confirmAddStore()"
+            *ngIf="isAddStore"
             class="btn btn-success"
             type="button">
-      Confirm Add Project
+      Confirm Add Store
     </button>
-    <button (click)="confirmEditProject()"
-            *ngIf="isEditProject"
+    <button (click)="confirmEditStore()"
+            *ngIf="isEditStore"
             class="btn btn-success"
             type="button">
-      Confirm Edit Project
+      Confirm Edit Store
     </button>
   </div>
 </ng-template>

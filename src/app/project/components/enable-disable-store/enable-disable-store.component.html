@@ -1,70 +1,70 @@
-<button (click)="openEnableDisableProject()"
-        *ngIf="isDisableProject"
+<button (click)="openEnableDisableStore()"
+        *ngIf="isDisableStore"
         class="btn btn-outline-danger"
-        tooltip="Disable Project">
+        tooltip="Disable Store">
   <fa-icon [icon]="faTimes"></fa-icon>
 </button>
 
-<button (click)="openEnableDisableProject()"
-        *ngIf="isEnableProject"
+<button (click)="openEnableDisableStore()"
+        *ngIf="isEnableStore"
         class="btn btn-outline-success"
-        tooltip="Enable Project">
+        tooltip="Enable Store">
   <fa-icon [icon]="faCheck"></fa-icon>
 </button>
 
-<ng-template #enableDisableProjectTemplate>
+<ng-template #enableDisableStoreTemplate>
   <div class="modal-header border-0 bg-light">
-    <h4 *ngIf="isDisableProject" class="modal-title">Disable Project</h4>
-    <h4 *ngIf="isEnableProject" class="modal-title">Enable Project</h4>
-    <button (click)="closeEnableDisableProject()" class="close" type="button"><span
+    <h4 *ngIf="isDisableStore" class="modal-title">Disable Store</h4>
+    <h4 *ngIf="isEnableStore" class="modal-title">Enable Store</h4>
+    <button (click)="closeEnableDisableStore()" class="close" type="button"><span
       aria-hidden="true">×</span></button>
   </div>
 
   <div class="modal-body flex-row pl-5 pr-5 mt-2">
 
-    <div *ngIf="isDisableProject"
+    <div *ngIf="isDisableStore"
          class="d-flex flex-row">
       <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
-      <p class="ml-3">Do you want to disable the below project?</p>
+      <p class="ml-3">Do you want to disable the below store?</p>
     </div>
 
-    <div *ngIf="isEnableProject"
+    <div *ngIf="isEnableStore"
          class="d-flex flex-row">
       <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-success"></fa-icon>
-      <p class="ml-3">Do you want to enable the below project?</p>
+      <p class="ml-3">Do you want to enable the below store?</p>
     </div>
 
     <div class="ml-5 pt-5 pb-5">
       <div class="font-weight-bold text-muted">
-        {{selectedProject.name}}
-        <span *ngIf="selectedProject.status === 'disabled'"><i
+        {{selectedStore.name}}
+        <span *ngIf="selectedStore.status === 'disabled'"><i
           class="fas fa-exclamation-triangle text-danger"></i></span>
       </div>
 
       <div class="text-muted pt-1">
-        {{selectedProject.description}}
+        {{selectedStore.description}}
       </div>
     </div>
 
   </div>
 
   <div class="modal-footer border-0">
-    <button (click)="closeEnableDisableProject()"
+    <button (click)="closeEnableDisableStore()"
             class="btn btn-light"
             type="button">
       Cancel
     </button>
-    <button (click)="confirmDisableProject()"
-            *ngIf="isDisableProject"
+    <button (click)="confirmDisableStore()"
+            *ngIf="isDisableStore"
             class="btn btn-danger"
             type="button">
-      Confirm Disable Project
+      Confirm Disable Store
     </button>
-    <button (click)="confirmEnableProject()"
-            *ngIf="isEnableProject"
+    <button (click)="confirmEnableStore()"
+            *ngIf="isEnableStore"
             class="btn btn-success"
             type="button">
-      Confirm Enable Project
+      Confirm Enable Store
     </button>
   </div>
 </ng-template>

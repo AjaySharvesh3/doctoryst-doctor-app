@@ -4,19 +4,20 @@ export const environment = {
   production: true,
   defaultAdminUsers: [
     {
-      firstName: 'Parri',
-      lastName: 'Pandian',
-      email: 'parri.vp@gmail.com'
+      firstName: 'Ajay Sharvesh',
+      lastName: 'M P',
+      email: 'ajaysharvesh.mp@gmail.com'
     }
   ],
   firebase: {
-    apiKey: 'AIzaSyCXOhR7ihCcrYi_GsD8JBzeJNFGKKlp9qA',
-    authDomain: 'angular-app-template-dev.firebaseapp.com',
-    databaseURL: 'https://angular-app-template-dev.firebaseio.com',
-    projectId: 'angular-app-template-dev',
-    storageBucket: 'angular-app-template-dev.appspot.com',
-    messagingSenderId: '902752737164',
-    appId: '1:902752737164:web:9615e5d669b436c0baa8a9',
+    apiKey: "AIzaSyB-i7o5KQR9fSclm9TECijs6rQRpDik_y0",
+    authDomain: "app-shrubsink.firebaseapp.com",
+    databaseURL: "https://app-shrubsink.firebaseio.com",
+    projectId: "app-shrubsink",
+    storageBucket: "app-shrubsink.appspot.com",
+    messagingSenderId: "324450998650",
+    appId: "1:324450998650:web:2cc2b040c5456679965ec3",
+    measurementId: "G-8LBZWXRF24",
     cacheSizeBytes: firestore.CACHE_SIZE_UNLIMITED
   }
 };

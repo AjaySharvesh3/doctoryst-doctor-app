@@ -4,7 +4,7 @@ import {AuthGuard, EmailVerifiedGuard} from './common/core/guards';
 import {AppConstant} from './common/core/constants';
 import {UserModule} from './common/user/user.module';
 import {SecurityModule} from './common/security/security.module';
-import {ProjectModule} from './project/project.module';
+import {StoreModule} from './project/store.module';
 
 const routes: Routes = [
   {
@@ -17,8 +17,8 @@ const routes: Routes = [
     canActivate: [AuthGuard, EmailVerifiedGuard]
   },
   {
-    path: 'projects',
-    loadChildren: () => ProjectModule,
+    path: 'stores',
+    loadChildren: () => StoreModule,
     canActivate: [AuthGuard, EmailVerifiedGuard]
   },
   {
