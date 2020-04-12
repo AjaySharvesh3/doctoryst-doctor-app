@@ -25,6 +25,12 @@ export class AppConstant {
       path: 'projects',
       active: 'true',
       helpText: 'Manage Projects'
+    },
+    {
+      menuName: 'User',
+      path: 'users',
+      active: 'true',
+      helpText: 'Manage Users'
     }
   ];
 
