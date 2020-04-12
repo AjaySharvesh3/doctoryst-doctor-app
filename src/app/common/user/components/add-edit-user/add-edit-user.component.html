@@ -1,0 +1,168 @@
+<button (click)="openAddEditUser()"
+        *ngIf="isAddUser"
+        class="btn btn-primary">
+  <fa-icon [icon]="faUserPlus" class="font-size-1-2-rem"></fa-icon>
+  Add New User
+</button>
+
+<button (click)="openAddEditUser()"
+        *ngIf="isEditUser"
+        class="btn btn-outline-primary"
+        tooltip="Edit User">
+  <fa-icon [icon]="faUserEdit" class="font-size-1-2-rem"></fa-icon>
+</button>
+
+<ng-template #addEditUserTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isAddUser" class="modal-title">Add New User</h4>
+    <h4 *ngIf="isEditUser" class="modal-title">Edit User</h4>
+    <button (click)="closeAddEditUser()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-4 pr-4 mt-2">
+
+    <form [formGroup]="addEditUserForm">
+
+      <div class="card mb-4 details-card">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-3 text-muted">User Details</h6>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="firstName">First Name</label>
+                <input class="form-control required-field"
+                       formControlName="firstName"
+                       id="firstName"
+                       name="firstName"
+                       type="text">
+
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched || formSubmitted)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="firstName.errors.required">
+                    First Name is required.
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="lastName">Last Name</label>
+                <input class="form-control required-field"
+                       formControlName="lastName"
+                       id="lastName"
+                       name="lastName"
+                       type="text">
+
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched || formSubmitted)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="lastName.errors.required">
+                    Last Name is required.
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="email">Email</label>
+                <input class="form-control required-field"
+                       formControlName="email"
+                       id="email"
+                       name="email"
+                       type="text">
+              </div>
+
+              <div *ngIf="email.invalid && (email.dirty || email.touched || formSubmitted)"
+                   class="alert alert-danger margin-move-up-16">
+
+                <div *ngIf="email.errors.required">
+                  Email is required.
+                </div>
+
+                <div *ngIf="email.errors.pattern">
+                  Enter a valid Email.
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card details-card">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-3 text-muted">Roles Details</h6>
+
+          <div [formGroup]="roles">
+            <div class="d-flex row">
+
+              <div class="col-md-6 justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary">Roles</label>
+
+                  <div *ngFor="let role of allRoles"
+                       class="form-check">
+                    <input class="form-check-input"
+                           formControlName="{{role.attribute}}"
+                           id="checkbox-{{role.code}}"
+                           type="checkbox">
+                    <label class="form-check-label" for="checkbox-{{role.code}}">
+                      {{role.name}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeAddEditUser()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmAddUser()"
+            *ngIf="isAddUser"
+            [disabled]="formSubmitted"
+            class="btn btn-success"
+            type="button">
+      Confirm Add User
+    </button>
+    <button (click)="confirmEditUser()"
+            *ngIf="isEditUser"
+            [disabled]="formSubmitted"
+            class="ml-2 btn btn-success"
+            type="button">
+      Confirm Edit User
+    </button>
+  </div>
+</ng-template>

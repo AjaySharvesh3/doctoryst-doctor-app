@@ -1,0 +1,119 @@
+<button (click)="openAddEditProject()"
+        *ngIf="isAddProject"
+        class="btn btn-primary">
+  <fa-icon [icon]="faPlus"></fa-icon>
+  Add New Project
+</button>
+
+<button (click)="openAddEditProject()"
+        *ngIf="isEditProject"
+        class="btn btn-outline-primary"
+        tooltip="Edit Project">
+  <fa-icon [icon]="faPencilAlt"></fa-icon>
+</button>
+
+<ng-template #addEditProjectTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isAddProject" class="modal-title">Add New Project</h4>
+    <h4 *ngIf="isEditProject" class="modal-title">Edit Project</h4>
+    <button (click)="closeAddEditProject()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-4 pr-4 mt-2">
+
+    <form [formGroup]="addEditProjectForm">
+
+      <div class="card mb-4 details-card">
+        <div class="card-body">
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="name">Name</label>
+                <input class="form-control required-field"
+                       formControlName="name"
+                       id="name"
+                       name="name"
+                       type="text">
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || formSubmitted)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="name.errors.required">
+                    Name is required.
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="description">Description</label>
+                <textarea
+                  class="form-control"
+                  formControlName="description"
+                  id="description"
+                  name="description"
+                  rows="3"></textarea>
+              </div>
+            </div>
+
+          </div>
+
+          <div [formGroup]="apps">
+            <div class="d-flex row">
+
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary">Apps To Design & Generate</label>
+                  <div *ngFor="let app of allApps"
+                       class="form-check">
+                    <input class="form-check-input"
+                           formControlName="{{app.attribute}}"
+                           id="checkbox-{{app.code}}"
+                           type="checkbox">
+                    <label class="form-check-label" for="checkbox-{{app.code}}">
+                      {{app.name}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeAddEditProject()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmAddProject()"
+            *ngIf="isAddProject"
+            class="btn btn-success"
+            type="button">
+      Confirm Add Project
+    </button>
+    <button (click)="confirmEditProject()"
+            *ngIf="isEditProject"
+            class="btn btn-success"
+            type="button">
+      Confirm Edit Project
+    </button>
+  </div>
+</ng-template>

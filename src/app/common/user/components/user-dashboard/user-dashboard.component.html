@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+
+      <div class="card mb-4 card-no-border shadow-sm">
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="pt-2 col-4">
+              <h5 class="category-title">
+                <fa-icon [icon]="faUsers" class="font-size-1-2-rem"></fa-icon>
+                Users
+              </h5>
+            </div>
+
+            <div class="col-8 justify-content-end text-right">
+
+              <div class="btn-group btn-group-toggle mr-2">
+                <label [ngClass]="{'active': selectedRole == 'all'}"
+                       class="btn btn-outline-secondary clickable">
+                  <input (click)="setSelectedRole('all')"
+                         type="radio">
+                  All
+                </label>
+                <label *ngFor="let role of allRoles"
+                       [ngClass]="{'active': selectedRole == role.attribute}"
+                       class="btn btn-outline-secondary clickable">
+
+                  <input (click)="setSelectedRole(role.attribute)"
+                         type="radio">
+                  {{role.name}}
+                </label>
+              </div>
+
+              <app-add-edit-user
+                (afterUserAddedOrEdited)="triggerUserRefresh()"
+                [isAddUser]="true">
+              </app-add-edit-user>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <app-user-list
+                [filterByRole]="selectedRole"
+                [refreshUserList]="refreshUserList">
+              </app-user-list>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+<button (click)="openEnableDisableUser()"
+        *ngIf="isDisableUser"
+        class="btn btn-outline-danger"
+        tooltip="Disable User">
+  <fa-icon [icon]="faUserTimes" class="font-size-1-2-rem"></fa-icon>
+</button>
+
+<button (click)="openEnableDisableUser()"
+        *ngIf="isEnableUser"
+        class="btn btn-outline-success"
+        tooltip="Enable User">
+  <fa-icon [icon]="faUserCheck" class="font-size-1-2-rem"></fa-icon>
+</button>
+
+<ng-template #enableDisableUserTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isDisableUser" class="modal-title">Disable User</h4>
+    <h4 *ngIf="isEnableUser" class="modal-title">Enable User</h4>
+    <button (click)="closeEnableDisableUser()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-5 pr-5 mt-2">
+
+    <div *ngIf="isDisableUser"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger" size="2x"></fa-icon>
+      <p class="ml-3">Do you want to disable the below user?</p>
+    </div>
+
+    <div *ngIf="isEnableUser"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-success" size="2x"></fa-icon>
+      <p class="ml-3">Do you want to enable the below user?</p>
+    </div>
+
+    <div class="ml-5 pt-5 pb-5">
+      <div class="font-weight-bold text-muted">
+        {{selectedUser.firstName}}  {{selectedUser.lastName}}
+        <span *ngIf="selectedUser.status === 'disabled'">
+          <fa-icon [icon]="faExclamationTriangle"
+                   class="font-size-1-2-rem text-danger"></fa-icon></span>
+      </div>
+
+      <div class="text-muted pt-1">
+        <a href="mailto:{{selectedUser.email}}">{{selectedUser.email}}</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeEnableDisableUser()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmDisableUser()"
+            *ngIf="isDisableUser"
+            class="btn btn-danger"
+            type="button">
+      Confirm Disable User
+    </button>
+    <button (click)="confirmEnableUser()"
+            *ngIf="isEnableUser"
+            class="btn btn-success"
+            type="button">
+      Confirm Enable User
+    </button>
+  </div>
+</ng-template>

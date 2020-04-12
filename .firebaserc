@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "angular-app-template-dev",
+    "dev": "angular-app-template-dev"
+  }
+}

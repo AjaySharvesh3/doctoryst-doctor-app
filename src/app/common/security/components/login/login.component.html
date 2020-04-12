@@ -1,0 +1,82 @@
+<div *ngIf="showLogin" class="row mt-3">
+  <div class="col-lg static-card mx-auto">
+
+    <div class="card shadow-lg card-theme">
+      <div class="card-body">
+
+        <div class="text-center pb-4 pt-3">
+          Angular App Template
+        </div>
+
+        <h3 class="text-center pb-4 pt-3">
+            <span class="text-primary font-weight-light">
+              <fa-icon [icon]="faLock"
+                       class="font-size-1-2-rem"></fa-icon> Login</span>
+        </h3>
+
+        <div *ngIf="errorMessage"
+             class="msg alert alert-danger" role="alert">
+          <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem"></fa-icon>
+          {{ errorMessage }}
+        </div>
+
+
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control"
+                   formControlName="email"
+                   id="email"
+                   name="email"
+                   type="email">
+
+            <div *ngIf="isEmailEmpty && formSubmitted"
+                 class="alert alert-danger">
+              <div>
+                Email is required.
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control"
+                   formControlName="password"
+                   id="password"
+                   name="password"
+                   type="password">
+
+            <div *ngIf="isPasswordEmpty && formSubmitted"
+                 class="alert alert-danger">
+              <div>
+                Password is required.
+              </div>
+            </div>
+
+          </div>
+
+          <button (click)="login()"
+                  class="btn btn-primary btn-block mb-3"
+                  type="button">
+            Login
+            <fa-icon [icon]="faSignInAlt" class="font-size-1-2-rem"></fa-icon>
+          </button>
+
+          <button (click)="goToSignUp()"
+                  class="btn btn-outline-success btn-block mb-3"
+                  type="button">
+            Sign Up
+          </button>
+
+          <button (click)="goToForgotPassword()"
+                  class="btn btn-outline-primary btn-block mb-3"
+                  type="button">
+            Forgot Password?
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

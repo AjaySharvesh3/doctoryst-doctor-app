@@ -1,0 +1,106 @@
+<div *ngIf="showSignUp"
+     class="row mt-3">
+  <div class="col-lg static-card mx-auto">
+
+    <div class="card shadow-lg card-theme">
+      <div class="card-body">
+
+        <div class="text-center pb-4 pt-3">
+          Angular App Template
+        </div>
+
+        <h3 class="text-center pb-4 pt-3">
+                    <span class="text-primary font-weight-light"><fa-icon [icon]="faPenAlt"
+                                                                          class="font-size-1-2-rem"></fa-icon> New User Sign Up</span>
+        </h3>
+
+        <div *ngIf="errorMessage"
+             class="msg alert alert-danger" role="alert">
+          <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem"></fa-icon>
+          {{ errorMessage }}
+        </div>
+
+        <form [formGroup]="signUpForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" formControlName="email" id="email" name="email" type="email">
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched || formSubmitted)"
+                 class="alert alert-danger">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="email.errors.pattern">
+                Enter a valid Email.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input (blur)="checkEnteredPasswords()"
+                   class="form-control"
+                   formControlName="password"
+                   id="password"
+                   name="password"
+                   type="password">
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched || formSubmitted)"
+                 class="alert alert-danger">
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input (blur)="checkEnteredPasswords()"
+                   class="form-control"
+                   formControlName="confirmPassword"
+                   id="confirmPassword"
+                   name="confirmPassword"
+                   type="password">
+
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched || formSubmitted)"
+                 class="alert alert-danger">
+              <div *ngIf="confirmPassword.errors.required">
+                Password is required.
+              </div>
+            </div>
+
+            <div *ngIf="showPasswordMismatchMessage"
+                 class="alert alert-danger">
+              <div>
+                Password & Confirm Password should be the same.
+              </div>
+            </div>
+          </div>
+
+          <button (click)="signUp()"
+                  *ngIf="showPassword"
+                  class="btn btn-primary btn-block mb-3"
+                  type="button">
+            Sign Up
+          </button>
+
+          <!--<button *ngIf="!showPassword"
+                  (click)="checkUserAccount()"
+                  class="btn btn-primary btn-block mb-3"
+                  type="button">
+            Check User Account
+          </button>-->
+
+          <button (click)="goToLogin()"
+                  class="btn btn-outline-success btn-block mb-3"
+                  type="button">
+            Go To Login
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

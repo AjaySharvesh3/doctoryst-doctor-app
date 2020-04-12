@@ -1,0 +1,54 @@
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+
+  <div class="container">
+
+    <a class="navbar-brand logo" href="#">Angular App Template</a>
+
+    <button *ngIf="isLoggedIn"
+            class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
+      <span class="sr-only"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse" id="navbarNav">
+
+      <div *ngIf="isLoggedIn"
+           class="nav navbar-nav ml-auto pr-5">
+
+        <ng-container *ngIf="isLoggedIn && isEmailVerified">
+
+          <ng-container *ngFor="let menu of topMenuList">
+            <a *ngIf="menu.visible"
+               [ngClass]="{'active': currentMenu === menu.path}"
+               class="nav-item nav-link"
+               routerLink="{{menu.path}}"
+               routerLinkActive="{{menu.active}}"
+               tooltip="{{menu.helpText}}">{{menu.menuName}}</a>
+          </ng-container>
+
+        </ng-container>
+
+      </div>
+
+      <div *ngIf="isLoggedIn" class="row pl-3"
+           tooltip="Logged In User">
+        <fa-icon [icon]="faUserCircle" class="font-size-1-2-rem pl-3" size="2x"></fa-icon>
+        <div class="mt-1 pl-2"> {{loggedInUser}}</div>
+      </div>
+
+      <div *ngIf="isLoggedIn" class="pl-3">
+        <button (click)="logOut()"
+                class="btn btn-link"
+                tooltip="Logout"
+                type="button">
+          <fa-icon [icon]="faSignOutAlt" class="font-size-1-2-rem text-white" size="2x"></fa-icon>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+

@@ -33,6 +33,7 @@
       true,
       "rxjs/Rx"
     ],
+        "interface-name": false,
     "import-spacing": true,
     "indent": {
       "options": [
@@ -44,6 +45,7 @@
       true,
       140
     ],
+    "member-access": false,
     "member-ordering": [
       true,
       {
@@ -55,6 +57,7 @@
         ]
       }
     ],
+    "no-consecutive-blank-lines": false,
     "no-console": [
       true,
       "debug",
@@ -71,11 +74,15 @@
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
+    "no-use-before-declare": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
     ],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "trailing-comma": false,
     "quotemark": [
       true,
       "single"

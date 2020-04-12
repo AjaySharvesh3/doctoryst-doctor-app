@@ -1,1 +1,269 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: whitesmoke;
+}
+
+.app-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.content-container {
+  padding-top: 100px;
+}
+
+.thin-text-200 {
+  font-weight: 200;
+}
+
+.card-theme {
+  border-top: 4px solid #014A74;
+  border-bottom: 4px solid #FA7623;
+}
+
+.category-title {
+  color: #1E88E5 !important;
+}
+
+.last-row-border-bottom {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.margin-move-up-5 {
+  margin-top: -5px;
+}
+
+.margin-move-up-8 {
+  margin-top: -8px;
+}
+
+.margin-move-up-10 {
+  margin-top: -10px;
+}
+
+.margin-move-bottom-up-15 {
+  margin-bottom: -15px;
+}
+
+.margin-move-up-16 {
+  margin-top: -16px;
+}
+
+.margin-move-up-20 {
+  margin-top: -20px;
+}
+
+.margin-move-right-30 {
+  margin-right: -30px;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.margin-move-left-5 {
+  margin-left: -5px;
+}
+
+.margin-move-left-15 {
+  margin-left: -15px;
+}
+
+.required-field {
+  border-left: 4px solid #ef5350;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.primary-text-color {
+  color: #FA7623 !important;
+}
+
+.details-card {
+  background-color: whitesmoke;
+}
+
+.details-card-balanced {
+  background-color: whitesmoke;
+  margin-right: -10px;
+  margin-left: -10px;
+  margin-bottom: 30px;
+}
+
+.card-balanced {
+  margin-right: -10px;
+  margin-left: -10px;
+  margin-bottom: 20px;
+}
+
+.btn-outline-white {
+  color: white !important;
+  border-color: white;
+}
+
+.list-item-min-height {
+  min-height: 65px !important;
+}
+
+.custom-list-group-item.active {
+  color: white !important;
+  background-color: #607D8B !important;
+  font-weight: bold;
+  border-color: darkgray !important;
+}
+
+.custom-secondary-list-group-item.active {
+  color: white !important;
+  background-color: #8D6E63 !important;
+  font-weight: bold;
+  border-color: darkgray !important;
+}
+
+.custom-badge-dark {
+  color: white;
+  background-color: #607D8B;
+}
+
+.custom-badge-font {
+  font-size: 90%;
+}
+
+.custom-badge-dark-secondary {
+  color: white;
+  background-color: #8D6E63;
+}
+
+.custom-badge-light {
+  color: #212529 !important;
+  background-color: #f8f9fa !important;
+}
+
+.sub-text {
+  color: #607D8B;
+  font-weight: 200;
+}
+
+.sub-text-selected {
+  color: whitesmoke !important;
+}
+
+.window-option-container {
+  padding: 20px;
+  border: 1px solid lightgray;
+}
+
+.summary-card {
+  min-height: 200px;
+}
+
+.label-center-vertical {
+  vertical-align: middle !important;
+}
+
+.no-padding-top-bottom {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.padding-left-right-5 {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.static-card {
+  max-width: 400px !important;
+}
+
+.page-background {
+  background-color: whitesmoke !important;
+}
+
+.page-background-white {
+  background-color: white !important;
+}
+
+.table-column-width-20 {
+  width: 20%;
+}
+
+.image-container {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.image-viewer-container {
+  overflow: scroll;
+  border: solid 1px #E0E0E0;
+  padding: 10px 10px 30px 10px;
+}
+
+.level-0 {
+  margin-left: 0;
+}
+
+.level-1 {
+  margin-left: 30px;
+}
+
+.level-2 {
+  margin-left: 60px;
+}
+
+.level-3 {
+  margin-left: 90px;
+}
+
+.level-4 {
+  margin-left: 120px;
+}
+
+.level-5 {
+  margin-left: 150px;
+}
+
+.level-6 {
+  margin-left: 180px;
+}
+
+.level-7 {
+  margin-left: 210px;
+}
+
+.level-8 {
+  margin-left: 240px;
+}
+
+.level-9 {
+  margin-left: 270px;
+}
+
+.level-10 {
+  margin-left: 300px;
+}
+
+.vertical-line {
+  border-left: 1px solid red;
+  width: 100%;
+}
+
+.horizontal-line {
+  border-top: 1px solid red;
+  height: 100%;
+}
+
+.pill-color-red-shade {
+  background-color: #E57373 !important;
+}
+
+.pill-color-grey-400 {
+  background-color: #BDBDBD !important;
+}
+
+.pill-color-blue-grey-300 {
+  background-color: #90A4AE !important;
+  width: 60px;
+}
+

@@ -1,0 +1,12 @@
+.gradient {
+  background: linear-gradient(120deg, #014A74, #014A74);
+  color: #fff;
+}
+
+.portfolio-navbar.navbar {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+}
+
+.margin-move-up-5 {
+  margin-top: -5px;
+}

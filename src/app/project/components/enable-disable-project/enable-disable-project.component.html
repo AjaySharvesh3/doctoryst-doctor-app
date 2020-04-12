@@ -1,0 +1,70 @@
+<button (click)="openEnableDisableProject()"
+        *ngIf="isDisableProject"
+        class="btn btn-outline-danger"
+        tooltip="Disable Project">
+  <fa-icon [icon]="faTimes"></fa-icon>
+</button>
+
+<button (click)="openEnableDisableProject()"
+        *ngIf="isEnableProject"
+        class="btn btn-outline-success"
+        tooltip="Enable Project">
+  <fa-icon [icon]="faCheck"></fa-icon>
+</button>
+
+<ng-template #enableDisableProjectTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isDisableProject" class="modal-title">Disable Project</h4>
+    <h4 *ngIf="isEnableProject" class="modal-title">Enable Project</h4>
+    <button (click)="closeEnableDisableProject()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-5 pr-5 mt-2">
+
+    <div *ngIf="isDisableProject"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
+      <p class="ml-3">Do you want to disable the below project?</p>
+    </div>
+
+    <div *ngIf="isEnableProject"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-success"></fa-icon>
+      <p class="ml-3">Do you want to enable the below project?</p>
+    </div>
+
+    <div class="ml-5 pt-5 pb-5">
+      <div class="font-weight-bold text-muted">
+        {{selectedProject.name}}
+        <span *ngIf="selectedProject.status === 'disabled'"><i
+          class="fas fa-exclamation-triangle text-danger"></i></span>
+      </div>
+
+      <div class="text-muted pt-1">
+        {{selectedProject.description}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeEnableDisableProject()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmDisableProject()"
+            *ngIf="isDisableProject"
+            class="btn btn-danger"
+            type="button">
+      Confirm Disable Project
+    </button>
+    <button (click)="confirmEnableProject()"
+            *ngIf="isEnableProject"
+            class="btn btn-success"
+            type="button">
+      Confirm Enable Project
+    </button>
+  </div>
+</ng-template>

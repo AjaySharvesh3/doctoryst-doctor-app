@@ -1,16 +1,46 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {UserModule} from './common/user/user.module';
+import {LayoutModule} from './common/layout/layout.module';
+import {SecurityModule} from './common/security/security.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {ButtonsModule} from 'ngx-bootstrap/buttons';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AppRoutingModule,
+    UserModule,
+    LayoutModule,
+    SecurityModule,
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    ButtonsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

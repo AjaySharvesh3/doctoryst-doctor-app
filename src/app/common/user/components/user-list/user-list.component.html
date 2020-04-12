@@ -1,0 +1,82 @@
+<div class="mt-4">
+
+  <div *ngIf="dataFetchInProgress && isInitialDataLoad"
+       class="row justify-content-center mb-5">
+
+    <div class="col-lg-auto">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="table-responsive">
+
+    <div *ngIf="userList?.length < 1 && !dataFetchInProgress"
+         class="alert alert-primary text-center" role="alert">
+      <div>No Users Found.</div>
+    </div>
+
+    <table *ngIf="userList?.length > 0"
+           class="table table-striped table-hover">
+
+      <tbody>
+      <tr class="text-muted">
+        <th scope="col">S.No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Roles</th>
+        <th class="text-center" scope="col">Action</th>
+      </tr>
+      <tr *ngFor="let user of userList index as index"
+          class="align-middle">
+
+        <td class="text-muted align-middle" scope="row">
+          {{index + 1}}
+        </td>
+
+        <td class="align-middle">
+          <div class="font-weight-bold text-muted">
+            {{user.firstName}} {{user.lastName}}
+            <span *ngIf="user.status === 'disabled'"
+                  tooltip="User Disabled">
+              <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
+            </span>
+          </div>
+        </td>
+
+        <td class="text-muted align-middle">
+          <a href="mailto:{{user.email}}">{{user.email}}</a>
+        </td>
+
+        <td class="text-muted align-middle">
+          <ng-container *ngFor="let role of allRoles">
+            <div *ngIf="user.roles[role.attribute]">{{role.name}}</div>
+          </ng-container>
+        </td>
+
+
+        <td class="align-middle align-items-center text-center align-content-between">
+          <app-add-edit-user
+            (afterUserAddedOrEdited)="getUserList()"
+            [isEditUser]="true"
+            [selectedUserId]="user.id"
+            class="m-1">
+          </app-add-edit-user>
+
+          <app-enable-disable-user
+            (afterUserEnabledOrDisabled)="getUserList()"
+            [selectedUser]="user"
+            class="m-1">
+          </app-enable-disable-user>
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
