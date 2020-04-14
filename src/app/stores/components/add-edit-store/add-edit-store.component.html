@@ -68,20 +68,20 @@
 
           </div>
 
-          <div [formGroup]="apps">
+          <div [formGroup]="types">
             <div class="d-flex row">
 
               <div class="col-md justify-content-center">
                 <div class="form-group">
-                  <label class="text-primary">Apps To Design & Generate</label>
-                  <div *ngFor="let app of allApps"
+                  <label class="text-primary">Add Types of Store</label>
+                  <div *ngFor="let type of allTypes"
                        class="form-check">
                     <input class="form-check-input"
-                           formControlName="{{app.attribute}}"
-                           id="checkbox-{{app.code}}"
+                           formControlName="{{type.attribute}}"
+                           id="checkbox-{{type.code}}"
                            type="checkbox">
-                    <label class="form-check-label" for="checkbox-{{app.code}}">
-                      {{app.name}}
+                    <label class="form-check-label" for="checkbox-{{type.code}}">
+                      {{type.name}}
                     </label>
                   </div>
                 </div>

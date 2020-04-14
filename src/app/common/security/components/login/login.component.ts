@@ -91,6 +91,8 @@ export class LoginComponent implements OnInit {
       .then(result => {
         // @ts-ignore
         if (result.user.emailVerified) {
+          // @ts-ignore
+          console.log(result.user);
           this.router.navigate([AppConstant.NAVIGATE_TO.home]);
         } else {
           this.router.navigate([AppConstant.NAVIGATE_TO.pendingEmailVerification]);

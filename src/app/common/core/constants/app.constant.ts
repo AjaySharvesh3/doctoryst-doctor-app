@@ -2,6 +2,7 @@ export class AppConstant {
 
   static readonly NAVIGATE_TO = {
     home: 'stores',
+    tickets: 'tickets',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -9,7 +10,7 @@ export class AppConstant {
     signUp: 'security/sign-up',
     pendingEmailVerification: 'security/pending-email-verification',
     resetPassword: 'security/reset-password',
-    verifyEmail: 'security/verify-email'
+    verifyEmail: 'security/verify-email',
   };
 
   static readonly LOGGED_IN_USER = 'LOGGED_IN_USER';
@@ -24,13 +25,22 @@ export class AppConstant {
       menuName: 'Stores',
       path: 'stores',
       active: 'true',
-      helpText: 'Manage Stores'
+      helpText: 'Manage Stores',
+      allowedRoles: ['operation']
     },
     {
-      menuName: 'User',
+      menuName: 'Users',
       path: 'users',
       active: 'true',
-      helpText: 'Manage Users'
+      helpText: 'Manage Users',
+      allowedRoles: ['operation']
+    },
+    {
+      menuName: 'Tickets',
+      path: 'tickets',
+      active: 'true',
+      helpText: 'Manage Tickets',
+      allowedRoles: ['support']
     }
   ];
 
@@ -50,40 +60,63 @@ export class AppConstant {
 
   static readonly STATUS = {
     ENABLED: 'enabled',
-    DISABLED: 'disabled'
+    DISABLED: 'disabled',
+    DELETED: 'deleted'
   };
 
   static readonly ROLES = [
     {
-      code: 'admin',
-      name: 'Admin',
-      attribute: 'admin',
+      code: 'operation',
+      name: 'Operation',
+      attribute: 'operation',
       displayOrder: 1
     },
     {
-      code: 'end-user',
-      name: 'User',
-      attribute: 'endUser',
+      code: 'business',
+      name: 'Business',
+      attribute: 'business',
       displayOrder: 2
+    },
+    {
+      code: 'support',
+      name: 'Support',
+      attribute: 'support',
+      displayOrder: 3
     }
   ];
 
-  static readonly APPS = [
+  static readonly TYPES = [
     {
-      code: 'angular-app',
-      name: 'Angular Application',
-      attribute: 'angularApp',
+      code: 'plants-type',
+      name: 'Plants',
+      attribute: 'plantsType',
       color: 'primary',
-      route: 'angular-apps',
+      route: 'plants-type',
       displayOrder: 1
     },
     {
-      code: 'node-rest-api',
-      name: 'Node Rest API',
-      attribute: 'nodeRestApi',
+      code: 'flowers-type',
+      name: 'Flowers',
+      attribute: 'flowersType',
       color: 'success',
-      route: 'node-rest-apis',
+      route: 'flowers-type',
       displayOrder: 2
+    },
+    {
+      code: 'gardening-type',
+      name: 'Gardening',
+      attribute: 'gardeningType',
+      color: 'info',
+      route: 'gardening-type',
+      displayOrder: 3
+    },
+    {
+      code: 'tools-type',
+      name: 'Tools',
+      attribute: 'toolsType',
+      color: 'dark',
+      route: 'tools-type',
+      displayOrder: 3
     }
   ];
 

@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
+import {TicketsModule} from "./tickets/tickets.module";
 
 @NgModule({
   declarations: [
@@ -28,12 +29,13 @@ import {ButtonsModule} from 'ngx-bootstrap/buttons';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AppRoutingModule,
     UserModule,
     LayoutModule,
     SecurityModule,
+    TicketsModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,

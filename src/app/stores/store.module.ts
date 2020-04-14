@@ -6,23 +6,26 @@ import {AddEditStoreComponent} from './components/add-edit-store/add-edit-store.
 import {StoreDashboardComponent} from './components/store-dashboard/store-dashboard.component';
 import {EnableDisableStoreComponent} from './components/enable-disable-store/enable-disable-store.component';
 import {StoreListComponent} from './components/store-list/store-list.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { DeleteStoreComponent } from './components/delete-store/delete-store.component';
 
 @NgModule({
   declarations: [
     AddEditStoreComponent,
     StoreDashboardComponent,
     EnableDisableStoreComponent,
-    StoreListComponent
+    StoreListComponent,
+    DeleteStoreComponent
   ],
   imports: [
     CommonModule,
     StoreRoutingModule,
     ReactiveFormsModule,
     TooltipModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 export class StoreModule {

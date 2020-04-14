@@ -13,7 +13,7 @@ export class StoreListComponent implements OnInit, OnChanges {
   storeList: [StoreModel];
   public dataFetchInProgress: boolean;
   public isInitialDataLoad: boolean;
-  allApps = AppConstant.APPS;
+  allTypes = AppConstant.TYPES;
 
   faExclamationTriangle: any = faExclamationTriangle;
 

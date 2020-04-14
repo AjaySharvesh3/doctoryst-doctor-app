@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: StoreDashboardComponent
+  },
+  {
+    path: ':storeId',
+    component: StoreDashboardComponent
   }
 ];
 

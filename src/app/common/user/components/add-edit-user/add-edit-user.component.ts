@@ -64,8 +64,9 @@ export class AddEditUserComponent implements OnInit {
         updateOn: 'blur'
       }],
       roles: this.formBuilder.group({
-        admin: false,
-        endUser: false
+        operation: false,
+        support: false,
+        business: false
       })
     });
   }

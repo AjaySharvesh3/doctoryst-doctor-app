@@ -15,7 +15,7 @@ import {faPencilAlt, faPlus} from '@fortawesome/free-solid-svg-icons';
 export class AddEditStoreComponent implements OnInit {
   addEditStoreForm: FormGroup;
   formSubmitted = false;
-  allApps = AppConstant.APPS;
+  allTypes = AppConstant.TYPES;
 
   faPencilAlt: any = faPencilAlt;
   faPlus: any = faPlus;
@@ -43,8 +43,8 @@ export class AddEditStoreComponent implements OnInit {
     return this.addEditStoreForm.get('description');
   }
 
-  get apps() {
-    return this.addEditStoreForm.get('apps') as FormGroup;
+  get types() {
+    return this.addEditStoreForm.get('types') as FormGroup;
   }
 
   ngOnInit() {
@@ -55,9 +55,11 @@ export class AddEditStoreComponent implements OnInit {
     this.addEditStoreForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: '',
-      apps: this.formBuilder.group({
-        angularApp: false,
-        nodeRestApi: false
+      types: this.formBuilder.group({
+        plantsType: false,
+        flowersType: false,
+        gardeningType: false,
+        toolsType: false
       })
     });
   }
@@ -77,8 +79,8 @@ export class AddEditStoreComponent implements OnInit {
     this.name.setValue(existingStore.name);
     this.description.setValue(existingStore.description);
 
-    if (existingStore.apps) {
-      this.apps.setValue(existingStore.apps);
+    if (existingStore.types) {
+      this.types.setValue(existingStore.types);
     }
   }
 

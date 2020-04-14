@@ -172,8 +172,9 @@ export class PendingEmailVerificationComponent implements OnInit {
 
   addNewAdminUser() {
     this.newAdminUser.roles = {
-      admin: true,
-      endUser: false,
+      operation: true,
+      support: false,
+      business: false
     };
 
     this.newAdminUser.createdAt = firebase.firestore.FieldValue.serverTimestamp();

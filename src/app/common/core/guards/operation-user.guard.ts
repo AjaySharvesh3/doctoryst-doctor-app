@@ -7,7 +7,7 @@ import {AppConstant} from '../constants';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminUserGuard implements CanActivate {
+export class OperationUserGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -17,7 +17,7 @@ export class AdminUserGuard implements CanActivate {
   canActivate(): Promise<boolean> {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
-      return this.userService.isAdminUser(currentUser.email);
+      return this.userService.isOperationUser(currentUser.email);
     } else {
       this.router.navigate([AppConstant.NAVIGATE_TO.login]);
       return new Promise<boolean>((resolve => resolve(false)));

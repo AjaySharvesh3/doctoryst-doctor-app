@@ -63,7 +63,7 @@ export class UserService {
     return this.searchUserList(searchCriteria);
   }
 
-  isAdminUser(email): Promise<boolean> {
+  isOperationUser(email): Promise<boolean> {
     return new Promise((resolve) => {
 
       if (!email) {
@@ -73,7 +73,26 @@ export class UserService {
       this.getUserByEmail(email)
         .then(changes => {
           const loggedInUser = changes.docs[0].data();
-          resolve(loggedInUser && loggedInUser.roles.admin);
+          resolve(loggedInUser && loggedInUser.roles.operation);
+        })
+        .catch(error => {
+          resolve(false);
+        });
+
+    });
+  }
+
+  isSupportUser(email): Promise<boolean> {
+    return new Promise((resolve) => {
+
+      if (!email) {
+        resolve(false);
+      }
+
+      this.getUserByEmail(email)
+        .then(changes => {
+          const loggedInUser = changes.docs[0].data();
+          resolve(loggedInUser && loggedInUser.roles.support);
         })
         .catch(error => {
           resolve(false);
@@ -84,7 +103,7 @@ export class UserService {
 
   isAdminUserLoggedIn(): Promise<boolean> {
     const currentUser = this.authService.getCurrentUser();
-    return this.isAdminUser(currentUser.email);
+    return this.isOperationUser(currentUser.email);
   }
 
   getUserById(id: string) {

@@ -15,8 +15,9 @@ export interface UserModel {
     zipCode?: number;
   };
   roles?: {
-    admin: boolean,
-    endUser: boolean,
+    operation: boolean,
+    support: boolean,
+    business: boolean
   };
   createdBy?: {
     name: string;

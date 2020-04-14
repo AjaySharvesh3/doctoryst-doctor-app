@@ -2,9 +2,11 @@ export interface StoreModel {
   id?: string;
   name?: string;
   description?: string;
-  apps?: {
-    angularApp: boolean,
-    nodeRestApi: boolean
+  types?: {
+    plantsType: boolean,
+    flowersType: boolean,
+    gardeningType: boolean,
+    toolsType: boolean,
   };
   createdBy?: string;
   createdAt?: {};

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection,
+  AngularFirestoreDocument } from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {StoreModel} from '../models/store.model';
 
@@ -37,6 +38,11 @@ export class StoreService {
   updateStore(store: StoreModel) {
     this.storeDocument = this.angularFirestore.doc(`stores/${store.id}`);
     return this.storeDocument.update(store);
+  }
+
+  deleteStore(store: StoreModel) {
+    this.storeDocument = this.angularFirestore.doc(`stores/${store.id}`);
+    return this.storeDocument.delete();
   }
 
 }
