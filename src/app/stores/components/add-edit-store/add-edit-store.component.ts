@@ -6,6 +6,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {StoreService} from '../../services/store.service';
 import * as firebase from 'firebase';
 import {faPencilAlt, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {UserService} from "../../../common/user/services/user.service";
+import {UserModel} from "../../../common/user/models/user.model";
 
 @Component({
   selector: 'app-add-edit-store',
@@ -16,6 +18,8 @@ export class AddEditStoreComponent implements OnInit {
   addEditStoreForm: FormGroup;
   formSubmitted = false;
   allTypes = AppConstant.TYPES;
+
+  userList: [UserModel];
 
   faPencilAlt: any = faPencilAlt;
   faPlus: any = faPlus;
@@ -32,6 +36,7 @@ export class AddEditStoreComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private storeService: StoreService,
+    private userService: UserService,
     private formBuilder: FormBuilder) {
   }
 
@@ -49,12 +54,14 @@ export class AddEditStoreComponent implements OnInit {
 
   ngOnInit() {
     this.initAddEditStoreForm();
+    this.getUserList();
   }
 
   initAddEditStoreForm() {
     this.addEditStoreForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: '',
+      storeHolderId: '',
       types: this.formBuilder.group({
         plantsType: false,
         flowersType: false,
@@ -139,6 +146,25 @@ export class AddEditStoreComponent implements OnInit {
 
   emitAfterStoreAddedOrEdited() {
     this.afterStoreAddedOrEdited.emit();
+  }
+
+  getUserList() {
+    this.userService
+      .getUserList()
+      .then(userDocuments => {
+        const users = [];
+
+        userDocuments.forEach(userDocument => {
+          const user = userDocument.data();
+          user.id = userDocument.id;
+          users.push(user);
+        });
+
+        this.userList = users as [UserModel];
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
   }
 
 }

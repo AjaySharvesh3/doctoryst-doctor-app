@@ -8,8 +8,14 @@ import {StoreModule} from './stores/store.module';
 import {OperationUserGuard} from "./common/core/guards/operation-user.guard";
 import {SupportUserGuard} from "./common/core/guards/support-user.guard";
 import {TicketsModule} from "./tickets/tickets.module";
+import {LayoutModule} from "./common/layout/layout.module";
+import {PageNotFoundComponent} from "./common/layout/components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
+  {
+    path: 'home',
+    loadChildren: () => LayoutModule
+  },
   {
     path: 'security',
     loadChildren: () => SecurityModule
@@ -30,8 +36,12 @@ const routes: Routes = [
     canActivate: [AuthGuard, EmailVerifiedGuard, SupportUserGuard]
   },
   {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
+  },
+  {
     path: '**',
-    redirectTo: AppConstant.NAVIGATE_TO.login,
+    redirectTo: AppConstant.NAVIGATE_TO.pageNotFound,
     pathMatch: 'full'
   }
 ];

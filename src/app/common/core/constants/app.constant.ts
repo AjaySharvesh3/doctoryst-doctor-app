@@ -1,8 +1,10 @@
 export class AppConstant {
 
   static readonly NAVIGATE_TO = {
-    home: 'stores',
+    home: 'home',
+    stores: 'stores',
     tickets: 'tickets',
+    myStores: 'my-stores',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -11,6 +13,7 @@ export class AppConstant {
     pendingEmailVerification: 'security/pending-email-verification',
     resetPassword: 'security/reset-password',
     verifyEmail: 'security/verify-email',
+    pageNotFound: 'page-not-found'
   };
 
   static readonly LOGGED_IN_USER = 'LOGGED_IN_USER';
@@ -72,15 +75,15 @@ export class AppConstant {
       displayOrder: 1
     },
     {
-      code: 'business',
-      name: 'Business',
-      attribute: 'business',
-      displayOrder: 2
-    },
-    {
       code: 'support',
       name: 'Support',
       attribute: 'support',
+      displayOrder: 2
+    },
+    {
+      code: 'business',
+      name: 'Business',
+      attribute: 'business',
       displayOrder: 3
     }
   ];

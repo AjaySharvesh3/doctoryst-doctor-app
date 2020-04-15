@@ -8,6 +8,8 @@ export interface StoreModel {
     gardeningType: boolean,
     toolsType: boolean,
   };
+  storeHolderId?: string;
+  storeHolderName?: string;
   createdBy?: string;
   createdAt?: {};
   updatedBy?: string;

@@ -10,6 +10,8 @@ import {ResetPasswordComponent} from './components/reset-password/reset-password
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {SecurityCheckComponent} from './components/security-check/security-check.component';
 import {VerifyEmailComponent} from './components/verify-email/verify-email.component';
+import {AppConstant} from "../core/constants";
+import {PageNotFoundComponent} from "../layout/components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {

@@ -6,21 +6,28 @@ import {TopNavigationBarComponent} from './components/top-navigation-bar/top-nav
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FooterComponent} from './components/footer/footer.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     TopNavigationBarComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent,
+    HomeComponent
   ],
   exports: [
     TopNavigationBarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
     TooltipModule.forRoot(),
     LayoutRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class LayoutModule {

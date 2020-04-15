@@ -45,4 +45,5 @@ export class StoreService {
     return this.storeDocument.delete();
   }
 
+
 }
