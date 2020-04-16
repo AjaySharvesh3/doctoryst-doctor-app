@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLock } from '@fortawesome/free-solid-svg-icons';
 import {AppConstant} from "../../../core/constants";
 import {Router} from "@angular/router";
 
@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class PageNotFoundComponent implements OnInit {
 
   faHome: any = faHome;
+  faLock: any = faLock;
 
   constructor(
     private router: Router
@@ -21,6 +22,10 @@ export class PageNotFoundComponent implements OnInit {
 
   goToHome() {
     this.router.navigate([AppConstant.NAVIGATE_TO.home]);
+  }
+
+  goToLogin() {
+    this.router.navigate([AppConstant.NAVIGATE_TO.login]);
   }
 
 }

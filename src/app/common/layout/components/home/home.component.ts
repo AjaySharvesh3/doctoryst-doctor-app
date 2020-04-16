@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
             business: this.user.roles.business
           };
 
-          this.sessionStorageService.setValue(AppConstant.LOGGED_IN_USER, JSON.stringify(userDetails));
+          this.sessionStorageService.setValue(AppConstant.LOGGED_IN_USER_ROLES, JSON.stringify(userDetails));
 
           if (userDetails.operation) {
             this.goToStores();
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
           } else if (userDetails.business) {
             this.goToMyStores();
           } else {
-            this.goToPageNotFount();
+            this.goToPageNotFound();
           }
         }
       })
@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate([AppConstant.NAVIGATE_TO.myStores]);
   }
 
-  goToPageNotFount() {
+  goToPageNotFound() {
     this.router.navigate([AppConstant.NAVIGATE_TO.pageNotFound]);
   }
 

@@ -94,14 +94,15 @@
             <div class="d-flex row">
 
               <div class="col-md justify-content-center">
+                <label class="text-primary"
+                       for="storeHolderId">Select Store Holder</label>
                 <div class="form-group">
-                  <label class="text-primary mb-2">Select Store Holder</label>
-                  <br>
-                    <select class="text-dark"
-                            formControlName="storeHolderId">
+                    <select class="form-control select-field-container"
+                            formControlName="storeHolderId"
+                            id="storeHolderId"
+                            name="storeHolderId">
                       <option class="m-1" value="">Choose...</option>
-                      <option class="form-check btn text-secondary border m-1"
-                              *ngFor="let user of userList"
+                      <option *ngFor="let user of userList"
                               value="{{user.id}}">
                         {{user.firstName}} {{user.lastName}}</option>
                     </select>

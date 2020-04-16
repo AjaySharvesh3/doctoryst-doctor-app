@@ -2,7 +2,7 @@
 
   <div class="container">
 
-    <a class="navbar-brand logo logo-text" href="#">
+    <a class="navbar-brand logo logo-text" routerLink="home">
       <i class="fa fa-tree" aria-hidden="true"></i>
       ShrubsInk</a>
 
@@ -16,7 +16,7 @@
       class="collapse navbar-collapse" id="navbarNav">
 
       <div *ngIf="isLoggedIn"
-           class="nav navbar-nav ml-auto pr-5">
+           class="nav navbar-nav ml-auto pr-5 custom-sans-font-light">
 
         <ng-container *ngIf="isLoggedIn && isEmailVerified">
 
@@ -33,7 +33,7 @@
 
       </div>
 
-      <div *ngIf="isLoggedIn" class="row pl-3"
+      <div *ngIf="isLoggedIn" class="row pl-3 custom-sans-font-light"
            tooltip="Logged In User">
         <fa-icon [icon]="faUserCircle" class="font-size-1-2-rem pl-3" size="2x"></fa-icon>
         <div class="mt-1 pl-2"> {{loggedInUser}}</div>

@@ -17,6 +17,7 @@ export class AppConstant {
   };
 
   static readonly LOGGED_IN_USER = 'LOGGED_IN_USER';
+  static readonly LOGGED_IN_USER_ROLES = 'ROLES';
   static readonly UNAUTHORIZED_ACCESS = 'UNAUTHORIZED_ACCESS';
   static readonly USER_REGISTRATION_IN_PROGRESS = 'USER_REGISTRATION_IN_PROGRESS';
   static readonly USER_ACCOUNT_ACTION_PASSWORD_RESET = 'resetPassword';

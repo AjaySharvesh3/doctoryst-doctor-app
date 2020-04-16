@@ -20,11 +20,21 @@
         <div class="row pt-4">
           <div class="col">
             <button (click)="goToHome()"
-                    class="btn btn-outline-dark btn-block mb-3"
+                    class="btn btn-dark btn-block mb-3"
                     type="button">
               <fa-icon [icon]="faHome"
                        class="font-size-1-2-rem"></fa-icon> &nbsp;
               Go to home
+            </button>
+          </div>
+
+          <div class="col">
+            <button (click)="goToLogin()"
+                    class="btn btn-outline-dark btn-block mb-3"
+                    type="button">
+              <fa-icon [icon]="faLock"
+                       class="font-size-1-2-rem"></fa-icon> &nbsp;
+              Go to login
             </button>
           </div>
         </div>

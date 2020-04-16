@@ -5,6 +5,7 @@ import {AppConstant} from '../../../common/core/constants';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {StoreService} from '../../services/store.service';
 import * as firebase from 'firebase';
+import _ from 'lodash';
 import {faPencilAlt, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {UserService} from "../../../common/user/services/user.service";
 import {UserModel} from "../../../common/user/models/user.model";
@@ -20,6 +21,8 @@ export class AddEditStoreComponent implements OnInit {
   allTypes = AppConstant.TYPES;
 
   userList: [UserModel];
+  user: UserModel;
+  selectedBusinessName: string;
 
   faPencilAlt: any = faPencilAlt;
   faPlus: any = faPlus;
@@ -52,9 +55,13 @@ export class AddEditStoreComponent implements OnInit {
     return this.addEditStoreForm.get('types') as FormGroup;
   }
 
+  get storeHolderId() {
+    return this.addEditStoreForm.get('storeHolderId');
+  }
+
   ngOnInit() {
     this.initAddEditStoreForm();
-    this.getUserList();
+    this.getBusinessUserList();
   }
 
   initAddEditStoreForm() {
@@ -62,6 +69,10 @@ export class AddEditStoreComponent implements OnInit {
       name: ['', Validators.required],
       description: '',
       storeHolderId: '',
+      storeHolder: {
+        storeHolderId: '',
+        storeHolderName: ''
+      },
       types: this.formBuilder.group({
         plantsType: false,
         flowersType: false,
@@ -85,6 +96,7 @@ export class AddEditStoreComponent implements OnInit {
   populateStoreFormWithExistingStore(existingStore) {
     this.name.setValue(existingStore.name);
     this.description.setValue(existingStore.description);
+    this.storeHolderId.setValue(existingStore.storeHolderId);
 
     if (existingStore.types) {
       this.types.setValue(existingStore.types);
@@ -98,10 +110,16 @@ export class AddEditStoreComponent implements OnInit {
       return;
     }
 
+    this.user = _.keyBy(this.userList, this.addEditStoreForm.value.storeHolderId);
+    //@ts-ignore
+    this.selectedBusinessName = this.user.undefined.firstName + " " + this.user.undefined.lastName;
+
     const store = this.addEditStoreForm.value;
     store.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     store.updatedAt = store.createdAt;
     store.status = AppConstant.STATUS.ENABLED;
+    store.storeHolder.storeHolderId = this.addEditStoreForm.value.storeHolderId;
+    store.storeHolder.storeHolderName = this.selectedBusinessName;
 
     this.storeService
       .addStore(store)
@@ -124,6 +142,8 @@ export class AddEditStoreComponent implements OnInit {
     store.id = this.selectedStore.id;
     store.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
     store.status = this.selectedStore.status;
+    store.storeHolder.storeHolderId = this.selectedStore.storeHolder.storeHolderId;
+    store.storeHolder.storeHolderName = this.selectedStore.storeHolder.storeHolderName;
 
     this.storeService
       .updateStore(store)
@@ -134,7 +154,6 @@ export class AddEditStoreComponent implements OnInit {
         console.log('error', error);
         this.closeAddEditStore();
       });
-
   }
 
   closeAddEditStore() {
@@ -148,16 +167,26 @@ export class AddEditStoreComponent implements OnInit {
     this.afterStoreAddedOrEdited.emit();
   }
 
-  getUserList() {
+  getBusinessUserList() {
+    const searchCriteria = {
+      field: 'roles.' + 'business',
+      operation: '==',
+      value: true
+    };
+
     this.userService
-      .getUserList()
+      .searchUserList(searchCriteria)
       .then(userDocuments => {
         const users = [];
 
         userDocuments.forEach(userDocument => {
-          const user = userDocument.data();
-          user.id = userDocument.id;
-          users.push(user);
+          if (userDocument.exists === false) {
+            return null;
+          } else {
+            const user = userDocument.data();
+            user.id = userDocument.id;
+            users.push(user);
+          }
         });
 
         this.userList = users as [UserModel];

@@ -14,7 +14,8 @@ import {PageNotFoundComponent} from "./common/layout/components/page-not-found/p
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => LayoutModule
+    loadChildren: () => LayoutModule,
+    canActivate: [AuthGuard, EmailVerifiedGuard]
   },
   {
     path: 'security',
@@ -37,7 +38,8 @@ const routes: Routes = [
   },
   {
     path: 'page-not-found',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
+    canActivate: [AuthGuard, EmailVerifiedGuard]
   },
   {
     path: '**',

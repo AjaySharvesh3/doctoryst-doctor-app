@@ -9,7 +9,10 @@ export interface StoreModel {
     toolsType: boolean,
   };
   storeHolderId?: string;
-  storeHolderName?: string;
+  storeHolder?: {
+    storeHolderId?: string;
+    storeHolderName?: string;
+  };
   createdBy?: string;
   createdAt?: {};
   updatedBy?: string;

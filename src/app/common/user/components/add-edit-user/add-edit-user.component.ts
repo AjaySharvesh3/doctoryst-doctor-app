@@ -5,6 +5,7 @@ import {AppConstant} from '../../../core/constants';
 import {UserService} from '../../services/user.service';
 import {UserModel} from '../../models/user.model';
 import {faUserEdit, faUserPlus} from '@fortawesome/free-solid-svg-icons';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-add-edit-user',
@@ -144,6 +145,9 @@ export class AddEditUserComponent implements OnInit {
     user.id = this.selectedUserId;
     user.status = this.selectedUser.status;
     user.email = user.email.toLowerCase();
+    user.createdBy = this.selectedUser.createdBy;
+    user.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+    user.updatedAt = user.createdBy;
 
     this.userService
       .updateUser(user)
