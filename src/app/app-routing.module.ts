@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'stores',
     loadChildren: () => StoreModule,
-    canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard]
+    canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard],
   },
   {
     path: 'tickets',

@@ -1,3 +1,8 @@
 .store-content {
   width: 500px;
 }
+
+.store-hover:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

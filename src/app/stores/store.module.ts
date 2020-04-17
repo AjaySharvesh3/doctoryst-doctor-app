@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { DeleteStoreComponent } from './components/delete-store/delete-store.component';
+import {StoreProfileModule} from "../profiles/store-profile/store-profile.module";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DeleteStoreComponent } from './components/delete-store/delete-store.com
     StoreRoutingModule,
     ReactiveFormsModule,
     TooltipModule,
+    StoreProfileModule,
     FontAwesomeModule,
     FormsModule
   ]

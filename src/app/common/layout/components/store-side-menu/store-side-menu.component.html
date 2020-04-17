@@ -1,0 +1,29 @@
+<div class="col-4 mr-5">
+
+  <div class="ml-auto">
+
+    <ng-container>
+
+      <h5 class="mb-3 ml-3">Dashboard</h5>
+
+      <ul *ngIf="currentMenu" class="nav nav-pills mb-3 flex-column red" role="tablist">
+        <li class="nav-item"
+                      *ngFor="let menu of storeSideMenuList">
+
+          <a class="nav-link active" style="width: 200px"
+             data-toggle="pill"
+             role="tab"
+             aria-selected="true"
+             routerLink="{{menu.path}}"
+             [ngClass]="{'active': currentMenu === menu.path}"
+             routerLinkActive="{{menu.active}}">
+            {{menu.menuName}} </a>
+
+        </li>
+      </ul>
+
+    </ng-container>
+
+  </div>
+
+</div>

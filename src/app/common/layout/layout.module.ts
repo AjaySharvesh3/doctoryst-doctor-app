@@ -9,18 +9,21 @@ import {FooterComponent} from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
+import { StoreSideMenuComponent } from './components/store-side-menu/store-side-menu.component';
 
 @NgModule({
   declarations: [
     TopNavigationBarComponent,
     FooterComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    StoreSideMenuComponent
   ],
   exports: [
     TopNavigationBarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    StoreSideMenuComponent
   ],
   imports: [
     CommonModule,

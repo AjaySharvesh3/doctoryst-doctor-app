@@ -16,6 +16,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {TicketsModule} from "./tickets/tickets.module";
+import {StoreProfileModule} from "./profiles/store-profile/store-profile.module";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {TicketsModule} from "./tickets/tickets.module";
     LayoutModule,
     SecurityModule,
     TicketsModule,
+    StoreProfileModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,

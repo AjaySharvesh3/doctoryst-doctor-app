@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {StoreDashboardComponent} from './components/store-dashboard/store-dashboard.component';
+import {StoreProfileDashboardComponent} from "../profiles/store-profile/components/store-profile-dashboard/store-profile-dashboard.component";
+import {StoreProfileModule} from "../profiles/store-profile/store-profile.module";
 
 const routes: Routes = [
   {
@@ -9,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: ':storeId',
-    component: StoreDashboardComponent
+    component: StoreProfileDashboardComponent,
+    loadChildren: () => StoreProfileModule
   }
 ];
 

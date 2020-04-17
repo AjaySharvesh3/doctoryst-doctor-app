@@ -124,4 +124,25 @@ export class AppConstant {
     }
   ];
 
+  static readonly STORE_SIDE_MENU_LIST = [
+    {
+      menuName: 'Store Profile',
+      path: 'profile',
+      active: 'true',
+      helpText: 'Manage Store Profile'
+    },
+    {
+      menuName: 'Verifications',
+      path: 'verifications',
+      active: 'true',
+      helpText: 'Manage Verification'
+    },
+    {
+      menuName: 'Products',
+      path: 'products',
+      active: 'true',
+      helpText: 'Manage Products'
+    }
+  ];
+
 }
