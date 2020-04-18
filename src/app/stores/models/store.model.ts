@@ -8,20 +8,23 @@ export interface StoreModel {
     gardeningType: boolean,
     toolsType: boolean,
   };
-  storeHolderId?: string;
-  storeHolderName?: string;
   contact?: string;
-  addressLine?: string;
-  city?: string;
-  state?: string;
-  /*storeHolder?: {
+  storeHolder?: {
     storeHolderId?: string;
     storeHolderName?: string;
-    contact?: string;
-    storeHolderAddressLine?: string;
-    storeHolderCity?: string;
-    storeHolderState?: string;
-  };*/
+    aadharNumber?: string;
+    aadharName?: string;
+    address?: string;
+  };
+  address?: {
+    addressLine?: string;
+    city?: string;
+    state?: string;
+  };
+  verifications?: {
+    email: boolean;
+    aadharCard: boolean;
+  };
   createdBy?: string;
   createdAt?: {};
   updatedBy?: string;

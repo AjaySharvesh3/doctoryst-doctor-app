@@ -30,9 +30,9 @@
           {{index + 1}}
         </td>
 
-        <td class="align-middle-bold text-dark store-content">
+        <td class="align-middle-bold text-dark">
           <div class="font-weight store-hover"
-                routerLink="{{store.id}}/profile">
+               routerLink="{{store.id}}/profile">
             <h6>{{store.name}}</h6>
             <span *ngIf="store.status === 'disabled'"
                   tooltip="Store Disabled">
@@ -40,11 +40,11 @@
             </span>
           </div>
           <div class="mt-2 text-muted font-weight align-middle">
-            Owned by <u routerLink="users/{{store.storeHolderId}}">{{store.storeHolderName}}</u>
+            Owned by <u routerLink="users/{{store.storeHolder.storeHolderId}}">{{store.storeHolder.storeHolderName}}</u>
           </div>
-          <div class="mt-2 text-muted font-weight-light align-middle">
+          <!--<div class="mt-2 text-muted font-weight-light align-middle">
             {{store.description}}
-          </div>
+          </div>-->
         </td>
 
         <td class="d-flex align-middle flex-wrap justify-content-end">

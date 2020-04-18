@@ -117,6 +117,7 @@
             </div>
           </div>
 
+          <div [formGroup]="storeHolder">
           <div class="d-flex row">
 
             <div class="col-md justify-content-center">
@@ -136,47 +137,51 @@
             </div>
 
           </div>
-
-
-          <div class="d-flex row">
-
-            <div class="col-md justify-content-center">
-              <div class="form-group">
-                <label class="text-primary" for="addressLine">Address Line</label>
-                <textarea class="form-control"
-                          formControlName="addressLine"
-                          id="addressLine"
-                          name="addressLine"
-                          rows="1">
-                </textarea>
-              </div>
-            </div>
-
           </div>
 
 
-          <div class="d-flex row">
+          <div [formGroup]="address">
+            <div class="d-flex row">
 
-            <div class="col-md justify-content-center">
-              <div class="form-group">
-                <label class="text-primary" for="city">City</label>
-                <input class="form-control"
-                          formControlName="city"
-                          id="city"
-                          name="city"
-                          type="text">
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary" for="addressLine">Address Line</label>
+                  <textarea class="form-control"
+                            formControlName="addressLine"
+                            id="addressLine"
+                            name="addressLine"
+                            rows="1">
+                </textarea>
+                </div>
               </div>
+
             </div>
 
-            <div class="col-md justify-content-center">
-              <div class="form-group">
-                <label class="text-primary" for="state">State</label>
-                <input class="form-control"
-                       formControlName="state"
-                       id="state"
-                       name="state"
-                       type="text">
+
+            <div class="d-flex row">
+
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary" for="city">City</label>
+                  <input class="form-control"
+                         formControlName="city"
+                         id="city"
+                         name="city"
+                         type="text">
+                </div>
               </div>
+
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary" for="state">State</label>
+                  <input class="form-control"
+                         formControlName="state"
+                         id="state"
+                         name="state"
+                         type="text">
+                </div>
+              </div>
+
             </div>
 
           </div>

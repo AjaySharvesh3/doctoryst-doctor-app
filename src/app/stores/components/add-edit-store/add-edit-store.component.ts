@@ -52,27 +52,19 @@ export class AddEditStoreComponent implements OnInit {
   }
 
   get contact() {
-    return this.addEditStoreForm.get('contact') as FormGroup;
+    return this.addEditStoreForm.get('contact');
   }
 
-  get addressLine() {
-    return this.addEditStoreForm.get('addressLine');
+  get address() {
+    return this.addEditStoreForm.get('address') as FormGroup;
   }
 
-  get city() {
-    return this.addEditStoreForm.get('city');
-  }
-
-  get state() {
-    return this.addEditStoreForm.get('state');
+  get storeHolder() {
+    return this.addEditStoreForm.get('storeHolder') as FormGroup;
   }
 
   get types() {
     return this.addEditStoreForm.get('types') as FormGroup;
-  }
-
-  get storeHolderId() {
-    return this.addEditStoreForm.get('storeHolderId');
   }
 
   ngOnInit() {
@@ -84,12 +76,20 @@ export class AddEditStoreComponent implements OnInit {
     this.addEditStoreForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: '',
-      storeHolderId: '',
-      storeHolderName: '',
       contact: '',
-      addressLine: '',
-      city: '',
-      state: '',
+      storeHolder: this.formBuilder.group({
+        storeHolderId: '',
+        storeHolderName: ''
+      }),
+      address: this.formBuilder.group({
+        addressLine: '',
+        city: '',
+        state: '',
+      }),
+      verifications: {
+        email: false,
+        aadharCard: false,
+      },
       types: this.formBuilder.group({
         plantsType: false,
         flowersType: false,
@@ -113,11 +113,13 @@ export class AddEditStoreComponent implements OnInit {
   populateStoreFormWithExistingStore(existingStore) {
     this.name.setValue(existingStore.name);
     this.description.setValue(existingStore.description);
-    this.storeHolderId.setValue(existingStore.storeHolderId);
     this.contact.setValue(existingStore.contact);
-    this.addressLine.setValue(existingStore.addressLine);
-    this.city.setValue(existingStore.city);
-    this.state.setValue(existingStore.state);
+
+    this.storeHolder.get('storeHolderId').setValue(existingStore.storeHolder.storeHolderId);
+
+    this.address.get('addressLine').setValue(existingStore.address.addressLine);
+    this.address.get('city').setValue(existingStore.address.city);
+    this.address.get('state').setValue(existingStore.address.state);
 
     if (existingStore.types) {
       this.types.setValue(existingStore.types);
@@ -131,7 +133,7 @@ export class AddEditStoreComponent implements OnInit {
       return;
     }
 
-    this.user = _.find(this.userList, {id: this.addEditStoreForm.value.storeHolderId});
+    this.user = _.find(this.userList, {id: this.addEditStoreForm.value.storeHolder.storeHolderId});
     //@ts-ignore
     this.selectedBusinessName = this.user.firstName + " " + this.user.lastName;
 
@@ -139,7 +141,8 @@ export class AddEditStoreComponent implements OnInit {
     store.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     store.updatedAt = store.createdAt;
     store.status = AppConstant.STATUS.ENABLED;
-    store.storeHolderName = this.selectedBusinessName;
+    store.storeHolder.storeHolderName = this.selectedBusinessName;
+    store.verifications.email = true;
 
     this.storeService
       .addStore(store)
@@ -158,7 +161,7 @@ export class AddEditStoreComponent implements OnInit {
       return;
     }
 
-    this.user =  _.find(this.userList, {id: this.addEditStoreForm.value.storeHolderId});
+    this.user =  _.find(this.userList, {id: this.addEditStoreForm.value.storeHolder.storeHolderId});
     //@ts-ignore
     this.selectedBusinessName = this.user.firstName + " " + this.user.lastName;
 
@@ -168,7 +171,7 @@ export class AddEditStoreComponent implements OnInit {
     store.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     store.updatedAt = store.createdAt;
 
-    store.storeHolderName = this.selectedBusinessName;
+    store.storeHolder.storeHolderName = this.selectedBusinessName;
 
     this.storeService
       .updateStore(store)

@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppConstant} from "../../../core/constants";
 import {UserModel} from "../../../user/models/user.model";
 import {NavigationEnd, Router} from "@angular/router";
-import {AuthService} from "../../../core/services";
 import _ from "lodash";
-import {SessionStorageService} from "../../../core/services/session-storage.service";
-import {UserService} from "../../../user/services/user.service";
-import {ConnectionService} from "ng-connection-service";
 
 @Component({
   selector: 'app-store-side-menu',

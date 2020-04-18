@@ -12,9 +12,9 @@ import {AppConstant} from "../../../../common/core/constants";
 })
 export class StoreProfileContentComponent implements OnInit {
 
-  storeProfileMenu = AppConstant.STORE_PROFILE_LIST;
   storeProfile: StoreModel;
   storeId: string;
+  showStoreProfileContent: boolean = true;
 
   constructor(
     private storeService: StoreService,
@@ -27,8 +27,7 @@ export class StoreProfileContentComponent implements OnInit {
   }
 
   getStoreProfile() {
-    this.storeId = _.split(this.router.url, '/');
-    this.storeId = this.storeId[2];
+    this.detectRouteChanges();
 
     if (!this.storeId) {
       return;
@@ -38,8 +37,10 @@ export class StoreProfileContentComponent implements OnInit {
       .getStoreById(this.storeId)
       .then(documentSnapshot => {
         this.storeProfile = documentSnapshot.data() as StoreModel;
+        this.showStoreProfileContent = false;
       })
       .catch(error => {
+        this.showStoreProfileContent = false;
         console.log('error', error);
       });
   }
