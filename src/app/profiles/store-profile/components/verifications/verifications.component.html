@@ -2,22 +2,33 @@
   Store Verifications
 </h5>
 
-<div class="row custom-border mb-4">
+<div class="row custom-border mb-4" *ngIf="!showStoreProfileContent">
   <div class="col-lg static-card mx-auto">
 
     <div>
 
       <div class="text-center pb-4 pt-4">
         <img class="logo"
+             *ngIf="storeProfile?.verifications?.email === false || storeProfile?.verifications?.aadharCard === false"
              src="https://img.icons8.com/wired/64/000000/id-verified.png"
              alt="Not Verified Logo"/>
-        <!--<img class="logo"
+
+        <img class="logo"
+             *ngIf="storeProfile?.verifications?.email && storeProfile?.verifications?.aadharCard"
              src="https://img.icons8.com/dusk/64/000000/id-verified.png"
-             alt="Verified Logo"/>-->
+             alt="Verified Logo"/>
       </div>
 
-      <h2 class="text-center pb-4">
+      <h2 class="text-center pb-4"
+          *ngIf="storeProfile?.verifications?.email && storeProfile?.verifications?.aadharCard">
         <span class="text-success font-weight-normal">
+          Verifications Successfully Done
+        </span>
+      </h2>
+
+      <h2 class="text-center pb-4"
+          *ngIf="storeProfile?.verifications?.email === false || storeProfile?.verifications?.aadharCard === false">
+        <span class="text-secondary font-weight-normal">
           Verifications Not Yet Done
         </span>
       </h2>
@@ -28,7 +39,7 @@
 </div>
 
 
-<div class="custom-border custom-margin">
+<div class="custom-border custom-margin" *ngIf="!showStoreProfileContent">
   <div class="row pt-4 pl-4">
     <div class="col w-75">
       <h5 class="text-muted">Verification Process</h5>
@@ -94,23 +105,23 @@
 
           <div [formGroup]="storeHolder">
 
-              <div class="form-group">
-                <label class="text-primary" for="aadharName">Aadhar Card Name</label>
-                <input class="form-control required-field"
-                       formControlName="aadharName"
-                       id="aadharName"
-                       name="aadharName"
-                       type="text">
+            <div class="form-group">
+              <label class="text-primary" for="aadharName">Aadhar Card Name</label>
+              <input class="form-control required-field"
+                     formControlName="aadharName"
+                     id="aadharName"
+                     name="aadharName"
+                     type="text">
 
-                <div *ngIf="storeHolder.invalid && (storeHolder.dirty || storeHolder.touched || formSubmitted)"
-                     class="alert alert-danger">
+              <div *ngIf="storeHolder.invalid && (storeHolder.dirty || storeHolder.touched || formSubmitted)"
+                   class="alert alert-danger">
 
-                  <div *ngIf="storeHolder.errors.required">
-                    Aadhar Name is required.
-                  </div>
-
+                <div *ngIf="storeHolder.errors.required">
+                  Aadhar Name is required.
                 </div>
+
               </div>
+            </div>
 
             <div class="d-flex row">
 
@@ -174,3 +185,64 @@
     </button>
   </div>
 </ng-template>
+
+
+<div class="custom-border custom-margin"
+     *ngIf="!showStoreProfileContent && storeProfile?.verifications?.aadharCard">
+  <div class="row pt-4 pl-4">
+    <div class="col w-75">
+      <h5 class="text-muted">Aadhar Card</h5>
+      <span class="text-muted mt-1">Store Holder's verified Aadhar Card Details</span>
+    </div>
+  </div>
+
+
+  <table class="table table-hover mt-4">
+    <tbody>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Aadhar Card Name</h6>
+      </td>
+      <td>
+        {{storeProfile?.storeHolder?.aadharName}}
+      </td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Aadhar Card Number</h6>
+      </td>
+      <td>
+        {{storeProfile?.storeHolder?.aadharNumber}}
+      </td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Aadhar Card Address</h6>
+      </td>
+      <td>
+        {{storeProfile?.storeHolder?.address}}
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+<div *ngIf="showStoreProfileContent"
+     class="row justify-content-center mt-5">
+
+  <div class="col-lg-auto">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+</div>

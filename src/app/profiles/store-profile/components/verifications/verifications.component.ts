@@ -63,10 +63,14 @@ export class VerificationsComponent implements OnInit {
   }
 
   openAddAadhar() {
-    this.confirmAddAadharModal = this.modalService.show(this.addAadharModalTemplate,
-      {
-        backdrop: 'static'
-      });
+    if (this.storeProfile.verifications.aadharCard === false) {
+      this.confirmAddAadharModal = this.modalService.show(this.addAadharModalTemplate,
+        {
+          backdrop: 'static'
+        });
+    } else {
+      return;
+    }
   }
 
   confirmAddAadhar() {
@@ -88,8 +92,8 @@ export class VerificationsComponent implements OnInit {
     this.storeService
       .updateStore(store)
       .then(response => {
-          this.confirmAddAadharModal.hide();
-          this.formSubmitted = false;
+        this.storeProfile = store;
+          this.closeAddAadhar();
         },
         error => {
           console.log('error', error);
@@ -99,7 +103,7 @@ export class VerificationsComponent implements OnInit {
   closeAddAadhar() {
     this.confirmAddAadharModal.hide();
     this.formSubmitted = false;
-    this.openAddAadhar();
+    this.initAddAadharForm();
     this.emitAfterAadharAdded();
   }
 

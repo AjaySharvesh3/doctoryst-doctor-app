@@ -28,3 +28,8 @@
 .click-aadhar-modal:hover {
   cursor: pointer;
 }
+
+.aadhar-logo {
+  width: 100px;
+  height: 100px;
+}
