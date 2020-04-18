@@ -62,11 +62,38 @@
                   formControlName="description"
                   id="description"
                   name="description"
-                  rows="3"></textarea>
+                  rows="2"></textarea>
+
+                <div *ngIf="description.invalid && (description.dirty || description.touched || formSubmitted)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="description.errors.required">
+                    Description is required.
+                  </div>
+
+                </div>
+
               </div>
             </div>
 
           </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="contact">Contact</label>
+                <input class="form-control"
+                       formControlName="contact"
+                       id="contact"
+                       name="contact"
+                       type="text">
+
+              </div>
+            </div>
+
+          </div>
+
 
           <div [formGroup]="types">
             <div class="d-flex row">
@@ -90,27 +117,70 @@
             </div>
           </div>
 
-          <div>
-            <div class="d-flex row">
+          <div class="d-flex row">
 
-              <div class="col-md justify-content-center">
-                <label class="text-primary"
-                       for="storeHolderId">Select Store Holder</label>
-                <div class="form-group">
-                    <select class="form-control select-field-container"
-                            formControlName="storeHolderId"
-                            id="storeHolderId"
-                            name="storeHolderId">
-                      <option class="m-1" value="">Choose...</option>
-                      <option *ngFor="let user of userList"
-                              value="{{user.id}}">
-                        {{user.firstName}} {{user.lastName}}</option>
-                    </select>
-                </div>
+            <div class="col-md justify-content-center">
+              <label class="text-primary"
+                     for="storeHolderId">Select Store Holder</label>
+              <div class="form-group">
+                <select class="form-control select-field-container"
+                        formControlName="storeHolderId"
+                        id="storeHolderId"
+                        name="storeHolderId">
+                  <option class="m-1" value="">Choose...</option>
+                  <option *ngFor="let user of userList"
+                          value="{{user.id}}">
+                    {{user.firstName}} {{user.lastName}}</option>
+                </select>
               </div>
-
             </div>
+
           </div>
+
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="addressLine">Address Line</label>
+                <textarea class="form-control"
+                          formControlName="addressLine"
+                          id="addressLine"
+                          name="addressLine"
+                          rows="1">
+                </textarea>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="city">City</label>
+                <input class="form-control"
+                          formControlName="city"
+                          id="city"
+                          name="city"
+                          type="text">
+              </div>
+            </div>
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="state">State</label>
+                <input class="form-control"
+                       formControlName="state"
+                       id="state"
+                       name="state"
+                       type="text">
+              </div>
+            </div>
+
+          </div>
+
 
         </div>
       </div>

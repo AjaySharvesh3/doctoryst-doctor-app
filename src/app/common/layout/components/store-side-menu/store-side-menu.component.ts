@@ -39,7 +39,8 @@ export class StoreSideMenuComponent implements OnInit {
   }
 
   detectRouteChanges() {
-    this.currentMenu = 'profile';
+    this.currentMenu = AppConstant.STORE_SIDE_MENU_LIST[0].path;
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (location.pathname !== '') {

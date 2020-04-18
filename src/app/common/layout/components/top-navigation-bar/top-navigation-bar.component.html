@@ -23,7 +23,7 @@
           <ng-container *ngFor="let menu of topMenuList">
             <a *ngIf="menu.visible"
                [ngClass]="{'active': currentMenu === menu.path}"
-               class="nav-item nav-link"
+               class="nav-item nav-link font-weight-normal"
                routerLink="{{menu.path}}"
                routerLinkActive="{{menu.active}}"
                tooltip="{{menu.helpText}}">{{menu.menuName}}</a>

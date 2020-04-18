@@ -30,17 +30,17 @@
           {{index + 1}}
         </td>
 
-        <td class="align-middle store-content">
-          <div class="font-weight-bold text-muted store-hover"
+        <td class="align-middle-bold text-dark store-content">
+          <div class="font-weight store-hover"
                 routerLink="{{store.id}}/profile">
-            {{store.name}}
+            <h6>{{store.name}}</h6>
             <span *ngIf="store.status === 'disabled'"
                   tooltip="Store Disabled">
               <fa-icon [icon]="faExclamationTriangle" class="text-danger"></fa-icon>
             </span>
           </div>
           <div class="mt-2 text-muted font-weight align-middle">
-            Owned by <u routerLink="users/{{store.storeHolderId}}">{{store.storeHolder.storeHolderName}}</u>
+            Owned by <u routerLink="users/{{store.storeHolderId}}">{{store.storeHolderName}}</u>
           </div>
           <div class="mt-2 text-muted font-weight-light align-middle">
             {{store.description}}

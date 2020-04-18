@@ -1,9 +1,32 @@
 .logo {
   width: 100px;
   height: 100px;
-  border-radius:50%;
+  border-radius: 50%;
 }
 
 .custom-border {
   border: 1px solid #C0C0C0;
+  border-radius: 3px;
+}
+
+.custom-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  /* margin-right: -15px; */
+  /* margin-left: -15px; */
+}
+
+.custom-margin {
+  margin: 30px -15px 50px;
+}
+
+.line {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid black;
+  position: absolute;
+}
+
+.right {
+  float: right;
 }

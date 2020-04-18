@@ -35,3 +35,7 @@
   letter-spacing: 2px;
 }
 
+.scrollable {
+  overflow-y: auto;
+}
+

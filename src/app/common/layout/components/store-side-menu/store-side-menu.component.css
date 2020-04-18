@@ -3,7 +3,7 @@
   color: #fff !important;
 }
 
-.nav-pills:hover > li:hover > a:hover {
+.nav-pills > li:hover > a {
 }
 
 .nav-pills > li > a {

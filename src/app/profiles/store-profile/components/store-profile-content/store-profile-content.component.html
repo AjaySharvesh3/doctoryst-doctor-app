@@ -11,15 +11,107 @@
         </div>
 
         <h3 class="text-center pb-3">
-          <span class="text-primary font-weight-normal">ShrubsInk Co</span>
+          <span class="text-primary font-weight-normal">{{storeProfile?.name}}</span>
         </h3>
 
-        <h5 class="text-center font-weight-light pb-3">
-          We sell all kinda flower, plants type, including we setup gardening and provide tools.
-        </h5>
+        <h6 class="text-center text-muted pb-3" *ngIf="storeProfile?.description">
+          {{storeProfile?.description}}
+        </h6>
 
       </div>
     </div>
 
   </div>
+</div>
+
+
+<div class="custom-border custom-margin">
+  <div class="row p-4">
+    <div class="col w-75">
+      <h5 class="text-muted">Store Profile</h5>
+      <span class="text-muted mt-1">You have access rights to edit (or) delete this store.</span>
+    </div>
+  </div>
+
+
+  <table class="table table-hover mt-3">
+    <tbody>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Owned by</h6>
+      </td>
+      <td>{{storeProfile?.storeHolderName}}</td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Store Contact</h6>
+      </td>
+      <td>{{storeProfile?.contact}}</td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>Address Line</h6>
+      </td>
+      <td>{{storeProfile?.addressLine}}</td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>City</h6>
+      </td>
+      <td>{{storeProfile?.city}}</td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted"
+          scope="row">
+        <h6>State</h6>
+      </td>
+      <td>{{storeProfile?.state}}</td>
+    </tr>
+
+    <tr>
+      <td class="pl-4 text-muted" scope="row">
+        <h6>Types</h6>
+      </td>
+      <td>
+
+        <button type="button"
+                class="btn btn-sm btn-primary mr-1"
+                *ngIf="storeProfile?.types?.plantsType">
+          Plants
+        </button>
+
+        <button type="button"
+                class="btn btn-sm btn-success mr-1"
+                *ngIf="storeProfile?.types?.flowersType">
+          Flower
+        </button>
+
+        <button type="button"
+                class="btn btn-sm btn-info mr-1"
+                *ngIf="storeProfile?.types?.gardeningType">
+          Gardening
+        </button>
+
+        <button type="button"
+                class="btn btn-sm btn-secondary"
+                *ngIf="storeProfile?.types?.toolsType">
+          Tools
+        </button>
+
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+
 </div>
