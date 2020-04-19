@@ -145,13 +145,4 @@ export class AppConstant {
     }
   ];
 
-  static readonly STORE_PROFILE_LIST = [
-    { menuName: 'Owned by' },
-    { menuName: 'Store Contact' },
-    { menuName: 'Address Line' },
-    { menuName: 'City' },
-    { menuName: 'State' },
-    { menuName: 'Pincode' },
-  ];
-
 }

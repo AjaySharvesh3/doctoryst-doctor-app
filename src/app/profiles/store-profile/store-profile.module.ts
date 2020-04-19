@@ -7,11 +7,17 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { StoreProfileContentComponent } from './components/store-profile-content/store-profile-content.component';
 import {LayoutModule} from "../../common/layout/layout.module";
 import { VerificationsComponent } from './components/verifications/verifications.component';
+import {ProductsComponent} from "./components/products/products.component";
 
 
 
 @NgModule({
-  declarations: [StoreProfileDashboardComponent, StoreProfileContentComponent, VerificationsComponent],
+  declarations: [
+    StoreProfileDashboardComponent,
+    StoreProfileContentComponent,
+    VerificationsComponent,
+    ProductsComponent
+  ],
   imports: [
     CommonModule,
     StoreProfileRoutingModule,
@@ -19,6 +25,11 @@ import { VerificationsComponent } from './components/verifications/verifications
     TooltipModule,
     LayoutModule
   ],
-  exports: [StoreProfileDashboardComponent, StoreProfileContentComponent]
+  exports: [
+    StoreProfileDashboardComponent,
+    StoreProfileContentComponent,
+    VerificationsComponent,
+    ProductsComponent
+  ]
 })
 export class StoreProfileModule { }

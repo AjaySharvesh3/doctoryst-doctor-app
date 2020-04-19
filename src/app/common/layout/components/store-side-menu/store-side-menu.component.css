@@ -9,3 +9,9 @@
 .nav-pills > li > a {
   color: #014A74!important;
 }
+
+.sticky-side-menu {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 100px;
+}

@@ -20,7 +20,7 @@ import {StoreProfileModule} from "./profiles/store-profile/store-profile.module"
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
