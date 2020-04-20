@@ -51,7 +51,7 @@
           <div *ngFor="let type of allTypes">
             <div *ngIf="store.types[type.attribute]">
               <button
-                class="btn btn-{{type.color}} m-1"
+                class="btn font-weight-normal btn-outline-{{type.color}} m-1"
                 routerLink="{{store.id}}/{{type.route}}">
                 {{type.name}}
               </button>

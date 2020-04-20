@@ -7,7 +7,7 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { StoreProfileContentComponent } from './components/store-profile-content/store-profile-content.component';
 import {LayoutModule} from "../../common/layout/layout.module";
 import { VerificationsComponent } from './components/verifications/verifications.component';
-import {ProductsComponent} from "./components/products/products.component";
+import {StoreProductsComponent} from "./components/store-products/store-products.component";
 
 
 
@@ -16,7 +16,7 @@ import {ProductsComponent} from "./components/products/products.component";
     StoreProfileDashboardComponent,
     StoreProfileContentComponent,
     VerificationsComponent,
-    ProductsComponent
+    StoreProductsComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import {ProductsComponent} from "./components/products/products.component";
     StoreProfileDashboardComponent,
     StoreProfileContentComponent,
     VerificationsComponent,
-    ProductsComponent
+    StoreProductsComponent
   ]
 })
 export class StoreProfileModule { }

@@ -6,10 +6,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  templateUrl: './store-products.component.html',
+  styleUrls: ['./store-products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class StoreProductsComponent implements OnInit {
 
   storeProfile: StoreModel;
   storeId: string;

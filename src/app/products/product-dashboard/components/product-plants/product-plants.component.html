@@ -1,0 +1,120 @@
+<div class="container">
+
+  <h4>
+    <fa-icon [icon]="faChevronLeft" routerLink="/products" class="back-arrow"></fa-icon> &nbsp;
+    Plants
+  </h4>
+
+  <div class="row mt-4 mb-4">
+
+    <div class="col w-50">
+      <div class="card card-theme-categories custom-hover">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-4">
+              <img class="float-sm-left"
+                   src="https://img.icons8.com/nolan/66/bar-chart.png"
+                   alt="Categories Logo"/>
+            </div>
+
+            <div class="col mt-1">
+              <h5 class="text-muted">Categories</h5>
+              <h6 class="text-muted mt-1">Total Count: 0</h6>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col w-50">
+      <div class="card card-theme-sub-categories custom-hover">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-4">
+              <img class="float-sm-left"
+                   src="https://img.icons8.com/nolan/66/categorize.png"
+                   alt="Sub Categories Logo"/>
+            </div>
+
+            <div class="col mt-1">
+              <h5 class="text-muted">Sub Categories</h5>
+              <h6 class="text-muted mt-1">Total Count: 0</h6>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col w-50">
+      <div class="card card-theme-item custom-hover">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-4">
+              <img class="float-sm-left"
+                   src="https://img.icons8.com/dusk/66/000000/tasklist.png"
+                   alt="Items Logo"/>
+            </div>
+
+            <div class="col mt-1">
+              <h5 class="text-muted">Items</h5>
+              <h6 class="text-muted mt-1">Total Count: 0</h6>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+      <div class="card mb-4 shadow-sm card-no-border">
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="pt-2 col-4">
+              <h5 class="category-title">
+                <fa-icon [icon]="faTree"></fa-icon>
+                Plants
+              </h5>
+            </div>
+
+            <div class="col-8 justify-content-end text-right">
+              <button class="btn btn-primary ml-2"
+                      (click)="openAddCategory()">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                Add Categories
+              </button>
+
+              <button class="btn red-btn ml-2">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Add Sub Categories &nbsp;
+              </button>
+
+              <button class="btn info-btn ml-2">
+                <i class="fa fa-tag" aria-hidden="true"></i>
+                Add Items
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

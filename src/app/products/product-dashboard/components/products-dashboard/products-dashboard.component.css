@@ -1,0 +1,71 @@
+.custom-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 150px;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border-radius: .25rem;
+}
+
+.primary-border {
+  border: 1px solid #007bff;
+}
+
+.primary-text {
+  color: #007bff;
+}
+
+.secondary-border {
+  border: 1px solid #6c757d;
+}
+
+.success-border {
+  border: 1px solid #28a745;
+}
+
+.success-text {
+  color: #28a745;
+}
+
+.info-border {
+  border: 1px solid #17a2b8;
+}
+
+.primary-text-color {
+  color: #FA7623 !important;
+}
+
+.dark-border {
+  border: 1px solid #343a40;
+}
+
+.warning-border {
+  border: 1px solid #ffc107;
+}
+
+.warning-text {
+  color: #ffc107;
+}
+
+.unavailable-bg {
+  background-color: #DFDFDF;
+}
+
+.unavailable-border {
+  color: #DFDFDF;
+}
+
+.shadow-hover:hover {
+  box-shadow: 3px 3px 3px #DFDFDF;
+  cursor: pointer;
+}
+
+.not-allowed-hover {
+  cursor: not-allowed;
+}
+
+.custom-hover:hover {
+  cursor: pointer;
+}
