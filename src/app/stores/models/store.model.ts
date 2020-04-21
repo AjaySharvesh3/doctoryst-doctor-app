@@ -2,13 +2,13 @@ export interface StoreModel {
   id?: string;
   name?: string;
   description?: string;
+  contact?: string;
   types?: {
     plantsType: boolean,
     flowersType: boolean,
     gardeningType: boolean,
     toolsType: boolean,
   };
-  contact?: string;
   storeHolder?: {
     storeHolderId?: string;
     storeHolderName?: string;

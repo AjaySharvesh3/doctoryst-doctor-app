@@ -20,7 +20,7 @@
 
             <div class="col mt-1">
               <h5 class="text-muted">Categories</h5>
-              <h6 class="text-muted mt-1">Total Count: 0</h6>
+              <h6 class="text-muted mt-1">Total Count: {{plantsCategoryList?.length}}</h6>
             </div>
           </div>
 
@@ -75,10 +75,14 @@
 
   </div>
 
+</div>
+
+<div class="container">
+
   <div class="row">
     <div class="col">
 
-      <div class="card mb-4 shadow-sm card-no-border">
+      <div class="card mb-4 card-no-border shadow-sm">
 
         <div class="card-body">
 
@@ -92,24 +96,26 @@
             </div>
 
             <div class="col-8 justify-content-end text-right">
-              <button class="btn btn-primary ml-2"
-                      (click)="openAddCategory()">
-                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                Add Categories
-              </button>
 
-              <button class="btn red-btn ml-2">
-                <i class="fa fa-list" aria-hidden="true"></i>
-                Add Sub Categories &nbsp;
-              </button>
+              <app-add-edit-plants-category
+                (afterPlantCategoryAddedOrEdited)="triggerPlantsCategoryRefresh()"
+                [isAddPlantCategory]="true">
+              </app-add-edit-plants-category>
 
-              <button class="btn info-btn ml-2">
-                <i class="fa fa-tag" aria-hidden="true"></i>
-                Add Items
-              </button>
             </div>
 
           </div>
+
+          <div class="row">
+
+            <div class="col">
+              <app-product-plants-list
+                [refreshPlantsCategoryList]="refreshPlantsCategoryList">
+              </app-product-plants-list>
+            </div>
+
+          </div>
+
 
         </div>
       </div>

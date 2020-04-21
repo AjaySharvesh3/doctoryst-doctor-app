@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsDashboardComponent } from './product-dashboard/components/products-dashboard/products-dashboard.component';
+import { ProductsDashboardComponent } from './products-dashboard/components/products-dashboard/products-dashboard.component';
 import {ProductsRoutingModule} from "./products-routing.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-import { ProductPlantsComponent } from './product-dashboard/components/product-plants/product-plants.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {PlantsModule} from "./plants/plants.module";
 
 
 
 @NgModule({
   declarations: [
-    ProductsDashboardComponent,
-    ProductPlantsComponent
+    ProductsDashboardComponent
   ],
   imports: [
     CommonModule,
+    PlantsModule,
     ProductsRoutingModule,
     FontAwesomeModule,
-    TooltipModule
+    TooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductsModule { }

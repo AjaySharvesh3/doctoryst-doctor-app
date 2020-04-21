@@ -1,0 +1,70 @@
+<button (click)="openEnableDisablePlantsCategory()"
+        *ngIf="isDisablePlantsCategory"
+        class="btn btn-outline-secondary"
+        tooltip="Disable Plant Category">
+  <fa-icon [icon]="faTimes"></fa-icon>
+</button>
+
+<button (click)="openEnableDisablePlantsCategory()"
+        *ngIf="isEnablePlantsCategory"
+        class="btn btn-outline-success"
+        tooltip="Enable Plant Category">
+  <fa-icon [icon]="faCheck"></fa-icon>
+</button>
+
+<ng-template #enableDisablePlantsCategoryTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isDisablePlantsCategory" class="modal-title">Disable Plants Category</h4>
+    <h4 *ngIf="isEnablePlantsCategory" class="modal-title">Enable Plants Category</h4>
+    <button (click)="closeEnableDisablePlantsCategory()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-5 pr-5 mt-2">
+
+    <div *ngIf="isDisablePlantsCategory"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
+      <p class="ml-3">Do you want to disable the below Plant Category?</p>
+    </div>
+
+    <div *ngIf="isEnablePlantsCategory"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-success"></fa-icon>
+      <p class="ml-3">Do you want to enable the below Plant Category?</p>
+    </div>
+
+    <div class="ml-5 pt-5 pb-5">
+      <div class="font-weight-bold text-muted">
+        {{selectedPlantsCategory.name}}
+        <span *ngIf="selectedPlantsCategory.status === 'disabled'"><i
+          class="fas fa-exclamation-triangle text-danger"></i></span>
+      </div>
+
+      <div class="text-muted pt-1">
+        {{selectedPlantsCategory.description}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeEnableDisablePlantsCategory()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmDisablePlantsCategory()"
+            *ngIf="isDisablePlantsCategory"
+            class="btn btn-danger"
+            type="button">
+      Confirm Disable Plants Category
+    </button>
+    <button (click)="confirmEnablePlantsCategory()"
+            *ngIf="isEnablePlantsCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Enable Plants Category
+    </button>
+  </div>
+</ng-template>

@@ -160,7 +160,8 @@ export class AppConstant {
       altText: 'Plants Logo',
       textColor: 'primary-text',
       tooltip: 'Check plants categories',
-      route: 'plants'
+      route: 'plants',
+      categoriesCount: 0
     },
     {
       productName: 'Flowers',
@@ -170,7 +171,8 @@ export class AppConstant {
       altText: 'Flowers Logo',
       textColor: 'red-text',
       tooltip: 'Check flowers categories',
-      route: 'flowers'
+      route: 'flowers',
+      categoriesCount: 0
     },
     {
       productName: 'Gardening',
@@ -180,7 +182,8 @@ export class AppConstant {
       altText: 'Gardening Logo',
       textColor: 'success-text',
       tooltip: 'Check gardening categories',
-      route: 'gardening'
+      route: 'gardening',
+      categoriesCount: 0
     },
     {
       productName: 'Tools',
@@ -190,7 +193,8 @@ export class AppConstant {
       altText: 'Tools Logo',
       textColor: 'warning-text',
       tooltip: 'Check tools categories',
-      route: 'tools'
+      route: 'tools',
+      categoriesCount: 0
     }
   ];
 
