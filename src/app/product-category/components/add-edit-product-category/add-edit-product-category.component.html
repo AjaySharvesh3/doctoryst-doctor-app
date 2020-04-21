@@ -1,28 +1,28 @@
-<button (click)="openAddEditPlantCategory()"
-        *ngIf="isAddPlantCategory"
+<button (click)="openAddEditProductCategory()"
+        *ngIf="isAddProductCategory"
         class="btn btn-primary">
   <fa-icon [icon]="faPlus"></fa-icon>
-  Add New Plant Category
+  Add New Product Category
 </button>
 
-<button (click)="openAddEditPlantCategory()"
-        *ngIf="isEditPlantCategory"
+<button (click)="openAddEditProductCategory()"
+        *ngIf="isEditProductCategory"
         class="btn btn-outline-primary"
-        tooltip="Edit Plant Category">
+        tooltip="Edit Product Category">
   <fa-icon [icon]="faPencilAlt"></fa-icon>
 </button>
 
-<ng-template #addEditPlantCategoryTemplate>
+<ng-template #addEditProductCategoryTemplate>
   <div class="modal-header border-0 bg-light">
-    <h4 *ngIf="isAddPlantCategory" class="modal-title">Add New PlantCategory</h4>
-    <h4 *ngIf="isEditPlantCategory" class="modal-title">Edit PlantCategory</h4>
-    <button (click)="closeAddEditPlantCategory()" class="close" type="button"><span
+    <h4 *ngIf="isAddProductCategory" class="modal-title">Add New Product Category</h4>
+    <h4 *ngIf="isEditProductCategory" class="modal-title">Edit Product Category</h4>
+    <button (click)="closeAddEditProductCategory()" class="close" type="button"><span
       aria-hidden="true">×</span></button>
   </div>
 
   <div class="modal-body flex-row pl-4 pr-4 mt-2">
 
-    <form [formGroup]="addEditPlantCategoryForm">
+    <form [formGroup]="addEditProductCategoryForm">
 
       <div class="card mb-4 details-card">
         <div class="card-body">
@@ -86,22 +86,22 @@
   </div>
 
   <div class="modal-footer border-0">
-    <button (click)="closeAddEditPlantCategory()"
+    <button (click)="closeAddEditProductCategory()"
             class="btn btn-light"
             type="button">
       Cancel
     </button>
-    <button (click)="confirmAddPlantCategory()"
-            *ngIf="isAddPlantCategory"
+    <button (click)="confirmAddProductCategory()"
+            *ngIf="isAddProductCategory"
             class="btn btn-success"
             type="button">
-      Confirm Add Plant Category
+      Confirm Add Product Category
     </button>
-    <button (click)="confirmEditPlantCategory()"
-            *ngIf="isEditPlantCategory"
+    <button (click)="confirmEditProductCategory()"
+            *ngIf="isEditProductCategory"
             class="btn btn-success"
             type="button">
-      Confirm Edit Plant Category
+      Confirm Edit Product Category
     </button>
   </div>
 </ng-template>

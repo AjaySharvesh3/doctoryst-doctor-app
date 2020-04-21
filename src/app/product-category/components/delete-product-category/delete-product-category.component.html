@@ -1,14 +1,13 @@
-<button (click)="openDeletePlantsCategory()"
-
+<button (click)="openDeleteProductCategory()"
         class="btn btn-outline-danger"
-        tooltip="Delete Plant Category">
+        tooltip="Delete ProductCategory">
   <fa-icon [icon]="faTrash"></fa-icon>
 </button>
 
-<ng-template #enableDeletePlantsCategoryTemplate>
+<ng-template #enableDeleteProductCategoryTemplate>
   <div class="modal-header border-0 bg-light">
-    <h4 class="modal-title">Delete Plant Category</h4>
-    <button (click)="closeDeletePlantsCategory()" class="close" type="button"><span
+    <h4 class="modal-title">Delete Product Category</h4>
+    <button (click)="closeDeleteProductCategory()" class="close" type="button"><span
       aria-hidden="true">×</span></button>
   </div>
 
@@ -16,33 +15,33 @@
 
     <div class="d-flex flex-row">
       <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
-      <p class="ml-3">Do you want to delete the below Plant Category?</p>
+      <p class="ml-3">Do you want to delete the below Product Category?</p>
     </div>
 
     <div class="ml-5 pt-5 pb-5">
       <div class="font-weight-bold text-muted">
-        {{selectedPlantsCategory.name}}
-        <span *ngIf="selectedPlantsCategory.status === 'deleted'"><i
+        {{selectedProductCategory.name}}
+        <span *ngIf="selectedProductCategory.status === 'deleted'"><i
           class="fas fa-exclamation-triangle text-danger"></i></span>
       </div>
 
       <div class="text-muted pt-1">
-        {{selectedPlantsCategory.description}}
+        {{selectedProductCategory.description}}
       </div>
     </div>
 
   </div>
 
   <div class="modal-footer border-0">
-    <button (click)="closeDeletePlantsCategory()"
+    <button (click)="closeDeleteProductCategory()"
             class="btn btn-light"
             type="button">
       Cancel
     </button>
-    <button (click)="confirmDeletePlantsCategory()"
+    <button (click)="confirmDeleteProductCategory()"
             class="btn btn-danger"
             type="button">
-      Confirm Delete Plant Category
+      Confirm Delete Product Category
     </button>
   </div>
 </ng-template>

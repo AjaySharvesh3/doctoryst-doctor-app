@@ -25,9 +25,11 @@ export interface StoreModel {
     email: boolean;
     aadharCard: boolean;
   };
+
   createdBy?: string;
   createdAt?: {};
   updatedBy?: string;
   updatedAt?: {};
+
   status?: string;
 }

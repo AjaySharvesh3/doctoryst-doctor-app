@@ -23,11 +23,13 @@ export interface UserModel {
     name: string;
     email: string;
   };
+
   createdAt?: {};
   updatedBy?: {
     name: string;
     email: string;
   };
   updatedAt?: {};
+
   status?: string;
 }

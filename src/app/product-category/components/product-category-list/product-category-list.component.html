@@ -1,0 +1,68 @@
+<div class="mt-4">
+
+
+  <div *ngIf="dataFetchInProgress && isInitialDataLoad"
+       class="row justify-content-center mb-1">
+
+    <div class="col-lg-auto">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="productCategoryList?.length < 1 && !dataFetchInProgress"
+       class="alert alert-primary text-center" role="alert">
+    <div>No Product Categories Found.</div>
+  </div>
+
+  <div class="d-flex justify-content-center pt-2 flex-wrap">
+
+    <div class="m-2 text-center" *ngFor="let productCategory of productCategoryList">
+      <div class="card top-category-card whitesmoke-bg {{productCategory.cardTopTheme}} custom-hover"
+           tooltip="{{productCategory.tooltip}}">
+        <div class="card-body text-center">
+
+          <img class="justify-content-center"
+               src="../../../../assets/images/products/plants/plants_available.png"
+               alt="{{productCategory.altText}}"/>
+
+          <h5 class="text-primary text-muted mt-3">
+            {{productCategory?.name}}
+          </h5>
+
+          <h6 class="text-primary text-muted mt-3">
+            {{productCategory?.description}}
+          </h6>
+
+          <div class="pt-3">
+            <app-add-edit-product-category
+              (afterProductCategoryAddedOrEdited)="getProductCategoryList()"
+              [isEditProductCategory]="true"
+              [selectedProductCategory]="productCategory"
+              class="m-1 mt-2">
+            </app-add-edit-product-category>
+
+            <app-enable-disable-product-category
+              (afterProductCategoryEnabledOrDisabled)="getProductCategoryList()"
+              [selectedProductCategory]="productCategory"
+              class="m-1">
+            </app-enable-disable-product-category>
+
+            <app-delete-product-category
+              (afterProductCategoryDeleted)="getProductCategoryList()"
+              [selectedProductCategory]="productCategory"
+              class="m-1">
+            </app-delete-product-category>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

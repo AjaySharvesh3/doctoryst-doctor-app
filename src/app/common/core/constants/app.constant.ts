@@ -33,7 +33,7 @@ export class AppConstant {
       allowedRoles: ['operation']
     },{
       menuName: 'Products',
-      path: 'products',
+      path: 'product-category',
       active: 'true',
       helpText: 'Manage Products',
       allowedRoles: ['operation']
@@ -148,53 +148,6 @@ export class AppConstant {
       path: 'store-products',
       active: 'true',
       helpText: 'Manage Products'
-    }
-  ];
-
-  static readonly PRODUCT_LIST = [
-    {
-      productName: 'Plants',
-      path: 'plants',
-      cardTopTheme: 'card-theme-top-primary',
-      imageSrc: '/assets/images/products/plants/plants_available.png',
-      altText: 'Plants Logo',
-      textColor: 'primary-text',
-      tooltip: 'Check plants categories',
-      route: 'plants',
-      categoriesCount: 0
-    },
-    {
-      productName: 'Flowers',
-      path: 'flowers',
-      cardTopTheme: 'card-theme-top-red',
-      imageSrc: '/assets/images/products/flowers/flower_available.png',
-      altText: 'Flowers Logo',
-      textColor: 'red-text',
-      tooltip: 'Check flowers categories',
-      route: 'flowers',
-      categoriesCount: 0
-    },
-    {
-      productName: 'Gardening',
-      path: 'gardening',
-      cardTopTheme: 'card-theme-top-success',
-      imageSrc: '/assets/images/products/gardening/gardening_available.png',
-      altText: 'Gardening Logo',
-      textColor: 'success-text',
-      tooltip: 'Check gardening categories',
-      route: 'gardening',
-      categoriesCount: 0
-    },
-    {
-      productName: 'Tools',
-      path: 'tools',
-      cardTopTheme: 'card-theme-top-warning',
-      imageSrc: '/assets/images/products/tools/tools_available.png',
-      altText: 'Tools Logo',
-      textColor: 'warning-text',
-      tooltip: 'Check tools categories',
-      route: 'tools',
-      categoriesCount: 0
     }
   ];
 

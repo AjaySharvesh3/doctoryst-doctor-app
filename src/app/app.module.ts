@@ -17,7 +17,6 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {TicketsModule} from "./tickets/tickets.module";
 import {StoreProfileModule} from "./profiles/store-profile/store-profile.module";
-import {ProductsModule} from "./products/products.module";
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import {ProductsModule} from "./products/products.module";
     SecurityModule,
     TicketsModule,
     StoreProfileModule,
-    ProductsModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
