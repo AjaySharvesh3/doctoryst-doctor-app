@@ -1,23 +1,28 @@
+<h5 class="mb-4 store-profile" routerLink="/stores">
+  <fa-icon [icon]="faCaretLeft"></fa-icon> &nbsp;
+  Store Profile
+</h5>
+
 <div class="row custom-border" *ngIf="!showStoreProfileContent">
   <div class="col-lg static-card mx-auto">
 
-      <div>
+    <div>
 
-        <div class="text-center pb-4 pt-3 ">
-          <img class="logo"
-               src="/assets/images/placeholders/store_profile_placeholder.png"
-               alt="Store Profile">
-        </div>
-
-        <h3 class="text-center pb-3">
-          <span class="text-primary font-weight-normal">{{storeProfile?.name}}</span>
-        </h3>
-
-        <h6 class="text-center text-muted font-weight-normal pb-3" *ngIf="storeProfile?.description">
-          {{storeProfile?.description}}
-        </h6>
-
+      <div class="text-center pb-4 pt-3 ">
+        <img class="logo"
+             src="/assets/images/placeholders/store_profile_placeholder.png"
+             alt="Store Profile">
       </div>
+
+      <h3 class="text-center pb-3">
+        <span class="text-primary font-weight-normal">{{storeProfile?.name}}</span>
+      </h3>
+
+      <h6 class="text-center text-muted font-weight-normal pb-3" *ngIf="storeProfile?.description">
+        {{storeProfile?.description}}
+      </h6>
+
+    </div>
 
   </div>
 </div>
@@ -81,29 +86,13 @@
       </td>
       <td>
 
-        <button type="button"
-                class="btn btn-sm btn-primary mr-2"
-                *ngIf="storeProfile?.types?.plantsType">
-          Plants
-        </button>
-
-        <button type="button"
-                class="btn btn-sm btn-danger mr-2"
-                *ngIf="storeProfile?.types?.flowersType">
-          Flower
-        </button>
-
-        <button type="button"
-                class="btn btn-sm btn-success mr-2"
-                *ngIf="storeProfile?.types?.gardeningType">
-          Gardening
-        </button>
-
-        <button type="button"
-                class="btn btn-sm btn-warning"
-                *ngIf="storeProfile?.types?.toolsType">
-          Tools
-        </button>
+        <div class=" text-muted font-weight-light align-middle">
+          <app-show-product-categories
+            *ngIf="productCategoryMap"
+            [currentProductCategories]="storeProfile.productCategories"
+            [productCategoryMap]="productCategoryMap">
+          </app-show-product-categories>
+        </div>
 
       </td>
     </tr>

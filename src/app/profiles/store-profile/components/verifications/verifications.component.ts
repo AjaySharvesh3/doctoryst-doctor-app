@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {UserService} from "../../../../common/user/services/user.service";
 import * as firebase from "firebase";
+import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-verifications',
@@ -16,7 +17,8 @@ import * as firebase from "firebase";
 export class VerificationsComponent implements OnInit {
   addAadharForm: FormGroup;
   formSubmitted = false;
-  isAddAadhar: boolean;
+
+  faCaretLeft: any = faCaretLeft;
 
   storeProfile: StoreModel;
   storeId: string;

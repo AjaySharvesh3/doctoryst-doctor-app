@@ -25,3 +25,7 @@
 .right {
   float: right;
 }
+
+.store-profile:hover {
+  cursor: pointer;
+}

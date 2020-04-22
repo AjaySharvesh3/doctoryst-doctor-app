@@ -11,6 +11,7 @@ import {TicketsModule} from "./tickets/tickets.module";
 import {LayoutModule} from "./common/layout/layout.module";
 import {PageNotFoundComponent} from "./common/layout/components/page-not-found/page-not-found.component";
 import {ProductCategoryModule} from "./product-category/product-category.module";
+import {ItemCategoryModule} from "./item-category/item-category.module";
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: 'product-category',
     loadChildren: () => ProductCategoryModule,
+    canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard],
+  },
+  {
+    path: 'item-category',
+    loadChildren: () => ItemCategoryModule,
     canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard],
   },
   {

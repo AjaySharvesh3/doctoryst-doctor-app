@@ -3,12 +3,6 @@ export interface StoreModel {
   name?: string;
   description?: string;
   contact?: string;
-  types?: {
-    plantsType: boolean,
-    flowersType: boolean,
-    gardeningType: boolean,
-    toolsType: boolean,
-  };
   storeHolder?: {
     storeHolderId?: string;
     storeHolderName?: string;
@@ -25,6 +19,8 @@ export interface StoreModel {
     email: boolean;
     aadharCard: boolean;
   };
+
+  productCategories?: [string];
 
   createdBy?: string;
   createdAt?: {};

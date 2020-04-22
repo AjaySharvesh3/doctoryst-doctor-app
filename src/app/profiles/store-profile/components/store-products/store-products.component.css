@@ -75,3 +75,7 @@
 .not-allowed-hover {
   cursor: not-allowed;
 }
+
+.store-product:hover {
+  cursor: pointer;
+}

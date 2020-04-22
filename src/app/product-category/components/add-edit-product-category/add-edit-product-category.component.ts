@@ -1,11 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import _ from "lodash";
 import {AppConstant} from "../../../common/core/constants";
-import {UserModel} from "../../../common/user/models/user.model";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
-import {UserService} from "../../../common/user/services/user.service";
 import * as firebase from "firebase";
-import { faPencilAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faPlus, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {ProductCategoryModel} from "../../models/product-category.model";
 import {ProductCategoryService} from "../../services/product-category.service";
 
@@ -17,11 +16,17 @@ import {ProductCategoryService} from "../../services/product-category.service";
 export class AddEditProductCategoryComponent implements OnInit {
   addEditProductCategoryForm: FormGroup;
   formSubmitted = false;
+  productThemeColorList = AppConstant.PRODUCT_THEME_COLOR_LIST;
+  selectedProductTheme = 'primary';
 
-  selectedBusinessName: string;
+  inputNameValue: string;
+  inputDescriptionValue: string;
+  inputProductLogoValue: string;
 
   faPencilAlt: any = faPencilAlt;
   faPlus: any = faPlus;
+  faTrash: any = faTrash;
+  faTimes: any = faTimes;
 
   @Input() isAddProductCategory: boolean;
   @Input() isEditProductCategory: boolean;
@@ -35,7 +40,12 @@ export class AddEditProductCategoryComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private productCategoryService: ProductCategoryService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder
+  ) {
+  }
+
+  setSelectedTheme(roleBrand) {
+    this.selectedProductTheme = roleBrand;
   }
 
   get name() {
@@ -46,6 +56,14 @@ export class AddEditProductCategoryComponent implements OnInit {
     return this.addEditProductCategoryForm.get('description');
   }
 
+  get productLogoUrl() {
+    return this.addEditProductCategoryForm.get('productLogoUrl');
+  }
+
+  get productThemeColor() {
+    return this.addEditProductCategoryForm.get('productThemeColor');
+  }
+
   ngOnInit() {
     this.initAddEditProductCategoryForm();
   }
@@ -53,7 +71,10 @@ export class AddEditProductCategoryComponent implements OnInit {
   initAddEditProductCategoryForm() {
     this.addEditProductCategoryForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ''
+      description: '',
+      productLogoUrl: '',
+      productThemeColor: '',
+      productThemeColorCode: ''
     });
   }
 
@@ -71,6 +92,8 @@ export class AddEditProductCategoryComponent implements OnInit {
   populateProductCategoryFormWithExistingProductCategory(existingProductCategory) {
     this.name.setValue(existingProductCategory.name);
     this.description.setValue(existingProductCategory.description);
+    this.productLogoUrl.setValue(existingProductCategory.productLogoUrl);
+    this.productThemeColor.setValue(existingProductCategory.productThemeColor);
   }
 
   confirmAddProductCategory() {
@@ -84,6 +107,9 @@ export class AddEditProductCategoryComponent implements OnInit {
     productCategory.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     productCategory.updatedAt = productCategory.createdAt;
     productCategory.status = AppConstant.STATUS.ENABLED;
+    let color = this.addEditProductCategoryForm.value.productThemeColor.split(",");
+    productCategory.productThemeColor = color[0];
+    productCategory.productThemeColorCode = color[1];
 
     this.productCategoryService
       .addProductCategory(productCategory)
@@ -99,14 +125,18 @@ export class AddEditProductCategoryComponent implements OnInit {
     this.formSubmitted = true;
 
     if (!this.addEditProductCategoryForm.valid) {
+      console.log('error');
       return;
     }
 
     const productCategory = this.addEditProductCategoryForm.value;
+    console.log(productCategory);
     productCategory.id = this.selectedProductCategory.id;
     productCategory.status = this.selectedProductCategory.status;
     productCategory.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     productCategory.updatedAt = productCategory.createdAt;
+    productCategory.productThemeColor = this.selectedProductCategory.productThemeColor;
+    productCategory.productThemeColorCode = this.selectedProductCategory.productThemeColorCode;
 
     this.productCategoryService
       .updateProductCategory(productCategory)

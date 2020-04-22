@@ -17,6 +17,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {TicketsModule} from "./tickets/tickets.module";
 import {StoreProfileModule} from "./profiles/store-profile/store-profile.module";
+import {ColorPickerModule} from "ngx-color-picker";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {StoreProfileModule} from "./profiles/store-profile/store-profile.module"
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    ColorPickerModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),

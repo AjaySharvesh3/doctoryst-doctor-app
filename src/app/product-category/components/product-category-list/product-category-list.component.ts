@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AppConstant} from "../../../common/core/constants";
 import {ProductCategoryModel} from "../../models/product-category.model";
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -9,11 +9,10 @@ import {ProductCategoryService} from "../../services/product-category.service";
   templateUrl: './product-category-list.component.html',
   styleUrls: ['./product-category-list.component.css']
 })
-export class ProductCategoryListComponent implements OnInit {
+export class ProductCategoryListComponent implements OnInit, OnChanges {
   productCategoryList: [ProductCategoryModel];
   public dataFetchInProgress: boolean;
   public isInitialDataLoad: boolean;
-  allTypes = AppConstant.TYPES;
 
   faExclamationTriangle: any = faExclamationTriangle;
 
@@ -33,6 +32,10 @@ export class ProductCategoryListComponent implements OnInit {
       && changes.refreshProductCategoryList.currentValue) {
       this.getProductCategoryList();
     }
+  }
+
+  getColor(productCategory: ProductCategoryModel) {
+    return '4px solid ' + productCategory.productThemeColorCode;
   }
 
   getProductCategoryList() {

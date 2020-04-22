@@ -31,11 +31,19 @@ export class AppConstant {
       active: 'true',
       helpText: 'Manage Stores',
       allowedRoles: ['operation']
-    },{
-      menuName: 'Products',
+    },
+    {
+      menuName: 'Product Categories',
       path: 'product-category',
       active: 'true',
       helpText: 'Manage Products',
+      allowedRoles: ['operation']
+    },
+    {
+      menuName: 'Item Categories',
+      path: 'item-category',
+      active: 'true',
+      helpText: 'Manage Items',
       allowedRoles: ['operation']
     },
     {
@@ -148,6 +156,37 @@ export class AppConstant {
       path: 'store-products',
       active: 'true',
       helpText: 'Manage Products'
+    }
+  ];
+
+  static readonly PRODUCT_THEME_COLOR_LIST = [
+    {
+      color: 'primary',
+      code: '#02b3e4'
+    },
+    {
+      color: 'secondary',
+      code: '#607D8B'
+    },
+    {
+      color: 'success',
+      code: '#02ccba'
+    },
+    {
+      color: 'info',
+      code: '#a951ed'
+    },
+    {
+      color: 'dark',
+      code: '#000'
+    },
+    {
+      color: 'warning',
+      code: '#FA7623'
+    },
+    {
+      color: 'danger',
+      code: '#ff5483'
     }
   ];
 

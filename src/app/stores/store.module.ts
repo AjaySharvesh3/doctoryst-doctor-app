@@ -11,6 +11,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { DeleteStoreComponent } from './components/delete-store/delete-store.component';
 import {StoreProfileModule} from "../profiles/store-profile/store-profile.module";
+import {ProductCategoryModule} from "../product-category/product-category.module";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {StoreProfileModule} from "../profiles/store-profile/store-profile.module
     TooltipModule,
     StoreProfileModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ProductCategoryModule
   ]
 })
 export class StoreModule {

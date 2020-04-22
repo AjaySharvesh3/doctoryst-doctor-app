@@ -20,13 +20,13 @@
   <div class="d-flex justify-content-center pt-2 flex-wrap">
 
     <div class="m-2 text-center" *ngFor="let productCategory of productCategoryList">
-      <div class="card top-category-card whitesmoke-bg {{productCategory.cardTopTheme}} custom-hover"
-           tooltip="{{productCategory.tooltip}}">
+      <div class="card top-category-card whitesmoke-bg custom-hover"
+           [ngStyle]="{'border-top': getColor(productCategory)}">
         <div class="card-body text-center">
 
           <img class="justify-content-center"
-               src="../../../../assets/images/products/plants/plants_available.png"
-               alt="{{productCategory.altText}}"/>
+               src="{{productCategory?.productLogoUrl}}"
+               alt="{{productCategory.name}}"/>
 
           <h5 class="text-primary text-muted mt-3">
             {{productCategory?.name}}
@@ -36,12 +36,12 @@
             {{productCategory?.description}}
           </h6>
 
-          <div class="pt-3">
+          <div class="pt-4">
             <app-add-edit-product-category
               (afterProductCategoryAddedOrEdited)="getProductCategoryList()"
               [isEditProductCategory]="true"
               [selectedProductCategory]="productCategory"
-              class="m-1 mt-2">
+              class="m-1">
             </app-add-edit-product-category>
 
             <app-enable-disable-product-category

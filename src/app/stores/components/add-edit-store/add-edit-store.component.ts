@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StoreModel} from '../../models/store.model';
 import {AppConstant} from '../../../common/core/constants';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
@@ -9,6 +9,8 @@ import _ from 'lodash';
 import {faPencilAlt, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {UserService} from "../../../common/user/services/user.service";
 import {UserModel} from "../../../common/user/models/user.model";
+import {ProductCategoryModel} from "../../../product-category/models/product-category.model";
+import {ProductCategoryService} from "../../../product-category/services/product-category.service";
 
 @Component({
   selector: 'app-add-edit-store',
@@ -18,10 +20,12 @@ import {UserModel} from "../../../common/user/models/user.model";
 export class AddEditStoreComponent implements OnInit {
   addEditStoreForm: FormGroup;
   formSubmitted = false;
-  allTypes = AppConstant.TYPES;
+  public dataFetchInProgress: boolean;
+  public isInitialDataLoad: boolean;
 
   userList: [UserModel];
   user: UserModel;
+  productCategoryList: [ProductCategoryModel];
   selectedBusinessName: string;
 
   faPencilAlt: any = faPencilAlt;
@@ -40,6 +44,7 @@ export class AddEditStoreComponent implements OnInit {
     private modalService: BsModalService,
     private storeService: StoreService,
     private userService: UserService,
+    private productCategoryService: ProductCategoryService,
     private formBuilder: FormBuilder) {
   }
 
@@ -63,13 +68,14 @@ export class AddEditStoreComponent implements OnInit {
     return this.addEditStoreForm.get('storeHolder') as FormGroup;
   }
 
-  get types() {
-    return this.addEditStoreForm.get('types') as FormGroup;
+  get productCategories() {
+    return this.addEditStoreForm.get('productCategories') as FormArray;
   }
 
   ngOnInit() {
-    this.initAddEditStoreForm();
     this.getBusinessUserList();
+    this.getProductCategoryList();
+    this.initAddEditStoreForm();
   }
 
   initAddEditStoreForm() {
@@ -90,12 +96,8 @@ export class AddEditStoreComponent implements OnInit {
         email: false,
         aadharCard: false,
       },
-      types: this.formBuilder.group({
-        plantsType: false,
-        flowersType: false,
-        gardeningType: false,
-        toolsType: false
-      })
+      productCategories: this.formBuilder.control(
+        [])
     });
   }
 
@@ -121,9 +123,7 @@ export class AddEditStoreComponent implements OnInit {
     this.address.get('city').setValue(existingStore.address.city);
     this.address.get('state').setValue(existingStore.address.state);
 
-    if (existingStore.types) {
-      this.types.setValue(existingStore.types);
-    }
+    this.productCategories.setValue(existingStore.productCategories);
   }
 
   confirmAddStore() {
@@ -161,7 +161,7 @@ export class AddEditStoreComponent implements OnInit {
       return;
     }
 
-    this.user =  _.find(this.userList, {id: this.addEditStoreForm.value.storeHolder.storeHolderId});
+    this.user = _.find(this.userList, {id: this.addEditStoreForm.value.storeHolder.storeHolderId});
     //@ts-ignore
     this.selectedBusinessName = this.user.firstName + " " + this.user.lastName;
 
@@ -170,6 +170,7 @@ export class AddEditStoreComponent implements OnInit {
     store.status = this.selectedStore.status;
     store.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     store.updatedAt = store.createdAt;
+    store.verifications.email = true;
 
     store.storeHolder.storeHolderName = this.selectedBusinessName;
 
@@ -222,6 +223,41 @@ export class AddEditStoreComponent implements OnInit {
       .catch(error => {
         console.log('error', error);
       });
+  }
+
+  getProductCategoryList() {
+    this.startDataFetch();
+
+    this.productCategoryService
+      .getProductCategoryList()
+      .then(productCategoryDocuments => {
+        const productCategories = [];
+
+        productCategoryDocuments.forEach(productCategoryDocument => {
+          if (productCategoryDocument.exists === false) {
+            return null;
+          } else {
+            const productCategory = productCategoryDocument.data();
+            productCategory.id = productCategoryDocument.id;
+            productCategories.push(productCategory);
+          }
+        });
+
+        this.productCategoryList = productCategories as [ProductCategoryModel];
+        this.endDataFetch();
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+  }
+
+  startDataFetch() {
+    this.dataFetchInProgress = true;
+  }
+
+  endDataFetch() {
+    this.isInitialDataLoad = false;
+    this.dataFetchInProgress = false;
   }
 
 }

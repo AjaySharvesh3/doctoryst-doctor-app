@@ -1,0 +1,10 @@
+<ng-container *ngIf="currentProductCategories?.length > 0">
+  <div *ngFor="let productCategory of currentProductCategories"
+       class="d-inline-flex flex-wrap">
+    <button
+      class="btn font-weight-normal btn-{{productCategoryMap[productCategory]?.productThemeColor}} m-1">
+      {{productCategoryMap[productCategory]?.name}}
+    </button>
+
+  </div>
+</ng-container>

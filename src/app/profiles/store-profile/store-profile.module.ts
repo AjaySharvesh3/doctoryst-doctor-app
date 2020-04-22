@@ -8,6 +8,8 @@ import { StoreProfileContentComponent } from './components/store-profile-content
 import {LayoutModule} from "../../common/layout/layout.module";
 import { VerificationsComponent } from './components/verifications/verifications.component';
 import {StoreProductsComponent} from "./components/store-products/store-products.component";
+import {ProductCategoryModule} from "../../product-category/product-category.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 
@@ -23,7 +25,9 @@ import {StoreProductsComponent} from "./components/store-products/store-products
     StoreProfileRoutingModule,
     ReactiveFormsModule,
     TooltipModule,
-    LayoutModule
+    LayoutModule,
+    ProductCategoryModule,
+    FontAwesomeModule
   ],
   exports: [
     StoreProfileDashboardComponent,

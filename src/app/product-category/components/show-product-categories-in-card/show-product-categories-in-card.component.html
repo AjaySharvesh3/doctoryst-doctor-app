@@ -1,0 +1,32 @@
+<ng-container
+  *ngIf="currentProductCategories?.length > 0">
+  <div class="d-flex justify-content-center pt-2 flex-wrap">
+
+    <div *ngFor="let productCategory of currentProductCategories"
+         class="m-2 text-center ">
+
+      <div
+        class="card top-category-card whitesmoke-bg border"
+        tooltip="Click to see available {{productCategoryMap[productCategory]?.name}}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="float-sm-left">
+                {{productCategoryMap[productCategory]?.name}}</h4>
+
+              <h6 class="text-muted float-sm-left">
+                {{productCategoryMap[productCategory]?.description}}</h6>
+
+            </div>
+
+            <div class="col">
+              <img class="float-sm-right"
+                   src="{{productCategoryMap[productCategory]?.productLogoUrl}}"
+                   alt="{{productCategoryMap[productCategory]?.name}} Logo"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

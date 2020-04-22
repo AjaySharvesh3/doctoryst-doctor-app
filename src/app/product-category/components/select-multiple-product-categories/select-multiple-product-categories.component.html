@@ -1,0 +1,22 @@
+<div [formGroup]="selectMultipleProductCategoriesForm">
+  <div class="form-group">
+    <label class="text-primary">Product Categories</label>
+
+    <div *ngIf="productCategoryList"
+         formArrayName="productCategories">
+      <div *ngFor="let productCategory of productCategories.controls; let productCategoryIndex = index"
+           [formGroupName]="productCategoryIndex"
+           class="form-check">
+        <input (change)="setSelectMultipleProductCategories()"
+               class="form-check-input"
+               formControlName="selected"
+               id="checkbox-{{productCategoryIndex}}-{{productCategory.value.id}}"
+               type="checkbox">
+        <label class="form-check-label"
+               for="checkbox-{{productCategoryIndex}}-{{productCategory.value.id}}">
+          {{productCategory.value.name}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

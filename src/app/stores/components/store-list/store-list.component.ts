@@ -1,8 +1,11 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {StoreModel} from '../../models/store.model';
+import _ from 'lodash';
 import {StoreService} from '../../services/store.service';
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 import {AppConstant} from '../../../common/core/constants';
+import {ProductCategoryModel} from "../../../product-category/models/product-category.model";
+import {ProductCategoryService} from "../../../product-category/services/product-category.service";
 
 @Component({
   selector: 'app-store-list',
@@ -11,21 +14,24 @@ import {AppConstant} from '../../../common/core/constants';
 })
 export class StoreListComponent implements OnInit, OnChanges {
   storeList: [StoreModel];
+  productCategoryMap: [ProductCategoryModel];
   public dataFetchInProgress: boolean;
   public isInitialDataLoad: boolean;
-  allTypes = AppConstant.TYPES;
 
   faExclamationTriangle: any = faExclamationTriangle;
 
   @Input() refreshStoreList = false;
 
   constructor(
-    private storeService: StoreService) {
+    private storeService: StoreService,
+    private productCategoryService: ProductCategoryService,
+  ) {
   }
 
   ngOnInit() {
     this.isInitialDataLoad = false;
     this.getStoreList();
+    this.getProductCategoryList();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -50,6 +56,30 @@ export class StoreListComponent implements OnInit, OnChanges {
         });
 
         this.storeList = stores as [StoreModel];
+        this.endDataFetch();
+      })
+      .catch(error => {
+        console.log('error', error);
+        this.endDataFetch();
+      });
+  }
+
+  getProductCategoryList() {
+    this.startDataFetch();
+
+    this.productCategoryService
+      .getProductCategoryList()
+      .then(productCategoryDocuments => {
+        const productCategories = [];
+
+        productCategoryDocuments.forEach(productCategoryDocuments => {
+          let store = productCategoryDocuments.data();
+          store.id = productCategoryDocuments.id;
+          productCategories.push(store);
+        });
+
+        // this.productCategoryMap = productCategories as [ProductCategoryModel];
+        this.productCategoryMap = _.keyBy(productCategories as [ProductCategoryModel], 'id');
         this.endDataFetch();
       })
       .catch(error => {
