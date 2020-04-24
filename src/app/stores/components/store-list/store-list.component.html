@@ -22,12 +22,12 @@
     <table *ngIf="storeList?.length > 0"
            class="table table-striped border">
 
-      <tbody>
+      <tbody *ngIf="!showStores">
       <tr *ngFor="let store of storeList index as index"
           class="align-middle">
 
         <td class="text-muted align-middle pl-3" scope="row">
-          {{index + 1}}
+          <span class="badge badge-secondary text-light">{{index + 1}}</span>
         </td>
 
         <td class="align-middle-bold text-dark">
@@ -85,6 +85,17 @@
 
     </table>
 
+  </div>
+
+</div>
+
+<div *ngIf="showStores"
+     class="row justify-content-center mb-2">
+
+  <div class="col-lg-auto">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 
 </div>

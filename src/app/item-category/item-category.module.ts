@@ -7,6 +7,10 @@ import { AddEditItemCategoryComponent } from './components/add-edit-item-categor
 import { EnableDisableItemCategoryComponent } from './components/enable-disable-item-category/enable-disable-item-category.component';
 import { DeleteItemCategoryComponent } from './components/delete-item-category/delete-item-category.component';
 import {ItemCategoryRoutingModule} from "./item-category-routing.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
+import {ReactiveFormsModule} from "@angular/forms";
+import {ProductCategoryModule} from "../product-category/product-category.module";
 
 
 
@@ -14,7 +18,11 @@ import {ItemCategoryRoutingModule} from "./item-category-routing.module";
   declarations: [ItemCategoryDashboardComponent, ItemCategoryListComponent, ItemCategoryOptionListComponent, AddEditItemCategoryComponent, EnableDisableItemCategoryComponent, DeleteItemCategoryComponent],
   imports: [
     CommonModule,
-    ItemCategoryRoutingModule
+    ItemCategoryRoutingModule,
+    FontAwesomeModule,
+    TooltipModule,
+    ReactiveFormsModule,
+    ProductCategoryModule
   ]
 })
 export class ItemCategoryModule { }

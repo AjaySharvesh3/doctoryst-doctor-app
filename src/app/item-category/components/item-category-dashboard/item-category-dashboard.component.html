@@ -1,1 +1,92 @@
-<p>item-category-dashboard works!</p>
+<div class="container-fluid">
+
+  <div class="row mb-5">
+    <div class="col-5">
+
+      <div class="card vh-100 mb-4 card-no-border">
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="pt-2 col-5">
+              <h5 class="category-title">
+                <fa-icon [icon]="faEnvelopeOpenText"></fa-icon>
+                Item Category
+              </h5>
+            </div>
+
+            <div class="col-7 justify-content-end text-right">
+
+              <app-add-edit-item-category
+                (afterItemCategoryAddedOrEdited)="triggerItemCategoryRefresh()"
+                [isAddItemCategory]="true">
+              </app-add-edit-item-category>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <app-item-category-list
+                (emitItemCategoryDetails)="gotItemCategoryData($event)"
+                [refreshItemCategoryList]="refreshItemCategoryList">
+              </app-item-category-list>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-7">
+
+      <div class="card mb-4 vh-100 card-no-border">
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="pt-2 col-4">
+              <h5 class="category-title">
+                <fa-icon [icon]="faEnvelopeOpenText"></fa-icon>
+                Item Options
+              </h5>
+            </div>
+
+            <div class="col-8 justify-content-end text-right">
+
+              <!--<app-add-edit-store
+                (afterStoreAddedOrEdited)="triggerStoreRefresh()"
+                [isAddStore]="true">
+              </app-add-edit-store>-->
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <app-item-category-option-list
+                [itemCategoryData] = "itemCategoryData"
+                [refreshItemCategoryList]="refreshItemCategoryList">
+              </app-item-category-option-list>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

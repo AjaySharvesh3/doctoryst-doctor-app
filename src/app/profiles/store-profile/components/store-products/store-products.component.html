@@ -3,8 +3,8 @@
   Store Products
 </h5>
 
-<div class="row mb-4 border">
-  <div class="col-lg  static-card mx-auto">
+<div class="row mb-4 custom-border" *ngIf="!showStoreProducts">
+  <div class="col-lg static-card mx-auto">
 
     <div>
 
@@ -24,12 +24,12 @@
   </div>
 </div>
 
-<h5 class="mb-4">
+<h5 class="mb-4" *ngIf="!showStoreProducts">
   Store's available products
 </h5>
 
 
-<div class="row">
+<div class="row" *ngIf="!showStoreProducts">
 
   <div class="col">
     <app-show-product-categories-in-card
@@ -37,6 +37,18 @@
       [currentProductCategories]="storeProfile?.productCategories"
       [productCategoryMap]="productCategoryMap">
     </app-show-product-categories-in-card>
+  </div>
+
+</div>
+
+
+<div *ngIf="showStoreProducts"
+     class="row justify-content-center mt-5">
+
+  <div class="col-lg-auto">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 
 </div>

@@ -14,6 +14,8 @@ export class ProductCategoryListComponent implements OnInit, OnChanges {
   public dataFetchInProgress: boolean;
   public isInitialDataLoad: boolean;
 
+  showProductCategories: boolean = true;
+
   faExclamationTriangle: any = faExclamationTriangle;
 
   @Input() refreshProductCategoryList = false;
@@ -53,6 +55,7 @@ export class ProductCategoryListComponent implements OnInit, OnChanges {
         });
 
         this.productCategoryList = productCategories as [ProductCategoryModel];
+        this.showProductCategories = false;
         this.endDataFetch();
       })
       .catch(error => {

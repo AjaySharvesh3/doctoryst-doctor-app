@@ -1,0 +1,16 @@
+.custom-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-left: #014A74 3px solid;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border-radius: .50rem;
+}
+
+.custom-card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  margin-top: 5px;
+  padding: 0.75rem;
+}

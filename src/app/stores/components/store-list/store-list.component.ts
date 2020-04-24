@@ -3,7 +3,6 @@ import {StoreModel} from '../../models/store.model';
 import _ from 'lodash';
 import {StoreService} from '../../services/store.service';
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
-import {AppConstant} from '../../../common/core/constants';
 import {ProductCategoryModel} from "../../../product-category/models/product-category.model";
 import {ProductCategoryService} from "../../../product-category/services/product-category.service";
 
@@ -17,6 +16,8 @@ export class StoreListComponent implements OnInit, OnChanges {
   productCategoryMap: [ProductCategoryModel];
   public dataFetchInProgress: boolean;
   public isInitialDataLoad: boolean;
+
+  showStores: boolean = true;
 
   faExclamationTriangle: any = faExclamationTriangle;
 
@@ -56,6 +57,7 @@ export class StoreListComponent implements OnInit, OnChanges {
         });
 
         this.storeList = stores as [StoreModel];
+        this.showStores = false;
         this.endDataFetch();
       })
       .catch(error => {
@@ -78,7 +80,6 @@ export class StoreListComponent implements OnInit, OnChanges {
           productCategories.push(store);
         });
 
-        // this.productCategoryMap = productCategories as [ProductCategoryModel];
         this.productCategoryMap = _.keyBy(productCategories as [ProductCategoryModel], 'id');
         this.endDataFetch();
       })

@@ -412,11 +412,13 @@ body {
 
 .custom-sans-font-bold {
   font-family: 'Netflix Sans Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .custom-sans-font-black {
   font-family: 'Netflix Sans Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
   letter-spacing: 0.5px;
 }
 

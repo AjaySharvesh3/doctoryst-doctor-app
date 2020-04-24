@@ -1,1 +1,89 @@
-<p>item-category-option-list works!</p>
+<div class="mt-4">
+
+
+  <div *ngIf="dataFetchInProgress && isInitialDataLoad"
+       class="row justify-content-center mb-5">
+
+    <div class="col-lg-auto">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="itemCategoryData == null && !dataFetchInProgress"
+       class="alert alert-primary text-center" role="alert">
+    <div>No Item Options Found.</div>
+  </div>
+
+  <div class="m-2" *ngIf="!!itemCategoryData">
+    <div class="border whitesmoke-bg custom-margin">
+      <div class="row p-4">
+        <div class="col w-75">
+          <h5 class="text-muted">{{itemCategoryData?.name}}</h5>
+          <span class="text-muted mt-1">{{itemCategoryData?.description}}</span>
+        </div>
+      </div>
+
+
+      <table class="table mt-3">
+        <tbody>
+
+        <tr>
+          <td class="pl-4 text-muted"
+              scope="row">
+            <h6>Product Categories</h6>
+          </td>
+          <td>
+            <app-show-product-categories
+              *ngIf="productCategoryMap"
+              [currentProductCategories]="itemCategoryData?.productCategories"
+              [productCategoryMap]="productCategoryMap">
+            </app-show-product-categories>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="pl-4 text-muted"
+              scope="row">
+            <h6>Options</h6>
+          </td>
+          <td>
+
+            <table class="table border m-1">
+              <tbody>
+
+              <tr class="pt-1" *ngFor="let option of itemCategoryData?.options; index as index">
+                <td>
+                  <span>{{index + 1}}</span>
+                </td>
+                <td class="text-muted"
+                    scope="row">
+                  <h6>{{option?.itemOptions}}</h6>
+                </td>
+                <td>
+                  <fa-icon class="float-sm-right mr-3 text-danger"
+                           [icon]="faTrash"></fa-icon>
+                  <fa-icon class="float-sm-right mr-3 text-primary"
+                           [icon]="faPencilAlt"
+                           (click)="editSelectedItemOption(index)">
+                  </fa-icon>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+
+          </td>
+        </tr>
+
+
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+</div>

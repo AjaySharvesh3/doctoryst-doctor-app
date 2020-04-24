@@ -1,1 +1,47 @@
-<p>delete-item-category works!</p>
+<button (click)="openDeleteItemCategory()"
+        class="btn btn-outline-danger"
+        tooltip="Delete ItemCategory">
+  <fa-icon [icon]="faTrash"></fa-icon>
+</button>
+
+<ng-template #enableDeleteItemCategoryTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 class="modal-title">Delete Item Category</h4>
+    <button (click)="closeDeleteItemCategory()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-5 pr-5 mt-2">
+
+    <div class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
+      <p class="ml-3">Do you want to delete the below Item Category?</p>
+    </div>
+
+    <div class="ml-5 pt-5 pb-5">
+      <div class="font-weight-bold text-muted">
+        {{selectedItemCategory.name}}
+        <span *ngIf="selectedItemCategory.status === 'deleted'"><i
+          class="fas fa-exclamation-triangle text-danger"></i></span>
+      </div>
+
+      <div class="text-muted pt-1">
+        {{selectedItemCategory.description}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeDeleteItemCategory()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmDeleteItemCategory()"
+            class="btn btn-danger"
+            type="button">
+      Confirm Delete Item Category
+    </button>
+  </div>
+</ng-template>

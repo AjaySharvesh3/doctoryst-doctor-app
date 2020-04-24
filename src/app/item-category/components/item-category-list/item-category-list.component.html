@@ -1,1 +1,77 @@
-<p>item-category-list works!</p>
+<div class="mt-4">
+
+
+  <div *ngIf="dataFetchInProgress && isInitialDataLoad"
+       class="row justify-content-center mb-5">
+
+    <div class="col-lg-auto">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="table-responsive">
+
+    <div *ngIf="itemCategoryList?.length < 1 && !dataFetchInProgress"
+         class="alert alert-primary text-center" role="alert">
+      <div>No Item Category Found.</div>
+    </div>
+
+    <table *ngIf="itemCategoryList?.length > 0"
+           class="table border table-hover">
+
+      <tbody>
+      <tr *ngFor="let itemCategory of itemCategoryList index as index"
+          class="align-middle clickable-row custom-hover"
+          [ngClass]="{'whitesmoke-bg': selectedItemCategoryData?.id === itemCategory.id}"
+          (click)="emitAfterItemCategorySelected(itemCategory)">
+
+        <td class="text-muted align-middle pl-3" scope="row">
+          <span class="badge badge-secondary text-light">{{index + 1}}</span>
+        </td>
+
+        <td class="align-middle-bold text-dark">
+          <div class="font-weight store-hover">
+            <h6>{{itemCategory?.name}}</h6>
+            <span *ngIf="itemCategory?.status === 'disabled'"
+                  tooltip="Item Category Disabled">
+              <fa-icon [icon]="faExclamationTriangle" class="text-danger"></fa-icon>
+            </span>
+          </div>
+          <div class="mt-2 text-muted font-weight align-middle">
+            {{itemCategory?.description}}
+          </div>
+        </td>
+
+        <td class="d-flex align-middle flex-wrap justify-content-end">
+          <app-add-edit-item-category
+            (afterItemCategoryAddedOrEdited)="getItemCategoryList()"
+            [isEditItemCategory]="false"
+            [selectedItemCategory]="itemCategory"
+            class="m-1">
+          </app-add-edit-item-category>
+
+          <app-enable-disable-item-category
+            (afterItemCategoryEnabledOrDisabled)="getItemCategoryList()"
+            [selectedItemCategory]="itemCategory"
+            class="m-1">
+          </app-enable-disable-item-category>
+
+          <app-delete-item-category
+            (afterItemCategoryDeleted)="getItemCategoryList()"
+            [selectedItemCategory]="itemCategory"
+            class="m-1">
+          </app-delete-item-category>
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+
+</div>

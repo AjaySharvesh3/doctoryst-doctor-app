@@ -17,7 +17,7 @@ export class StoreProductsComponent implements OnInit {
   storeProfile: StoreModel;
   productCategoryMap: [ProductCategoryModel];
   storeId: string;
-  showStoreProfileContent: boolean = true;
+  showStoreProducts: boolean = true;
 
   faCaretLeft: any = faCaretLeft;
 
@@ -44,10 +44,10 @@ export class StoreProductsComponent implements OnInit {
       .getStoreById(this.storeId)
       .then(documentSnapshot => {
         this.storeProfile = documentSnapshot.data() as StoreModel;
-        this.showStoreProfileContent = false;
+        this.showStoreProducts = false;
       })
       .catch(error => {
-        this.showStoreProfileContent = false;
+        this.showStoreProducts = false;
         console.log('error', error);
       });
   }

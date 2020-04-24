@@ -1,1 +1,70 @@
-<p>enable-disable-item-category works!</p>
+<button (click)="openEnableDisableItemCategory()"
+        *ngIf="isDisableItemCategory"
+        class="btn btn-outline-secondary"
+        tooltip="Disable Item Category">
+  <fa-icon [icon]="faTimes"></fa-icon>
+</button>
+
+<button (click)="openEnableDisableItemCategory()"
+        *ngIf="isEnableItemCategory"
+        class="btn btn-outline-success"
+        tooltip="Enable Item Category">
+  <fa-icon [icon]="faCheck"></fa-icon>
+</button>
+
+<ng-template #enableDisableItemCategoryTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isDisableItemCategory" class="modal-title">Disable Item Category</h4>
+    <h4 *ngIf="isEnableItemCategory" class="modal-title">Enable Item Category</h4>
+    <button (click)="closeEnableDisableItemCategory()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-5 pr-5 mt-2">
+
+    <div *ngIf="isDisableItemCategory"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-danger"></fa-icon>
+      <p class="ml-3">Do you want to disable the below Item Category?</p>
+    </div>
+
+    <div *ngIf="isEnableItemCategory"
+         class="d-flex flex-row">
+      <fa-icon [icon]="faExclamationTriangle" class="font-size-1-2-rem text-success"></fa-icon>
+      <p class="ml-3">Do you want to enable the below Item Category?</p>
+    </div>
+
+    <div class="ml-5 pt-5 pb-5">
+      <div class="font-weight-bold text-muted">
+        {{selectedItemCategory.name}}
+        <span *ngIf="selectedItemCategory.status === 'disabled'"><i
+          class="fas fa-exclamation-triangle text-danger"></i></span>
+      </div>
+
+      <div class="text-muted pt-1">
+        {{selectedItemCategory.description}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeEnableDisableItemCategory()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmDisableItemCategory()"
+            *ngIf="isDisableItemCategory"
+            class="btn btn-danger"
+            type="button">
+      Confirm Disable Item Category
+    </button>
+    <button (click)="confirmEnableItemCategory()"
+            *ngIf="isEnableItemCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Enable Item Category
+    </button>
+  </div>
+</ng-template>

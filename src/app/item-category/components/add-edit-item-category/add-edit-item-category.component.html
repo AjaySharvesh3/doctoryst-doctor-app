@@ -1,1 +1,154 @@
-<p>add-edit-item-category works!</p>
+<button (click)="openAddEditItemCategory()"
+        *ngIf="isAddItemCategory"
+        class="btn btn-primary">
+  <fa-icon [icon]="faPlus"></fa-icon>
+  Add New Item Category
+</button>
+
+<button (click)="openAddEditItemCategory()"
+        *ngIf="isEditItemCategory"
+        class="btn btn-outline-primary"
+        tooltip="Edit Item Category">
+  <fa-icon [icon]="faPencilAlt"></fa-icon>
+</button>
+
+<ng-template #addEditItemCategoryTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isAddItemCategory" class="modal-title">Add New Item Category</h4>
+    <h4 *ngIf="isEditItemCategory" class="modal-title">Edit Item Category</h4>
+    <button (click)="closeAddEditItemCategory()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-4 pr-4 mt-2">
+
+    <form [formGroup]="addEditItemCategoryForm">
+
+      <div class="row">
+
+        <div class="col m-2 card details-card">
+          <div class="card-body">
+
+            <div class="d-flex row">
+
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary" for="name">Name</label>
+                  <input class="form-control required-field"
+                         formControlName="name"
+                         id="name"
+                         name="name"
+                         type="text">
+
+                  <div *ngIf="name.invalid && (name.dirty || name.touched || formSubmitted)"
+                       class="alert alert-danger">
+
+                    <div *ngIf="name.errors.required">
+                      Name is required.
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex row">
+
+              <div class="col-md justify-content-center">
+                <div class="form-group">
+                  <label class="text-primary" for="description">Description</label>
+                  <textarea
+                    class="form-control"
+                    formControlName="description"
+                    id="description"
+                    name="description"
+                    rows="2"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex row">
+
+              <div class="col-md justify-content-center">
+
+                <app-select-multiple-product-categories
+                  [parentFormGroup]="addEditItemCategoryForm"
+                  [productCategoryList]="productCategoryList">
+                </app-select-multiple-product-categories>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="col m-2 card details-card">
+          <div class="card-body">
+
+
+            <div formArrayName="options"
+                 *ngFor="let options of addEditItemCategoryForm.get('options').controls; index as index"
+                 class="form-group">
+
+              <div [formGroupName]="index">
+                <div class="form-group">
+
+                  <label class="text-primary" for="itemOptions">Option #{{index + 1}}</label>
+
+                  <div class="row">
+
+                    <div class="col-10">
+                      <input class="form-control"
+                             formControlName="itemOptions"
+                             id="itemOptions"
+                             name="itemOptions"
+                             type="text">
+                    </div>
+                    <div class="col-2">
+                      <button (click)="addOptionsButtonClick()"
+                              class="btn btn-outline-primary"
+                              tooltip="Add Option">
+                        <fa-icon [icon]="faPlus"></fa-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeAddEditItemCategory()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmAddItemCategory()"
+            *ngIf="isAddItemCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Add Item Category
+    </button>
+    <button (click)="confirmEditItemCategory()"
+            *ngIf="isEditItemCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Edit Item Category
+    </button>
+  </div>
+</ng-template>
