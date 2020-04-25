@@ -51,24 +51,18 @@
           </td>
           <td>
 
-            <table class="table border m-1">
+            <table class="table table-hover border m-1">
               <tbody>
 
-              <tr class="pt-1" *ngFor="let option of itemCategoryData?.options; index as index">
-                <td>
-                  <span>{{index + 1}}</span>
+              <tr class="m-2" *ngFor="let option of itemCategoryData?.options; index as index">
+                <td class="mt-2">
+                  <span class="text-muted">{{index + 1}}</span>
                 </td>
-                <td class="text-muted"
+                <td class="text-muted mt-2"
                     scope="row">
-                  <h6>{{option?.itemOptions}}</h6>
+                  <h6>{{option?.name}}</h6>
                 </td>
                 <td>
-                  <fa-icon class="float-sm-right mr-3 text-danger"
-                           [icon]="faTrash"></fa-icon>
-                  <fa-icon class="float-sm-right mr-3 text-primary"
-                           [icon]="faPencilAlt"
-                           (click)="editSelectedItemOption(index)">
-                  </fa-icon>
                 </td>
               </tr>
               </tbody>

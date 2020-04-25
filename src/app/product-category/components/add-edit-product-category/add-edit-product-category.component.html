@@ -125,11 +125,12 @@
           <div class="card top-category-card whitesmoke-bg custom-hover">
             <div class="card-body text-center">
 
-              <img *ngIf="!!inputProductLogoValue" class="justify-content-center"
-                   src="{{inputProductLogoValue}}"
+              <img *ngIf="!!productLogoUrl.value" class="justify-content-center"
+                   src="{{productLogoUrl.value}}"
                    alt="Product Logo"/>
 
-              <img *ngIf="inputProductLogoValue == null" class="justify-content-center logo"
+              <img *ngIf="productLogoUrl.value == null || productLogoUrl.value == ''"
+                   class="justify-content-center logo"
                    src="../../../../assets/images/placeholders/store_profile_placeholder.png"
                    alt="Product Logo"/>
 

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import {ItemCategoryModel} from "../../models/item-category.model";
 import {ItemCategoryService} from "../../services/item-category.service";
+import _ from "lodash";
 
 @Component({
   selector: 'app-item-category-list',
@@ -50,6 +51,14 @@ export class ItemCategoryListComponent implements OnInit, OnChanges {
         });
 
         this.itemCategoryList = itemCategories as [ItemCategoryModel];
+
+        let itemCategoryMap = _.keyBy(itemCategories, 'id');
+        if(this.selectedItemCategoryData) {
+          this.emitAfterItemCategorySelected(itemCategoryMap[this.selectedItemCategoryData.id]);
+        } else {
+          this.emitAfterItemCategorySelected(this.itemCategoryList[0]);
+        }
+
         this.endDataFetch();
       })
       .catch(error => {

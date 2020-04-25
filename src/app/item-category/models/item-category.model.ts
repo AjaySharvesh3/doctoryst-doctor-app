@@ -4,7 +4,7 @@ export interface ItemCategoryModel {
   description?: string;
   options?: [
     {
-      itemOptions?: string;
+      name?: string;
     }
   ];
   productCategories?: [string];

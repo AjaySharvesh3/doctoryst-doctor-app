@@ -75,6 +75,7 @@
               <div class="col-md justify-content-center">
 
                 <app-select-multiple-product-categories
+                  *ngIf="productCategoryList"
                   [parentFormGroup]="addEditItemCategoryForm"
                   [productCategoryList]="productCategoryList">
                 </app-select-multiple-product-categories>
@@ -93,34 +94,36 @@
 
 
             <div formArrayName="options"
-                 *ngFor="let options of addEditItemCategoryForm.get('options').controls; index as index"
+                 *ngFor="let option of addEditItemCategoryForm.get('options').controls; index as index"
                  class="form-group">
 
               <div [formGroupName]="index">
                 <div class="form-group">
 
-                  <label class="text-primary" for="itemOptions">Option #{{index + 1}}</label>
+                  <label class="text-primary" for="name">Option #{{index + 1}}</label>
 
                   <div class="row">
 
                     <div class="col-10">
-                      <input class="form-control"
-                             formControlName="itemOptions"
-                             id="itemOptions"
-                             name="itemOptions"
+                      <input (blur)="addOptionsClick()"
+                             class="form-control"
+                             formControlName="name"
+                             id="name"
+                             name="name"
                              type="text">
-                    </div>
-                    <div class="col-2">
-                      <button (click)="addOptionsButtonClick()"
-                              class="btn btn-outline-primary"
-                              tooltip="Add Option">
-                        <fa-icon [icon]="faPlus"></fa-icon>
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
 
+            </div>
+
+            <div>
+              <button (click)="addOptionsClick()"
+                      class="btn info-btn">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                Add Option
+              </button>
             </div>
           </div>
         </div>

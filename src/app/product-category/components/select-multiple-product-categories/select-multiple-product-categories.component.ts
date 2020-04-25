@@ -48,8 +48,7 @@ export class SelectMultipleProductCategoriesComponent implements OnInit {
       const newFormGroup = this.formBuilder.group({
         id: productCategory.id,
         name: productCategory.name,
-        selected: (this.parentFormGroup.get('productCategories') &&
-          this.parentFormGroup.get('productCategories').value &&
+        selected: (this.parentFormGroup.get('productCategories').value &&
           this.parentFormGroup.get('productCategories').value.indexOf(productCategory.id) !== -1)
       });
 

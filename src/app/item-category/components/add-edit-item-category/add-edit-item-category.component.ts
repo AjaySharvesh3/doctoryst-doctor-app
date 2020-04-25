@@ -3,6 +3,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppConstant} from "../../../common/core/constants";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import * as firebase from "firebase";
+import _ from 'lodash';
 import {faPencilAlt, faTimes, faPlus, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {ItemCategoryModel} from "../../models/item-category.model";
 import {ItemCategoryService} from "../../services/item-category.service";
@@ -50,17 +51,16 @@ export class AddEditItemCategoryComponent implements OnInit {
     return this.addEditItemCategoryForm.get('description');
   }
 
-  get productCategories() {
+  get productCategories(): FormArray {
     return this.addEditItemCategoryForm.get('productCategories') as FormArray;
   }
 
-  get options() {
+  get options(): FormArray {
     return this.addEditItemCategoryForm.get('options') as FormArray;
   }
 
   ngOnInit() {
     this.getProductCategoryList();
-    this.initAddEditItemCategoryForm();
   }
 
   initAddEditItemCategoryForm() {
@@ -71,21 +71,38 @@ export class AddEditItemCategoryComponent implements OnInit {
         []),
       applicableTo: [],
       isMultiple: false,
-      options: this.formBuilder.array([ this.addOptionFormGroup()])
+      options: this.formBuilder.array([])
     });
+
+    if (this.isAddItemCategory) {
+      this.addOptionFormGroup({});
+    }
+
   }
 
-  addOptionsButtonClick(): void {
-    (<FormArray>this.addEditItemCategoryForm.get('options')).push(this.addOptionFormGroup());
+  addOptionsClick(): void {
+    let emptyOptionFound = false;
+    _.forEach(this.options.controls, option => {
+      if (_.isEmpty(option.value.name)) {
+        emptyOptionFound = true;
+      }
+    });
+    if (!emptyOptionFound) {
+      this.addOptionFormGroup({});
+    }
   }
 
-  addOptionFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      itemOptions: ['', Validators.required],
+  addOptionFormGroup(existingOption) {
+    let newOptionFormGroup =this.formBuilder.group({
+      name: ['' || existingOption.name],
     });
+
+    this.options.push(newOptionFormGroup);
   }
 
   openAddEditItemCategory() {
+    this.initAddEditItemCategoryForm();
+
     this.confirmAddEditItemCategoryModal = this.modalService.show(this.addEditItemCategoryModalTemplate,
       {
         class: 'modal-xl',
@@ -102,7 +119,11 @@ export class AddEditItemCategoryComponent implements OnInit {
     this.description.setValue(existingItemCategory.description);
     this.productCategories.setValue(existingItemCategory.productCategories);
 
-    this.options.setValue(existingItemCategory.options);
+    _.forEach(existingItemCategory.options, option => {
+      this.addOptionFormGroup(option);
+    })
+
+    this.addOptionFormGroup({});
   }
 
   confirmAddItemCategory() {
@@ -111,6 +132,8 @@ export class AddEditItemCategoryComponent implements OnInit {
     if (!this.addEditItemCategoryForm.valid) {
       return;
     }
+
+    this.removeEmptyOptionField();
 
     const itemCategory = this.addEditItemCategoryForm.value;
     itemCategory.createdAt = firebase.firestore.FieldValue.serverTimestamp();
@@ -127,6 +150,25 @@ export class AddEditItemCategoryComponent implements OnInit {
         });
   }
 
+  removeEmptyOptionField() {
+    let emptyOptionIndex = null;
+    _.forEach(this.options.controls, (option, index) => {
+      if (_.isEmpty(option.value.name)) {
+        emptyOptionIndex = index;
+      }
+    });
+    console.log('emptyOptionIndex', emptyOptionIndex);
+    if (emptyOptionIndex) {
+      //this.options.removeAt(emptyOptionIndex);
+      this.findEmptyAndRemove(emptyOptionIndex);
+    }
+  }
+
+  findEmptyAndRemove(index: number) {
+    this.options.removeAt(index);
+    this.removeEmptyOptionField();
+  }
+
   confirmEditItemCategory() {
     this.formSubmitted = true;
 
@@ -134,6 +176,8 @@ export class AddEditItemCategoryComponent implements OnInit {
       console.log('error');
       return;
     }
+
+    this.removeEmptyOptionField();
 
     const itemCategory = this.addEditItemCategoryForm.value;
     console.log(itemCategory);

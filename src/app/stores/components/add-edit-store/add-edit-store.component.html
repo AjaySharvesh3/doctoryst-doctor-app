@@ -101,7 +101,8 @@
               <div class="col-md justify-content-center">
 
                 <app-select-multiple-product-categories
-                  [parentFormGroup]="addEditItemCategoryForm"
+                  *ngIf="productCategoryList"
+                  [parentFormGroup]="addEditStoreForm"
                   [productCategoryList]="productCategoryList" >
                 </app-select-multiple-product-categories>
 
