@@ -47,29 +47,30 @@
         <tr>
           <td class="pl-4 text-muted"
               scope="row">
-            <h6>Options</h6>
+            <h6>
+
+              <h6 class="mt-1 mb-4">Options</h6>
+
+              <table class="table table-hover table-borderless m-1">
+                <tbody>
+
+                <tr class="m-2" *ngFor="let option of itemCategoryData?.options; index as index">
+                  <td class="mt-2">
+                    <span class="text-muted">{{index + 1}}</span>
+                  </td>
+                  <td class="text-muted mt-2"
+                      scope="row">
+                    <h6>{{option?.name}}</h6>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </h6>
           </td>
-          <td>
 
-            <table class="table table-hover border m-1">
-              <tbody>
-
-              <tr class="m-2" *ngFor="let option of itemCategoryData?.options; index as index">
-                <td class="mt-2">
-                  <span class="text-muted">{{index + 1}}</span>
-                </td>
-                <td class="text-muted mt-2"
-                    scope="row">
-                  <h6>{{option?.name}}</h6>
-                </td>
-                <td>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-
-
-          </td>
         </tr>
 
 

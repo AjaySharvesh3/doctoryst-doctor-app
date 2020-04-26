@@ -12,6 +12,7 @@ import {LayoutModule} from "./common/layout/layout.module";
 import {PageNotFoundComponent} from "./common/layout/components/page-not-found/page-not-found.component";
 import {ProductCategoryModule} from "./product-category/product-category.module";
 import {ItemCategoryModule} from "./item-category/item-category.module";
+import {HomeComponent} from "./common/layout/components/home/home.component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'page-not-found',
     component: PageNotFoundComponent,
     canActivate: [AuthGuard, EmailVerifiedGuard]
+  },
+  {
+    path: '',
+    component: HomeComponent
   },
   {
     path: '**',
