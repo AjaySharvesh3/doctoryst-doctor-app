@@ -4,15 +4,17 @@ import {AuthGuard, EmailVerifiedGuard} from './common/core/guards';
 import {AppConstant} from './common/core/constants';
 import {UserModule} from './common/user/user.module';
 import {SecurityModule} from './common/security/security.module';
-import {StoreModule} from './stores/store.module';
+import {StoreModule} from './operation/stores/store.module';
 import {OperationUserGuard} from "./common/core/guards/operation-user.guard";
 import {SupportUserGuard} from "./common/core/guards/support-user.guard";
-import {TicketsModule} from "./tickets/tickets.module";
+import {TicketsModule} from "./support/tickets/tickets.module";
 import {LayoutModule} from "./common/layout/layout.module";
 import {PageNotFoundComponent} from "./common/layout/components/page-not-found/page-not-found.component";
-import {ProductCategoryModule} from "./product-category/product-category.module";
-import {ItemCategoryModule} from "./item-category/item-category.module";
+import {ProductCategoryModule} from "./operation/product-category/product-category.module";
+import {ItemCategoryModule} from "./operation/item-category/item-category.module";
 import {HomeComponent} from "./common/layout/components/home/home.component";
+import {BusinessDashboardModule} from "./business/business-dashboard/business-dashboard.module";
+import {BusinessUserGuard} from "./common/core/guards/business-user.guard";
 
 const routes: Routes = [
   {
@@ -48,6 +50,11 @@ const routes: Routes = [
     path: 'tickets',
     loadChildren: () => TicketsModule,
     canActivate: [AuthGuard, EmailVerifiedGuard, SupportUserGuard]
+  },
+  {
+    path: 'business-dashboard',
+    loadChildren: () => BusinessDashboardModule,
+    canActivate: [AuthGuard, EmailVerifiedGuard, BusinessUserGuard]
   },
   {
     path: 'page-not-found',

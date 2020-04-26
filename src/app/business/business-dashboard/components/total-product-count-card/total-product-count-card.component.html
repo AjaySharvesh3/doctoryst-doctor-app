@@ -1,0 +1,31 @@
+<div class="custom-card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2 ml-4">
+        <img src="https://img.icons8.com/dusk/64/000000/product.png"
+             alt="Product Count Logo"/>
+      </div>
+
+      <div class="col-7">
+        <h4>100
+          <span style="font-size: 14px">counts</span>
+        </h4> <h6 class="text-muted">Total Product Counts</h6>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="custom-card mt-3">
+  <div class="card-header">
+    <h6>Product Counts</h6>
+    <span class="text-secondary">Products in Doughnut Chart</span>
+  </div>
+  <div class="card-body m-2">
+    <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType">
+    </canvas>
+  </div>
+</div>

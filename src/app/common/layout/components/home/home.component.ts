@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
           } else if (userDetails.support) {
             this.goToTickets();
           } else if (userDetails.business) {
-            this.goToMyStores();
+            this.goToBusinessDashboard();
           } else {
             this.goToPageNotFound();
           }
@@ -87,8 +87,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate([AppConstant.NAVIGATE_TO.tickets]);
   }
 
-  goToMyStores() {
-    this.router.navigate([AppConstant.NAVIGATE_TO.myStores]);
+  goToBusinessDashboard() {
+    this.router.navigate([AppConstant.NAVIGATE_TO.businessDashboard]);
   }
 
   goToPageNotFound() {

@@ -101,6 +101,25 @@ export class UserService {
     });
   }
 
+  isBusinessUser(email): Promise<boolean> {
+    return new Promise((resolve) => {
+
+      if (!email) {
+        resolve(false);
+      }
+
+      this.getUserByEmail(email)
+        .then(changes => {
+          const loggedInUser = changes.docs[0].data();
+          resolve(loggedInUser && loggedInUser.roles.business);
+        })
+        .catch(error => {
+          resolve(false);
+        });
+
+    });
+  }
+
   isAdminUserLoggedIn(): Promise<boolean> {
     const currentUser = this.authService.getCurrentUser();
     return this.isOperationUser(currentUser.email);
@@ -112,6 +131,10 @@ export class UserService {
 
   getLoggedInUserFromSessionStorage() {
     return JSON.parse(this.sessionStorageService.getValue(AppConstant.LOGGED_IN_USER)) || {};
+  }
+
+  getUserRoleFromSessionStorage() {
+    return JSON.parse(this.sessionStorageService.getValue(AppConstant.LOGGED_IN_USER_ROLES) || []);
   }
 
   prepareCreatedByOrUpdatedByUser() {

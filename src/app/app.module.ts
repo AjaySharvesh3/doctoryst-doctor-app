@@ -15,8 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
-import {TicketsModule} from "./tickets/tickets.module";
-import {StoreProfileModule} from "./profiles/store-profile/store-profile.module";
+import {TicketsModule} from "./support/tickets/tickets.module";
+import {StoreProfileModule} from "./operation/profiles/store-profile/store-profile.module";
 import {ColorPickerModule} from "ngx-color-picker";
 
 @NgModule({

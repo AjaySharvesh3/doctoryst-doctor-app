@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+
+      <div class="card mb-4 card-no-border">
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="pt-2 col-4">
+              <h5 class="category-title">
+                <fa-icon [icon]="faEnvelopeOpenText"></fa-icon>
+                Stores
+              </h5>
+            </div>
+
+            <div class="col-8 justify-content-end text-right">
+
+              <app-add-edit-store
+                (afterStoreAddedOrEdited)="triggerStoreRefresh()"
+                [isAddStore]="true">
+              </app-add-edit-store>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <app-store-list
+                [refreshStoreList]="refreshStoreList">
+              </app-store-list>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

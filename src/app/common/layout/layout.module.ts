@@ -17,7 +17,7 @@ import { StoreSideMenuComponent } from './components/store-side-menu/store-side-
     FooterComponent,
     PageNotFoundComponent,
     HomeComponent,
-    StoreSideMenuComponent
+    StoreSideMenuComponent,
   ],
   exports: [
     TopNavigationBarComponent,

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {AppConstant} from '../../../core/constants';
 import {NavigationEnd, Router} from '@angular/router';
 import _ from 'lodash';
@@ -7,7 +7,6 @@ import {UserModel} from '../../../user/models/user.model';
 import {UserService} from '../../../user/services/user.service';
 import {faCircle, faGlobe, faSignOutAlt, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {SessionStorageService} from '../../../core/services/session-storage.service';
-import {version} from '../../../../../../package.json';
 import {ConnectionService} from 'ng-connection-service';
 
 @Component({
@@ -15,20 +14,19 @@ import {ConnectionService} from 'ng-connection-service';
   templateUrl: './top-navigation-bar.component.html',
   styleUrls: ['./top-navigation-bar.component.css']
 })
-export class TopNavigationBarComponent implements OnInit {
+export class TopNavigationBarComponent implements OnInit, OnChanges {
   topMenuList = AppConstant.TOP_MENU_LIST;
   currentMenu = '';
   isLoggedIn: boolean;
   isEmailVerified: boolean;
   loggedInUser: string;
   user: UserModel;
-  appVersion: string = version;
   isOnline = true;
+  userRoles: [];
+  userRole: string;
 
   faUserCircle: any = faUserCircle;
   faSignOutAlt: any = faSignOutAlt;
-  faGlobe: any = faGlobe;
-  faCircle: any = faCircle;
 
   constructor(
     private router: Router,
@@ -58,6 +56,10 @@ export class TopNavigationBarComponent implements OnInit {
     this.detectRouteChanges();
   }
 
+  ngOnChanges() {
+    this.getUserCurrentRole();
+  }
+
   detectRouteChanges() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -85,9 +87,18 @@ export class TopNavigationBarComponent implements OnInit {
       });
   }
 
+  getUserCurrentRole() {
+    this.userRoles = this.userService.getUserRoleFromSessionStorage();
+    _.forEach(this.userRoles, (role, index) => {
+      if (this.userRoles[index] == true)
+      this.userRole = index;
+      return;
+    })
+  }
+
   logOut() {
-    /*this.authService.logout();
-    this.sessionStorageService.removeKey(AppConstant.LOGGED_IN_USER);*/
+    // this.authService.logout();
+    // this.sessionStorageService.removeKey(AppConstant.LOGGED_IN_USER);
     this.router.navigate([AppConstant.NAVIGATE_TO.logout]);
     this.resetLogin();
   }

@@ -4,7 +4,7 @@ export class AppConstant {
     home: 'home',
     stores: 'stores',
     tickets: 'tickets',
-    myStores: 'my-stores',
+    businessDashboard: 'business-dashboard',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -59,6 +59,34 @@ export class AppConstant {
       active: 'true',
       helpText: 'Manage Tickets',
       allowedRoles: ['support']
+    },
+    {
+      menuName: 'Dashboard',
+      path: 'business-dashboard',
+      active: 'true',
+      helpText: 'Manage Business',
+      allowedRoles: ['business']
+    },
+    {
+      menuName: 'Products',
+      path: 'business-products',
+      active: 'true',
+      helpText: 'Manage Business',
+      allowedRoles: ['business']
+    },
+    {
+      menuName: 'Orders',
+      path: 'business-orders',
+      active: 'true',
+      helpText: 'Manage Business',
+      allowedRoles: ['business']
+    },
+    {
+      menuName: 'Profile',
+      path: 'business-profile',
+      active: 'true',
+      helpText: 'Manage Business',
+      allowedRoles: ['business']
     }
   ];
 
@@ -103,7 +131,7 @@ export class AppConstant {
     }
   ];
 
-  static readonly TYPES = [
+  /*static readonly TYPES = [
     {
       code: 'plants-type',
       name: 'Plants',
@@ -136,7 +164,7 @@ export class AppConstant {
       route: 'tools-type',
       displayOrder: 3
     }
-  ];
+  ];*/
 
   static readonly STORE_SIDE_MENU_LIST = [
     {

@@ -1,0 +1,192 @@
+<button (click)="openAddEditProductCategory()"
+        *ngIf="isAddProductCategory"
+        class="btn btn-primary">
+  <fa-icon [icon]="faPlus"></fa-icon>
+  Add New Product Category
+</button>
+
+<button (click)="openAddEditProductCategory()"
+        *ngIf="isEditProductCategory"
+        class="btn btn-outline-primary"
+        tooltip="Edit Product Category">
+  <fa-icon [icon]="faPencilAlt"></fa-icon>
+</button>
+
+<ng-template #addEditProductCategoryTemplate>
+  <div class="modal-header border-0 bg-light">
+    <h4 *ngIf="isAddProductCategory" class="modal-title">Add New Product Category</h4>
+    <h4 *ngIf="isEditProductCategory" class="modal-title">Edit Product Category</h4>
+    <button (click)="closeAddEditProductCategory()" class="close" type="button"><span
+      aria-hidden="true">×</span></button>
+  </div>
+
+  <div class="modal-body flex-row pl-4 pr-4 mt-2">
+
+    <form [formGroup]="addEditProductCategoryForm">
+
+      <div class="card mb-4 details-card">
+        <div class="card-body">
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="name">Name</label>
+                <input  class="form-control required-field"
+                       formControlName="name"
+                       id="name"
+                       name="name"
+                       type="text">
+
+                <div *ngIf="name.invalid && (name.dirty || name.touched || formSubmitted)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="name.errors.required">
+                    Name is required.
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="description">Description</label>
+                <textarea
+                  class="form-control"
+                  formControlName="description"
+                  id="description"
+                  name="description"
+                  rows="2"></textarea>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="productLogoUrl">Product Logo URL</label>
+                <textarea
+                  class="form-control"
+                  formControlName="productLogoUrl"
+                  id="productLogoUrl"
+                  name="productLogoUrl"
+                  rows="2">
+                </textarea>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex row">
+
+            <div class="col-md justify-content-center">
+              <div class="form-group">
+                <label class="text-primary" for="productLogoUrl">Pick Product Theme</label>
+                <div class="btn-group btn-group-toggle mr-2">
+                  <div class="btn-group btn-group-toggle mr-2">
+                    <label *ngFor="let theme of productThemeColorList"
+                           [ngClass]="{'active': selectedProductTheme == theme.color}"
+                           class="btn btn-outline-{{theme.color}} clickable theme-style">
+
+                      <input (click)="setSelectedTheme(theme.color)"
+                             formControlName="productThemeColor"
+                             id="productThemeColor"
+                             name="productThemeColor"
+                             value="{{theme.color}}, {{theme.code}}"
+                             type="radio">
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <div class="d-flex justify-content-center mt-2">
+
+        <div class="text-center justify-content-center">
+
+          <label class="text-primary mb-2">Preview</label>
+
+          <div class="card top-category-card whitesmoke-bg custom-hover">
+            <div class="card-body text-center">
+
+              <img *ngIf="!!productLogoUrl.value" class="justify-content-center"
+                   src="{{productLogoUrl.value}}"
+                   alt="Product Logo"/>
+
+              <img *ngIf="productLogoUrl.value == null || productLogoUrl.value == ''"
+                   class="justify-content-center logo"
+                   src="../../../../../assets/images/placeholders/store_profile_placeholder.png"
+                   alt="Product Logo"/>
+
+              <h5 class="text-primary text-muted mt-3">
+                {{name.value}}
+              </h5>
+
+              <h6 class="text-primary text-muted mt-3">
+                {{description.value}}
+              </h6>
+
+              <div class="pt-3">
+                <button class="btn btn-outline-primary m-2"
+                        tooltip="Edit Product Category">
+                  <fa-icon [icon]="faPencilAlt"></fa-icon>
+                </button>
+                <button class="btn btn-outline-secondary m-2"
+                        tooltip="Disable Product Category">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </button>
+                <button class="btn btn-outline-danger m-2"
+                        tooltip="Delete Product Category">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+  <div class="modal-footer border-0">
+    <button (click)="closeAddEditProductCategory()"
+            class="btn btn-light"
+            type="button">
+      Cancel
+    </button>
+    <button (click)="confirmAddProductCategory()"
+            *ngIf="isAddProductCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Add Product Category
+    </button>
+    <button (click)="confirmEditProductCategory()"
+            *ngIf="isEditProductCategory"
+            class="btn btn-success"
+            type="button">
+      Confirm Edit Product Category
+    </button>
+  </div>
+</ng-template>
