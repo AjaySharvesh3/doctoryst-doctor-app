@@ -531,7 +531,7 @@ body {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: ghostwhite;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .50rem
@@ -542,4 +542,23 @@ body {
   margin-bottom: 0;
   background-color: rgba(0,0,0,0);
   border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.business-top-nav-gradient-color {
+  background: linear-gradient(120deg, #014A74, #004d40);
+  color: #fff;
+}
+
+.total-counts-card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background: linear-gradient(120deg, #c5cae9, #b2dfdb);
+  background-clip: border-box;
+  /*background: linear-gradient(to right, #b29a53 0, #f4e8bc 65%, #c8b476 100%);*/
+  border-radius: .50rem
 }

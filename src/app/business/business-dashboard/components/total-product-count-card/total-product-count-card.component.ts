@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Label, MultiDataSet} from "ng2-charts";
-import {ChartType} from "chart.js";
+import {ChartOptions, ChartType} from "chart.js";
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-total-product-count-card',
@@ -12,6 +13,12 @@ export class TotalProductCountCardComponent implements OnInit {
   public doughnutChartData: MultiDataSet = [
     [10, 20, 5, 2]
   ];
+
+  public chartColors: any[] = [
+    {
+      backgroundColor:["#02b3e4", "#a951ed", "#ff5483", "#02ccba"]
+    }];
+
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor() { }

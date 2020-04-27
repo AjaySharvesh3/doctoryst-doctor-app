@@ -1,0 +1,33 @@
+<div class="product-count-chart-card mt-3">
+  <div class="card-header">
+    <div class="row">
+
+      <div class="col pl-3 pt-2 pb-2">
+        <h5>
+          <i class="fa fa-leaf" aria-hidden="true"></i>
+          Products Counts
+        </h5>
+        <span class="text-secondary font-size-10">Products Counts in Doughnut Chart</span>
+      </div>
+
+      <div class="col">
+        <h5 class="float-sm-right">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </h5>
+      </div>
+
+    </div>
+  </div>
+  <div class="card-body m-2">
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+                [data]="doughnutChartData"
+                [colors]="chartColors"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

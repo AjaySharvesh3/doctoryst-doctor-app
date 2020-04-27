@@ -1,0 +1,35 @@
+<div class="amount-earned-order-received-chart-card mt-3">
+  <div class="card-header">
+
+    <div class="row">
+
+      <div class="col pl-3 pt-2 pb-2">
+        <h5>
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          Amounts Earned & Order Received</h5>
+        <span class="text-secondary font-size-10">Amounts Earned & Orders Received in Bar Chart</span>
+      </div>
+
+      <div class="col">
+        <h5 class="float-sm-right">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </h5>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body m-2">
+    <div style="display: block;">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [colors]="chartColors"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>
