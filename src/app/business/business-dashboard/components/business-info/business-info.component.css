@@ -1,0 +1,52 @@
+.business-info-card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  /*background: linear-gradient(120deg, #c5cae9, #b2dfdb);*/
+  background: #fafafa;
+  border-radius: 3px;
+  background-clip: border-box;
+  margin: 30px;
+  /*background: linear-gradient(to right, #b29a53 0, #f4e8bc 65%, #c8b476 100%);*/
+  border: 2px solid #ececec
+}
+
+.logo {
+  font-size: 80px;
+  background-image: -webkit-linear-gradient(left, #41295a, #031b2f, #2F0743); /* For Chrome and Safari */
+  color:transparent;
+  -webkit-background-clip: text;
+}
+
+.store-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.alignment {
+  margin: 30px;
+}
+
+.badge {
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #000;
+}

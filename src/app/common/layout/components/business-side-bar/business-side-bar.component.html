@@ -1,0 +1,156 @@
+<!-- Side navigation -->
+<div class="sidenav" *ngIf="isLoggedIn">
+
+  <span class="logo logo-text ml-3 text-center">
+
+    <i class="fa fa-tree" aria-hidden="true"></i>
+    ShrubsInk
+  </span>
+
+  <p class="pt-2 dashboard">
+    DASHBOARD
+  </p>
+
+  <p class="pt-4 dashboard"
+     (click)="isOverviewCollapsed = !isOverviewCollapsed"
+     [attr.aria-expanded]="!isOverviewCollapsed"
+     aria-controls="collapseDashboard">
+    OVERVIEW
+    <i class="fa fa-caret-down pr-4 float-right" aria-hidden="true"></i>
+  </p>
+
+  <div
+    id="collapseProduct"
+    [collapse]="isOverviewCollapsed"
+    [isAnimated]="true">
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLink="business-dashboard"
+       routerLinkActive="active">
+
+      <i class="fa fa-dashboard" aria-hidden="true"></i> &nbsp;
+      Dashboard</a>
+
+  </div>
+
+  <hr class="border-line">
+
+  <p class="pt-2 dashboard"
+     (click)="isProductCollapsed = !isProductCollapsed"
+     [attr.aria-expanded]="!isProductCollapsed"
+     aria-controls="collapseDashboard">
+    PRODUCTS
+    <i class="fa fa-caret-down pr-4 float-right" aria-hidden="true"></i>
+  </p>
+
+  <div id="collapseProduct"
+       [collapse]="isProductCollapsed"
+       [isAnimated]="true">
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-tree" aria-hidden="true"></i> &nbsp;
+      Plants</a>
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-envira" aria-hidden="true"></i> &nbsp;
+      Flowers</a>
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-pagelines" aria-hidden="true"></i> &nbsp;
+      Seeds</a>
+
+  </div>
+
+
+  <hr class="border-line">
+
+  <p class="pt-2 dashboard"
+     (click)="isOrderCollapsed = !isOrderCollapsed"
+     [attr.aria-expanded]="!isOrderCollapsed"
+     aria-controls="collapseDashboard">
+    ORDERS
+    <i class="fa fa-caret-down pr-4 float-right" aria-hidden="true"></i>
+  </p>
+
+  <div id="collapseProduct"
+       [collapse]="isOrderCollapsed"
+       [isAnimated]="true">
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;
+      New Orders</a>
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-history" aria-hidden="true"></i> &nbsp;
+      Histories</a>
+
+  </div>
+
+
+  <hr class="border-line">
+
+  <p class="pt-2 dashboard"
+     (click)="isProfileCollapsed = !isProfileCollapsed"
+     [attr.aria-expanded]="!isProfileCollapsed"
+     aria-controls="collapseDashboard">
+    PROFILES
+    <i class="fa fa-caret-down pr-4 float-right" aria-hidden="true"></i>
+  </p>
+
+  <div id="collapseProduct"
+       [collapse]="isProfileCollapsed"
+       [isAnimated]="true">
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-home" aria-hidden="true"></i> &nbsp;
+      Store Profile</a>
+
+    <a class="custom-sans-font-light font-size-14 pl-3"
+       routerLinkActive="active">
+
+      <i class="fa fa-user" aria-hidden="true"></i> &nbsp;
+      Holder Profile</a>
+
+  </div>
+
+  <div class="main pl-5" *ngIf="isLoggedIn">
+    <nav
+      class="navbar navbar-dark navbar-expand-lg fixed-top gradient portfolio-navbar shadow-sm">
+
+      <div class="container-fluid">
+
+        <div
+          class="collapse navbar-collapse justify-content-end" id="navbarNav" >
+
+          <div *ngIf="isLoggedIn" class="row pl-3 custom-sans-font-light"
+               tooltip="Logged In User">
+            <fa-icon [icon]="faUserCircle" class="font-size-1-2-rem pl-3" size="2x"></fa-icon>
+            <div class="mt-1 pl-2"> {{loggedInUser}}</div>
+          </div>
+
+          <div *ngIf="isLoggedIn" class="pl-3" style="float:right;">
+            <button (click)="logOut()"
+                    class="btn btn-link"
+                    tooltip="Logout"
+                    type="button">
+              <fa-icon [icon]="faSignOutAlt" class="font-size-1-2-rem text-body" size="2x"></fa-icon>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </nav>
+  </div>
+</div>

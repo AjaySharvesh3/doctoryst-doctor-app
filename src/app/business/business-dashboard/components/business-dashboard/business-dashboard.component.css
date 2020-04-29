@@ -6,3 +6,8 @@
   z-index: 1030;
   margin-top: 64px;
 }
+
+.info-container {
+  padding-right: 100px;
+  padding-left: 280px;
+}

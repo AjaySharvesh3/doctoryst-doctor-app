@@ -1,12 +1,12 @@
-.gradient {
+.gradient-logged-in {
   background: linear-gradient(120deg, #014A74, #004d40);
   color: #fff;
 }
 
-/*.gradient {
-  background: linear-gradient(120deg, #00838f, #00796b);
+.gradient-logged-out {
+  background: linear-gradient(120deg, #014A74, #014A74);
   color: #fff;
-}*/
+}
 
 
 .portfolio-navbar.navbar {

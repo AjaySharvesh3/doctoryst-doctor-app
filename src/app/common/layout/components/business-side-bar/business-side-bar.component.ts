@@ -1,21 +1,24 @@
-import {Component, OnInit, OnChanges} from '@angular/core';
-import {AppConstant} from '../../../core/constants';
-import {NavigationEnd, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import _ from 'lodash';
-import {AuthService} from '../../../core/services';
-import {UserModel} from '../../../user/models/user.model';
-import {UserService} from '../../../user/services/user.service';
-import {faCircle, faGlobe, faSignOutAlt, faUserCircle} from '@fortawesome/free-solid-svg-icons';
-import {SessionStorageService} from '../../../core/services/session-storage.service';
-import {ConnectionService} from 'ng-connection-service';
+import {UserModel} from "../../../user/models/user.model";
+import {NavigationEnd, Router} from "@angular/router";
+import {AuthService} from "../../../core/services";
+import {SessionStorageService} from "../../../core/services/session-storage.service";
+import {UserService} from "../../../user/services/user.service";
+import {ConnectionService} from "ng-connection-service";
+import {AppConstant} from "../../../core/constants";
+import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-top-navigation-bar',
-  templateUrl: './top-navigation-bar.component.html',
-  styleUrls: ['./top-navigation-bar.component.css']
+  selector: 'app-business-side-bar',
+  templateUrl: './business-side-bar.component.html',
+  styleUrls: ['./business-side-bar.component.css']
 })
-export class TopNavigationBarComponent implements OnInit, OnChanges {
-  topMenuList = AppConstant.TOP_MENU_LIST;
+export class BusinessSideBarComponent implements OnInit {
+  isOverviewCollapsed = false;
+  isProductCollapsed = false;
+  isOrderCollapsed = false;
+  isProfileCollapsed = false;
   currentMenu = '';
   isLoggedIn: boolean;
   isEmailVerified: boolean;
@@ -64,7 +67,7 @@ export class TopNavigationBarComponent implements OnInit, OnChanges {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (location.pathname !== '') {
-          this.currentMenu = TopNavigationBarComponent.extractCurrentPath(location.pathname);
+          this.currentMenu = BusinessSideBarComponent.extractCurrentPath(location.pathname);
         } else {
           this.currentMenu = AppConstant.NAVIGATE_TO.login;
         }
@@ -91,7 +94,7 @@ export class TopNavigationBarComponent implements OnInit, OnChanges {
     this.userRoles = this.userService.getUserRoleFromSessionStorage();
     _.forEach(this.user.roles, (role, index) => {
       if (this.user.roles[index] == true)
-      this.userRole = index;
+        this.userRole = index;
       return;
     })
   }
@@ -132,34 +135,11 @@ export class TopNavigationBarComponent implements OnInit, OnChanges {
           })
 
           this.sessionStorageService.setValue(AppConstant.LOGGED_IN_USER, JSON.stringify(userDetails));
-          this.processMenuList();
         }
       })
       .catch(error => {
         console.log('error', error);
       });
-  }
-
-  processMenuList() {
-    _.forEach(this.topMenuList, menu => {
-      this.setMenuVisibility(menu);
-    });
-  }
-
-  setMenuVisibility(menu) {
-    let menuVisible = false;
-
-    if (_.isEmpty(menu.allowedRoles)) {
-      menuVisible = true;
-    } else {
-      _.forEach(menu.allowedRoles, allowedRole => {
-        if (!menuVisible) {
-          menuVisible = this.user.roles[allowedRole];
-        }
-      });
-    }
-
-    menu.visible = menuVisible;
   }
 
 }

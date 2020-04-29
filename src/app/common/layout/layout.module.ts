@@ -10,6 +10,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import {ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 import { StoreSideMenuComponent } from './components/store-side-menu/store-side-menu.component';
+import { BusinessSideBarComponent } from './components/business-side-bar/business-side-bar.component';
+import {CollapseModule} from "ngx-bootstrap/collapse";
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { StoreSideMenuComponent } from './components/store-side-menu/store-side-
     PageNotFoundComponent,
     HomeComponent,
     StoreSideMenuComponent,
+    BusinessSideBarComponent,
   ],
   exports: [
     TopNavigationBarComponent,
@@ -30,7 +33,8 @@ import { StoreSideMenuComponent } from './components/store-side-menu/store-side-
     TooltipModule.forRoot(),
     LayoutRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CollapseModule
   ]
 })
 export class LayoutModule {

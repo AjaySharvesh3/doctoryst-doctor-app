@@ -8,6 +8,8 @@ import {TotalOrdersReceivedCountCardComponent} from './components/total-orders-r
 import {ChartsModule} from "ng2-charts";
 import { ProductCountChartComponent } from './components/product-count-chart/product-count-chart.component';
 import { AmountEarnedAndOrderReceivedChartComponent } from './components/amount-earned-and-order-received-chart/amount-earned-and-order-received-chart.component';
+import {CollapseModule} from "ngx-bootstrap/collapse";
+import { BusinessInfoComponent } from './components/business-info/business-info.component';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { AmountEarnedAndOrderReceivedChartComponent } from './components/amount-
     TotalAmountEarnedCountCardComponent,
     TotalOrdersReceivedCountCardComponent,
     ProductCountChartComponent,
-    AmountEarnedAndOrderReceivedChartComponent
+    AmountEarnedAndOrderReceivedChartComponent,
+    BusinessInfoComponent
   ],
   imports: [
     CommonModule,
     ChartsModule,
+    CollapseModule.forRoot(),
     BusinessDashboardRoutingModule,
   ]
 })

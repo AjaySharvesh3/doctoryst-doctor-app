@@ -557,8 +557,23 @@ body {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background: linear-gradient(120deg, #c5cae9, #b2dfdb);
+  /*background: linear-gradient(120deg, #c5cae9, #b2dfdb);*/
+  background: #fafafa;
+  border-radius: 3px;
   background-clip: border-box;
   /*background: linear-gradient(to right, #b29a53 0, #f4e8bc 65%, #c8b476 100%);*/
-  border-radius: .50rem
+  border: 2px solid #ececec
+}
+
+.container-count-left {
+  margin-left: 30px;
+}
+
+.container-count-right {
+  margin-right: 30px;
+}
+
+#total-counts-logo {
+  font-size: 70px;
+  color: #0069ff;
 }
