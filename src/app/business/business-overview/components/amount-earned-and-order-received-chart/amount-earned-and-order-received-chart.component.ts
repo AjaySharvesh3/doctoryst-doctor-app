@@ -21,22 +21,27 @@ export class AmountEarnedAndOrderReceivedChartComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+  public barChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                                    'August', 'September', 'October', 'November', 'December'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
 
   public chartColors: any[] = [
     {
-      backgroundColor:["#02b3e4", "#02b3e4", "#02b3e4", "#02b3e4"]
+      backgroundColor:["#0069ff", "#0069ff", "#0069ff", "#0069ff",
+                       "#0069ff", "#0069ff", "#0069ff", "#0069ff",
+                       "#0069ff", "#0069ff", "#0069ff", "#0069ff"]
     },
     {
-      backgroundColor:["#a951ed", "#a951ed", "#a951ed", "#a951ed"]
+      backgroundColor:["#a951ed", "#a951ed", "#a951ed", "#a951ed",
+                       "#a951ed", "#a951ed", "#a951ed", "#a951ed",
+                       "#a951ed", "#a951ed", "#a951ed", "#a951ed"]
     }];
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81], label: 'Orders Received' },
-    { data: [28, 48, 40, 19], label: 'Amounts Earned' }
+    { data: [65, 59, 80, 81, 65, 59, 80, 81, 65, 59, 80, 80], label: 'Orders Received' },
+    { data: [28, 48, 40, 19, 28, 48, 40, 19, 28, 48, 40, 90], label: 'Amounts Earned' }
   ];
 
   constructor() { }

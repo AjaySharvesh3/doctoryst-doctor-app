@@ -577,3 +577,8 @@ body {
   font-size: 70px;
   color: #0069ff;
 }
+
+.info-container {
+  padding-right: 100px;
+  padding-left: 280px;
+}

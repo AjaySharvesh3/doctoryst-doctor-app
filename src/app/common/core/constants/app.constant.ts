@@ -4,7 +4,7 @@ export class AppConstant {
     home: 'home',
     stores: 'stores',
     tickets: 'tickets',
-    businessDashboard: 'business-dashboard',
+    businessOverview: 'overview/business-dashboard',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -62,7 +62,7 @@ export class AppConstant {
     },
     {
       menuName: 'Dashboard',
-      path: 'business-dashboard',
+      path: 'business-overview',
       active: 'true',
       helpText: 'Manage Business',
       allowedRoles: ['business']

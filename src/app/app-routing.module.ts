@@ -13,7 +13,7 @@ import {PageNotFoundComponent} from "./common/layout/components/page-not-found/p
 import {ProductCategoryModule} from "./operation/product-category/product-category.module";
 import {ItemCategoryModule} from "./operation/item-category/item-category.module";
 import {HomeComponent} from "./common/layout/components/home/home.component";
-import {BusinessDashboardModule} from "./business/business-dashboard/business-dashboard.module";
+import {BusinessOverviewModule} from "./business/business-overview/business-overview.module";
 import {BusinessUserGuard} from "./common/core/guards/business-user.guard";
 
 const routes: Routes = [
@@ -52,8 +52,8 @@ const routes: Routes = [
     canActivate: [AuthGuard, EmailVerifiedGuard, SupportUserGuard]
   },
   {
-    path: 'business-dashboard',
-    loadChildren: () => BusinessDashboardModule,
+    path: 'overview',
+    loadChildren: () => BusinessOverviewModule,
     canActivate: [AuthGuard, EmailVerifiedGuard, BusinessUserGuard]
   },
   {

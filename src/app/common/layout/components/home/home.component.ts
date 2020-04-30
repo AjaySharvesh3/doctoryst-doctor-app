@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToBusinessDashboard() {
-    this.router.navigate([AppConstant.NAVIGATE_TO.businessDashboard]);
+    this.router.navigate([AppConstant.NAVIGATE_TO.businessOverview]);
   }
 
   goToPageNotFound() {
