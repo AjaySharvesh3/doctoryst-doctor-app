@@ -1,17 +1,15 @@
-/* The sidebar menu */
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 180px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  background-color: #031b4d; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #031b4d;
+  overflow-x: hidden;
   padding-top: 30px;
 }
 
-/* The navigation menu links */
 .sidenav a {
   text-decoration: none;
   color: #fff;
@@ -22,7 +20,6 @@
   padding-right: 10px;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   background-color: #031b2f;
   color: #fff;
@@ -34,19 +31,12 @@
   color: #fff;
 }
 
-/* Style page content */
-.main {
-  margin-left: 160px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 14px;}
 }
 
-.dashboard {
+.top-layer-menu {
   padding-left: 17px;
   font-weight: 600;
   color: #677694;
@@ -55,7 +45,7 @@
   letter-spacing: .07rem;
 }
 
-.dashboard:hover {
+.top-layer-menu:hover {
   cursor: pointer;
 }
 
@@ -93,4 +83,10 @@
 .border-line {
   margin-top: 24px;
   background-color: #677694;
+}
+
+.store-logo {
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  color: #014A74;
 }

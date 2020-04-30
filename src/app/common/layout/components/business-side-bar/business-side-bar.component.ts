@@ -19,6 +19,7 @@ export class BusinessSideBarComponent implements OnInit {
   isProductCollapsed = false;
   isOrderCollapsed = false;
   isProfileCollapsed = false;
+
   currentMenu = '';
   isLoggedIn: boolean;
   isEmailVerified: boolean;
@@ -27,6 +28,7 @@ export class BusinessSideBarComponent implements OnInit {
   isOnline = true;
   userRoles: [];
   userRole: string;
+  userDetails = {};
 
   faUserCircle: any = faUserCircle;
   faSignOutAlt: any = faSignOutAlt;
@@ -121,12 +123,10 @@ export class BusinessSideBarComponent implements OnInit {
 
         if (this.user) {
 
-          let userDetails = {};
-
           _.forEach(this.user.roles, (role, index) => {
             if (this.user.roles[index] == true) {
               this.userRole = index;
-              userDetails = {
+              this.userDetails = {
                 email: this.user.email,
                 name: this.user.firstName + ' ' + this.user.lastName,
                 role: this.userRole
@@ -134,7 +134,7 @@ export class BusinessSideBarComponent implements OnInit {
             }
           })
 
-          this.sessionStorageService.setValue(AppConstant.LOGGED_IN_USER, JSON.stringify(userDetails));
+          this.sessionStorageService.setValue(AppConstant.LOGGED_IN_USER, JSON.stringify(this.userDetails));
         }
       })
       .catch(error => {
