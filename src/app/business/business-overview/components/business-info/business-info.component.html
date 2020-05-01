@@ -50,12 +50,13 @@
         <span class="align-middle ml-1">Verified Store</span>
         </span>
 
-      <button class="btn info-btn custom-sans-font-regular justify-content-end float-right">
+      <button class="btn info-btn custom-sans-font-regular justify-content-end float-right"
+              routerLink="profiles/business">
         <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;
-        Store Profile
+        Business Profile
       </button>
 
-      <hr class="mt-4" >
+      <hr class="mt-4">
 
       <table class="table table-borderless">
         <tbody>
@@ -130,12 +131,14 @@
         <span class="align-middle ml-1">Approved Holder</span>
         </span>
 
-      <button class="btn red-btn custom-sans-font-regular justify-content-end float-right">
+      <button class="btn red-btn custom-sans-font-regular justify-content-end float-right"
+              (click)="getRouterLink()"
+              routerLink="profiles/holder">
         <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;
         Holder Profile
       </button>
 
-      <hr class="mt-4" >
+      <hr class="mt-4">
 
       <table class="table table-borderless">
         <tbody>

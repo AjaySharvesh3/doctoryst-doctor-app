@@ -127,6 +127,7 @@ export class BusinessSideBarComponent implements OnInit {
             if (this.user.roles[index] == true) {
               this.userRole = index;
               this.userDetails = {
+                id: this.user.id,
                 email: this.user.email,
                 name: this.user.firstName + ' ' + this.user.lastName,
                 role: this.userRole

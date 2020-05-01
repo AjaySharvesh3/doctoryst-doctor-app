@@ -15,6 +15,7 @@ import {ItemCategoryModule} from "./operation/item-category/item-category.module
 import {HomeComponent} from "./common/layout/components/home/home.component";
 import {BusinessOverviewModule} from "./business/business-overview/business-overview.module";
 import {BusinessUserGuard} from "./common/core/guards/business-user.guard";
+import {ProfilesModule} from "./business/profiles/profiles.module";
 
 const routes: Routes = [
   {
@@ -54,6 +55,11 @@ const routes: Routes = [
   {
     path: 'overview',
     loadChildren: () => BusinessOverviewModule,
+    canActivate: [AuthGuard, EmailVerifiedGuard, BusinessUserGuard]
+  },
+  {
+    path: 'profiles',
+    loadChildren: () => ProfilesModule,
     canActivate: [AuthGuard, EmailVerifiedGuard, BusinessUserGuard]
   },
   {
