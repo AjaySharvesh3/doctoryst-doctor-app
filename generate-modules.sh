@@ -27,9 +27,9 @@ npm install
 # Initialize Firebase with below command in terminal
 # firebase init
 
-# Adding a service worker to your stores
+# Adding a service worker to your patients
 # -------------------------
-# ng add @angular/pwa --stores angular-app-template
+# ng add @angular/pwa --patients angular-app-template
 
 # Run NPM Audit Fix to Fix any Vulnerabilities
 npm audit fix

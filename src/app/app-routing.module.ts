@@ -4,12 +4,10 @@ import {AuthGuard, EmailVerifiedGuard} from './common/core/guards';
 import {AppConstant} from './common/core/constants';
 import {UserModule} from './common/user/user.module';
 import {SecurityModule} from './common/security/security.module';
-import {StoreModule} from './stores/store.module';
-import {OperationUserGuard} from "./common/core/guards/operation-user.guard";
-import {SupportUserGuard} from "./common/core/guards/support-user.guard";
-import {TicketsModule} from "./tickets/tickets.module";
-import {LayoutModule} from "./common/layout/layout.module";
-import {PageNotFoundComponent} from "./common/layout/components/page-not-found/page-not-found.component";
+import {PatientsModule} from './patients/patients.module';
+import {LayoutModule} from './common/layout/layout.module';
+import {OperationUserGuard} from './common/core/guards/operation-user.guard';
+import {PageNotFoundComponent} from './common/layout/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -27,14 +25,9 @@ const routes: Routes = [
     canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard]
   },
   {
-    path: 'stores',
-    loadChildren: () => StoreModule,
+    path: 'patients',
+    loadChildren: () => PatientsModule,
     canActivate: [AuthGuard, EmailVerifiedGuard, OperationUserGuard],
-  },
-  {
-    path: 'tickets',
-    loadChildren: () => TicketsModule,
-    canActivate: [AuthGuard, EmailVerifiedGuard, SupportUserGuard]
   },
   {
     path: 'page-not-found',

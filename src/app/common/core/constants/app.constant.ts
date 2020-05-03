@@ -2,9 +2,8 @@ export class AppConstant {
 
   static readonly NAVIGATE_TO = {
     home: 'home',
-    stores: 'stores',
+    patients: 'patients',
     tickets: 'tickets',
-    myStores: 'my-stores',
     login: 'security/login',
     logout: 'security/logout',
     forgotPassword: 'security/forgot-password',
@@ -26,25 +25,11 @@ export class AppConstant {
 
   static readonly TOP_MENU_LIST = [
     {
-      menuName: 'Stores',
-      path: 'stores',
+      menuName: 'Patients',
+      path: 'patients',
       active: 'true',
-      helpText: 'Manage Stores',
+      helpText: 'Manage Patients',
       allowedRoles: ['operation']
-    },
-    {
-      menuName: 'Users',
-      path: 'users',
-      active: 'true',
-      helpText: 'Manage Users',
-      allowedRoles: ['operation']
-    },
-    {
-      menuName: 'Tickets',
-      path: 'tickets',
-      active: 'true',
-      helpText: 'Manage Tickets',
-      allowedRoles: ['support']
     }
   ];
 
